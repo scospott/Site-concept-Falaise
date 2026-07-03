@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, type ElementType, type ReactNode } from "react";
+import { createElement, useRef, type ReactNode } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -10,7 +10,7 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 type RevealProps = {
   children: ReactNode;
   /** Élément rendu (div par défaut) */
-  as?: ElementType;
+  as?: "div" | "section" | "span" | "article" | "ul" | "li" | "figure";
   className?: string;
   /** Délai avant l'animation, en secondes */
   delay?: number;
@@ -68,9 +68,5 @@ export default function Reveal({
     { scope: ref, dependencies: [delay, stagger, variant] },
   );
 
-  return (
-    <Tag ref={ref} className={className}>
-      {children}
-    </Tag>
-  );
+  return createElement(Tag, { ref, className }, children);
 }

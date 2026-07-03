@@ -13,6 +13,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { heroes, frameUrl, type HeroSlot } from "@/lib/heroes";
 import ForestLine from "@/components/ForestLine";
+import NightLayer from "@/components/effects/NightLayer";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -218,6 +219,11 @@ export default function ScrollHero({ slot, children }: ScrollHeroProps) {
           className="absolute inset-0 h-full w-full"
         />
       )}
+
+      {/* Couche signature (chantier 8) — au-dessus des frames, sous le
+          texte. Insertion de markup uniquement : la mécanique pin/scrub/
+          frames ci-dessus n'est pas touchée. */}
+      <NightLayer />
 
       {/* Overlay contenu (fade-out en début de scrub) */}
       <div ref={overlayRef} className="relative z-10 h-full">
