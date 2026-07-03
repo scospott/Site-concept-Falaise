@@ -3,6 +3,7 @@ import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { bodoni, instrument } from "@/lib/fonts";
+import SmoothScroll from "@/components/motion/SmoothScroll";
 import "../globals.css";
 
 export function generateStaticParams() {
@@ -29,6 +30,7 @@ export default async function LocaleLayout({
     >
       <body>
         <NextIntlClientProvider messages={messages}>
+          <SmoothScroll />
           {children}
         </NextIntlClientProvider>
       </body>
