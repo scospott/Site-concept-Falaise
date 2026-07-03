@@ -39,13 +39,13 @@ export default function Button(props: ButtonAsLink | ButtonAsButton) {
     // Ancres locales : simple <a>, routes internes : Link i18n
     if (href.startsWith("#")) {
       return (
-        <a href={href} className={classes} {...rest}>
+        <a href={href} className={classes} data-cursor="link" {...rest}>
           {children}
         </a>
       );
     }
     return (
-      <Link href={href} className={classes} {...rest}>
+      <Link href={href} className={classes} data-cursor="link" {...rest}>
         {children}
       </Link>
     );
@@ -53,7 +53,7 @@ export default function Button(props: ButtonAsLink | ButtonAsButton) {
 
   const { variant: _v, className: _c, children: _ch, ...rest } = props;
   return (
-    <button className={classes} {...rest}>
+    <button className={classes} data-cursor="link" {...rest}>
       {children}
     </button>
   );

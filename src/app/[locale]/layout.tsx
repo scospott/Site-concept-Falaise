@@ -14,6 +14,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { VillaChatProvider } from "@/components/chat/VillaChat";
 import ChatWidget from "@/components/chat/ChatWidget";
+import CursorLantern from "@/components/effects/CursorLantern";
 import "../globals.css";
 
 export function generateStaticParams() {
@@ -96,6 +97,7 @@ export default async function LocaleLayout({
             {children}
             <Footer />
             <ChatWidget />
+            <CursorLantern />
           </VillaChatProvider>
         </NextIntlClientProvider>
       </body>

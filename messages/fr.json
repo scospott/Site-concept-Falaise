@@ -148,6 +148,9 @@
       "newRequest": "Nouvelle demande"
     }
   },
+  "lantern": {
+    "view": "Voir"
+  },
   "notFound": {
     "title": "Vous avez quitté le sentier",
     "body": "La page que vous cherchez n’existe pas — la marée l’a peut-être emportée.",

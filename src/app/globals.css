@@ -94,6 +94,99 @@
   }
 }
 
+/* Effet 2 — curseur-lanterne (desktop pointer fine uniquement) */
+.lantern-dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 8px;
+  height: 8px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: var(--color-ecume);
+  transition:
+    width 0.3s var(--ease-luxe),
+    height 0.3s var(--ease-luxe),
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    opacity 0.4s ease;
+  will-change: transform;
+}
+
+.lantern-dot.lantern-link {
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border-color: var(--color-ecume);
+}
+
+.lantern-dot.lantern-view {
+  width: 56px;
+  height: 56px;
+  background: color-mix(in srgb, var(--color-nuit) 85%, transparent);
+  border-color: var(--color-ecume);
+}
+
+.lantern-label {
+  font-family: var(--font-display);
+  font-size: 12px;
+  color: var(--color-ecume);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lantern-halo {
+  width: 240px;
+  height: 240px;
+  border-radius: 999px;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--color-ecume) 10%, transparent) 0%,
+    transparent 70%
+  );
+  transition: opacity 0.4s ease;
+  will-change: transform;
+}
+
+/* Effet 2 — spotlight images : on promène une lanterne sur la nuit.
+   Tactile/reduced-motion : couches éteintes, images claires par défaut. */
+.spotlight-lite,
+.spotlight-full {
+  display: none;
+}
+
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .spotlight-wrap .spotlight-dim {
+    filter: brightness(0.72) saturate(0.9);
+  }
+
+  .spotlight-wrap .spotlight-lite {
+    display: flex;
+    mask-image: radial-gradient(
+      circle 240px at var(--mx, -999px) var(--my, -999px),
+      black 0%,
+      transparent 70%
+    );
+    -webkit-mask-image: radial-gradient(
+      circle 240px at var(--mx, -999px) var(--my, -999px),
+      black 0%,
+      transparent 70%
+    );
+  }
+
+  /* Survol prolongé (400 ms) : la version claire fond en entier */
+  .spotlight-wrap .spotlight-full {
+    display: flex;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .spotlight-wrap:hover .spotlight-full {
+    opacity: 1;
+    transition-delay: 0.4s;
+  }
+}
+
 /* Lightbox — fade + scale 0.3s */
 @keyframes lightbox-overlay-in {
   from {

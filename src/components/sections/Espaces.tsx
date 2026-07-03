@@ -18,32 +18,55 @@ function Visuel({
   nom,
   label,
   className,
+  spotlight = false,
 }: {
   couleur: string;
   image?: string;
   nom: string;
   label: string;
   className?: string;
+  /** Effet 2 : copie claire révélée par la lanterne (panneau desktop) */
+  spotlight?: boolean;
 }) {
   if (image) {
-    return (
+    const img = (extra: string) => (
       <Image
         src={image}
         alt={nom}
         fill
         sizes="(min-width: 1024px) 45vw, 100vw"
-        className={`object-cover ${className ?? ""}`}
+        className={`object-cover ${extra} ${className ?? ""}`}
       />
     );
+    if (!spotlight) return img("");
+    return (
+      <>
+        {img("spotlight-dim")}
+        <div aria-hidden className="spotlight-lite absolute inset-0">
+          {img("")}
+        </div>
+        <div aria-hidden className="spotlight-full absolute inset-0">
+          {img("")}
+        </div>
+      </>
+    );
   }
-  return (
+  const plate = (extra: string) => (
     <div
       aria-hidden
-      className={`absolute inset-0 flex items-center justify-center ${className ?? ""}`}
+      className={`absolute inset-0 flex items-center justify-center ${extra} ${className ?? ""}`}
       style={{ backgroundColor: couleur }}
     >
       <span className="eyebrow opacity-40">{label}</span>
     </div>
+  );
+  if (!spotlight) return plate("");
+  return (
+    <>
+      {plate("spotlight-dim")}
+      {plate("spotlight-lite")}
+      {plate("spotlight-full")}
+    </>
   );
 }
 
@@ -145,7 +168,7 @@ export default function Espaces() {
         <div className="lg:sticky lg:top-28 lg:self-start">
           <div
             ref={panelRef}
-            className="relative aspect-[4/3] overflow-hidden rounded-[10px] border border-filet"
+            className="spotlight-wrap relative aspect-[4/3] overflow-hidden rounded-[10px] border border-filet"
           >
             {espaces.map((espace, i) => (
               <div
@@ -163,6 +186,7 @@ export default function Espaces() {
                   image={espace.image}
                   nom={espace.nom[locale]}
                   label={t("visualLabel")}
+                  spotlight
                 />
               </div>
             ))}

@@ -148,6 +148,9 @@
       "newRequest": "New request"
     }
   },
+  "lantern": {
+    "view": "View"
+  },
   "notFound": {
     "title": "You've wandered off the path",
     "body": "The page you are looking for does not exist — perhaps the tide took it.",

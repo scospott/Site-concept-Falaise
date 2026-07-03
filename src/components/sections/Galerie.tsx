@@ -39,34 +39,59 @@ function Plate({
   figureLabel,
   index,
   className,
+  spotlight = false,
 }: {
   item: GalleryItem;
   locale: Lang;
   figureLabel: string;
   index: number;
   className?: string;
+  /** Effet 2 : copie claire révélée par la lanterne (jamais en lightbox) */
+  spotlight?: boolean;
 }) {
   if (item.image) {
-    return (
+    const img = (extra: string) => (
       <Image
-        src={item.image}
+        src={item.image!}
         alt={item.legende[locale]}
         fill
         sizes="(min-width: 1024px) 40vw, 90vw"
-        className={`object-cover ${className ?? ""}`}
+        className={`object-cover ${extra} ${className ?? ""}`}
       />
     );
+    if (!spotlight) return img("");
+    return (
+      <>
+        {img("spotlight-dim")}
+        <div aria-hidden className="spotlight-lite absolute inset-0">
+          {img("")}
+        </div>
+        <div aria-hidden className="spotlight-full absolute inset-0">
+          {img("")}
+        </div>
+      </>
+    );
   }
-  return (
+  const plate = (extra: string, withLabel: boolean) => (
     <div
       aria-hidden
-      className={`absolute inset-0 flex items-center justify-center ${className ?? ""}`}
+      className={`absolute inset-0 flex items-center justify-center ${extra} ${className ?? ""}`}
       style={{ backgroundColor: item.couleur }}
     >
-      <span className="text-[11px] tracking-[0.25em] text-ecume/60 uppercase">
-        {figureLabel} {String(index + 1).padStart(2, "0")}
-      </span>
+      {withLabel && (
+        <span className="text-[11px] tracking-[0.25em] text-ecume/60 uppercase">
+          {figureLabel} {String(index + 1).padStart(2, "0")}
+        </span>
+      )}
     </div>
+  );
+  if (!spotlight) return plate("", true);
+  return (
+    <>
+      {plate("spotlight-dim", true)}
+      {plate("spotlight-lite", true)}
+      {plate("spotlight-full", true)}
+    </>
   );
 }
 
@@ -276,7 +301,8 @@ export default function Galerie() {
                       legende: item.legende[locale],
                     })}
                     aria-haspopup="dialog"
-                    className="group relative block w-full overflow-hidden rounded-[10px] border border-filet transition-colors duration-500 hover:border-ecume/40"
+                    data-cursor="view"
+                    className="spotlight-wrap group relative block w-full overflow-hidden rounded-[10px] border border-filet transition-colors duration-500 hover:border-ecume/40"
                     style={{ height: h }}
                   >
                     <div className="galerie-parallax absolute inset-y-0 -left-[6%] w-[112%]">
@@ -285,6 +311,7 @@ export default function Galerie() {
                         locale={locale}
                         figureLabel={t("figure")}
                         index={i}
+                        spotlight
                       />
                     </div>
                   </button>
