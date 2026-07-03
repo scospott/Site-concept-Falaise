@@ -188,6 +188,9 @@ export default function Avis() {
         <span className="rounded-full border border-ecume/40 px-4 py-1.5 text-xs tracking-wide text-ecume">
           {t("badge")}
         </span>
+        <span className="basis-full text-xs text-ecru/40">
+          {t("originalNote")}
+        </span>
       </Reveal>
 
       {/* Desktop motion : carousel drag */}
@@ -246,7 +249,7 @@ export default function Avis() {
       </div>
 
       {/* Mobile + reduced-motion : scroll-snap natif */}
-      <div className="-mx-6 mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-4 motion-safe:lg:hidden">
+      <div className="-mx-6 mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-pl-6 px-6 pb-4 motion-safe:lg:hidden">
         {avis.map((item) => (
           <Carte key={item.id} item={item} locale={locale} />
         ))}

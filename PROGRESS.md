@@ -418,6 +418,43 @@ Versions : three 0.185.1, @react-three/fiber 9.6.1, drei 10.7.7.
 
 ---
 
+## FINALISATION — revue qualité « prospect » + correctifs ✅ (2026-07-03)
+
+Passe Playwright finale complète (`audits/chantier-final/`), puis revue
+multi-agents (3 relecteurs indépendants — desktop, mobile, code — chaque
+finding contre-vérifié adversarialement par un agent dédié) : 18 findings
+bruts → 7 réfutés (artefacts de capture fullPage type pin-spacer, choix
+documentés) → 11 confirmés → 9 corrigés, 2 = travail en attente déjà
+documenté (frames vidéo, visuels IA).
+
+### Correctifs appliqués après revue
+- Avis : mention discrète « Avis publiés dans leur langue d'origine » /
+  « Reviews shown in their original language » sous le bandeau (le choix
+  langue d'origine était invisible pour un prospect).
+- Carrousel avis mobile : `scroll-pl-6` (la 1re carte snapait collée au
+  bord au lieu de la gouttière de 24px).
+- Galerie mobile : grille alignée → 2 vraies colonnes en maçonnerie
+  (les ratios mixtes portrait/paysage créaient des trous), colonne droite
+  décalée.
+- Bulle Maël : z-index 61→45 (elle flottait AU-DESSUS de l'overlay de
+  navigation mobile, contexte d'empilement du header plafonné à 50) ;
+  sur /reservation mobile, remontée à bottom 76px pour ne plus intercepter
+  les taps de la barre récap sticky.
+- Légende calendrier : pastille « Disponible » lisérée écru/25 (contraste
+  1.08:1 mesuré — invisible).
+- CTA hero : pile verticale forcée sur mobile (`flex-col sm:flex-row`) —
+  les libellés FR passaient en pile, pas les EN (incohérence entre locales).
+- Sélecteur FR·EN : cible tactile étendue (p-2/-m-2) + tabIndex retiré dans
+  l'overlay mobile fermé (lien focusable dans un conteneur aria-hidden).
+
+### Console (état final)
+- Zéro erreur. Deux familles de warnings SANS impact, non corrigeables ici :
+  « THREE.Clock deprecated » (interne à @react-three/fiber 9.6.1 avec three
+  r185 — à suivre côté upstream) et « GPU stall due to ReadPixels »
+  (artefact du screenshot Playwright sur canvas WebGL, pas du site).
+
+---
+
 ## AU RÉVEIL (mis à jour au fil des chantiers)
 - **Remote GitHub** : `gh` indisponible pendant le run → créer le repo et
   pousser : `gh repo create scospott/tideline --private --source=. --push`
@@ -431,6 +468,29 @@ Versions : three 0.185.1, @react-three/fiber 9.6.1, drei 10.7.7.
   question en anglais (attendu : réponse en anglais). Si Maël invente un
   prix ou un nom de restaurant, durcir les règles dans `src/lib/knowledge.ts`.
 - **Frames vidéo héros** (après génération Kling/Luma) : extraire les frames
-  WebP (commandes dans `TIDELINE-chantiers-2-7.md`, section shot-list) puis
-  renseigner `frameCount` dans `src/lib/heroes.ts` — seul changement de code
-  nécessaire.
+  WebP (commandes dans `TIDELINE-chantiers-2-7.md`, section shot-list) vers
+  `public/frames/hero-home/` et `public/frames/hero-reservation/`, puis
+  renseigner `frameCount` exact dans `src/lib/heroes.ts` (provisoires :
+  240/168) — seul changement de code nécessaire. Bonus conseillé : remplacer
+  aussi `fallbackSrc` (public/heroes/*.jpg) par une vraie frame fixe.
+- **Visuels IA espaces + galerie** : exporter JPEG q82 ≤2000px vers
+  `public/espaces/` et `public/gallery/`, puis renseigner le champ `image`
+  dans `src/lib/espaces.ts` et `src/lib/gallery.ts` — les composants (y
+  compris le spotlight lanterne) basculent sur next/image sans refactor.
+- **Effets chantier 8** : les 6 flags de `src/lib/effects.ts` sont actifs,
+  aucun effet dégradé ni coupé. À valider à l'œil sur machine réelle
+  (l'audit headless ne juge pas la fluidité) : brume + lucioles des heros,
+  océan du footer, curseur-lanterne, nappes de transition. La vidéo
+  `audits/chantier-8/scroll-accueil-desktop.webm` donne un aperçu.
+- **À vérifier à l'œil** (au-delà des captures) : scrub des heros au
+  trackpad ET à la molette (sortie de pin sans saut), drag inertiel du
+  carrousel d'avis, parcours de réservation complet au doigt sur téléphone.
+- **Warnings console connus** (sans impact) : « THREE.Clock deprecated »
+  (interne R3F/three r185) — disparaîtra avec une future version de
+  @react-three/fiber.
+- **Domaine** : les métadonnées/sitemap/JSON-LD pointent sur
+  https://tideline.scottlab.app — ajuster `metadataBase` dans
+  `src/app/[locale]/layout.tsx` + les constantes de `src/app/sitemap.ts` et
+  `robots.ts` si le déploiement diffère.
+- **Audits visuels** : toutes les captures et la vidéo sont dans `audits/`
+  (par chantier + `chantier-final/`), versionnées dans le repo.

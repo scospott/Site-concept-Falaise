@@ -325,41 +325,52 @@ export default function Galerie() {
         </div>
       </div>
 
-      {/* Mobile (toujours) + desktop reduced-motion : grille rythmée */}
+      {/* Mobile (toujours) + desktop reduced-motion : deux colonnes en
+          maçonnerie (pas de rangées alignées — pas de trous), colonne
+          droite décalée */}
       <div className="mx-auto max-w-6xl px-6 py-28 md:px-10 motion-safe:lg:hidden">
         <Reveal>{header}</Reveal>
-        <div className="mt-12 grid grid-cols-2 gap-4 md:gap-6">
-          {gallery.map((item, i) => (
-            <Reveal
-              key={item.id}
-              className={i % 2 === 1 ? "translate-y-6" : ""}
+        <div className="mt-12 flex gap-4 md:gap-6">
+          {[0, 1].map((col) => (
+            <div
+              key={col}
+              className={`flex min-w-0 flex-1 flex-col gap-6 ${
+                col === 1 ? "mt-10" : ""
+              }`}
             >
-              <button
-                type="button"
-                onClick={() => setOpenIndex(i)}
-                aria-label={t("lightboxOpen", {
-                  legende: item.legende[locale],
-                })}
-                aria-haspopup="dialog"
-                className={`relative block w-full overflow-hidden rounded-[10px] border border-filet ${
-                  item.format === "portrait"
-                    ? "aspect-[3/4]"
-                    : item.format === "carre"
-                      ? "aspect-square"
-                      : "aspect-[3/2]"
-                }`}
-              >
-                <Plate
-                  item={item}
-                  locale={locale}
-                  figureLabel={t("figure")}
-                  index={i}
-                />
-              </button>
-              <p className="mt-2 text-[11px] tracking-wide text-ecume/80">
-                {item.legende[locale]}
-              </p>
-            </Reveal>
+              {gallery
+                .map((item, i) => ({ item, i }))
+                .filter(({ i }) => i % 2 === col)
+                .map(({ item, i }) => (
+                  <Reveal key={item.id}>
+                    <button
+                      type="button"
+                      onClick={() => setOpenIndex(i)}
+                      aria-label={t("lightboxOpen", {
+                        legende: item.legende[locale],
+                      })}
+                      aria-haspopup="dialog"
+                      className={`relative block w-full overflow-hidden rounded-[10px] border border-filet ${
+                        item.format === "portrait"
+                          ? "aspect-[3/4]"
+                          : item.format === "carre"
+                            ? "aspect-square"
+                            : "aspect-[3/2]"
+                      }`}
+                    >
+                      <Plate
+                        item={item}
+                        locale={locale}
+                        figureLabel={t("figure")}
+                        index={i}
+                      />
+                    </button>
+                    <p className="mt-2 text-[11px] tracking-wide text-ecume/80">
+                      {item.legende[locale]}
+                    </p>
+                  </Reveal>
+                ))}
+            </div>
           ))}
         </div>
       </div>

@@ -67,7 +67,7 @@ export default function Nav() {
 
   const otherLocale = routing.locales.find((l) => l !== locale) ?? "en";
 
-  const localeSwitch = (
+  const localeSwitch = (tabbable: boolean) => (
     <span className="flex items-center gap-1.5 text-xs tracking-[0.15em]">
       <span aria-current="true" className="text-ecume">
         {locale.toUpperCase()}
@@ -76,7 +76,8 @@ export default function Nav() {
       <Link
         href={pathname}
         locale={otherLocale}
-        className="text-ecru/50 transition-colors duration-300 hover:text-ecru"
+        tabIndex={tabbable ? 0 : -1}
+        className="-m-2 inline-flex p-2 text-ecru/50 transition-colors duration-300 hover:text-ecru"
       >
         {otherLocale.toUpperCase()}
       </Link>
@@ -124,7 +125,7 @@ export default function Nav() {
               </li>
             ))}
           </ul>
-          {localeSwitch}
+          {localeSwitch(true)}
         </div>
 
         {/* Burger mobile */}
@@ -188,7 +189,7 @@ export default function Nav() {
           }`}
           style={{ transitionDelay: open ? "420ms" : "0ms" }}
         >
-          {localeSwitch}
+          {localeSwitch(open)}
         </div>
       </div>
     </header>

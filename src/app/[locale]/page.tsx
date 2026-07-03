@@ -50,7 +50,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             </p>
             <div
               data-hero-fade
-              className="mt-10 flex flex-wrap items-center justify-center gap-4"
+              className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
             >
               <Button href="/reservation">{t("ctaPrimary")}</Button>
               <Button href="#villa" variant="ghost">

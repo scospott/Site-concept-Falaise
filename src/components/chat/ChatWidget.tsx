@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
+import { usePathname } from "@/i18n/navigation";
 
 // Chargé à la demande : react-markdown et la fenêtre de chat restent hors
 // du JS initial des pages.
@@ -14,7 +15,11 @@ const ChatWindow = dynamic(() => import("./ChatWindow"), { ssr: false });
  */
 export default function ChatWidget() {
   const t = useTranslations("hote");
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  // Sur /reservation (mobile), la barre récap sticky occupe le bas d'écran :
+  // la bulle remonte pour ne pas intercepter ses taps.
+  const aboveRecapBar = pathname.startsWith("/reservation");
 
   useEffect(() => {
     if (!open) return;
@@ -33,7 +38,7 @@ export default function ChatWidget() {
         aria-modal="false"
         aria-label={t("title")}
         aria-hidden={!open}
-        className={`fixed z-[60] transition-all duration-300 ease-luxe motion-reduce:transition-none ${
+        className={`fixed z-[44] transition-all duration-300 ease-luxe motion-reduce:transition-none ${
           open
             ? "pointer-events-auto scale-100 opacity-100"
             : "pointer-events-none scale-95 opacity-0"
@@ -50,7 +55,9 @@ export default function ChatWidget() {
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
         aria-label={open ? t("widgetClose") : t("widgetOpen")}
-        className="fixed right-5 bottom-5 z-[61] flex h-14 w-14 items-center justify-center rounded-full bg-ecume text-nuit shadow-[0_10px_30px_rgba(0,0,0,0.35)] transition-all duration-300 ease-luxe hover:-translate-y-0.5 md:right-6 md:bottom-6"
+        className={`fixed right-5 z-[45] flex h-14 w-14 items-center justify-center rounded-full bg-ecume text-nuit shadow-[0_10px_30px_rgba(0,0,0,0.35)] transition-all duration-300 ease-luxe hover:-translate-y-0.5 md:right-6 ${
+          aboveRecapBar ? "bottom-[76px] lg:bottom-6" : "bottom-5 md:bottom-6"
+        }`}
       >
         {open ? (
           <svg viewBox="0 0 16 16" className="h-5 w-5" aria-hidden>

@@ -272,7 +272,7 @@ export default function Calendrier({ start, end, onChange }: CalendrierProps) {
         </p>
         <ul className="flex flex-wrap gap-x-5 gap-y-2 text-[11px] text-ecru/50">
           <li className="flex items-center gap-2">
-            <span className="h-3 w-3 rounded-[3px] bg-sousbois" />
+            <span className="h-3 w-3 rounded-[3px] border border-ecru/25 bg-sousbois" />
             {t("legendAvailable")}
           </li>
           <li className="flex items-center gap-2">
