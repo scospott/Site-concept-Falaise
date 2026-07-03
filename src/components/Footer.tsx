@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import ForestLine from "@/components/ForestLine";
+import OceanNocturne from "@/components/effects/OceanNocturne";
 
 export default function Footer() {
   const t = useTranslations("footer");
@@ -68,6 +69,8 @@ export default function Footer() {
             </a>
           </div>
         </div>
+        {/* La lisière complète : la forêt en tête, l'océan en pied */}
+        <OceanNocturne />
       </div>
     </footer>
   );
