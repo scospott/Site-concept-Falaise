@@ -157,6 +157,13 @@ export default function ScrollHero({ slot, children }: ScrollHeroProps) {
     };
   }, [config, drawAtProgress, drawNearest]);
 
+  // Premier dessin dès que le canvas est monté : le probe résout AVANT le
+  // rendu conditionnel du canvas, son drawAtProgress initial partait dans
+  // le vide — sans ce dessin, la position 0 % montrait le poster seul.
+  useEffect(() => {
+    if (mode === "frames") drawAtProgress(progressRef.current);
+  }, [mode, drawAtProgress]);
+
   // Redraw au resize
   useEffect(() => {
     if (mode !== "frames") return;

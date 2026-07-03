@@ -22,9 +22,11 @@ export const heroes: Record<HeroSlot, HeroConfig> = {
   home: {
     framesPath: "/frames/hero-home/",
     framePattern: "frame-%04d.webp",
-    frameCount: 240,
+    // 162 frames réelles extraites (ffmpeg) — vérifié sans trou 0001→0162
+    frameCount: 162,
     fallbackSrc: "/heroes/home.jpg",
-    scrubVh: 260,
+    // Traversée ~8 s : scrub allongé pour se déguster sans traîner
+    scrubVh: 300,
   },
   reservation: {
     framesPath: "/frames/hero-reservation/",

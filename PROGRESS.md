@@ -469,6 +469,31 @@ documenté (frames vidéo, visuels IA).
 
 ---
 
+## PATCH — frames vidéo réelles du hero home ✅ (2026-07-03, post-run)
+
+- 162 frames constatées dans `public/frames/hero-home/` (0001→0162, aucun
+  trou, 12 Mo), fallbacks `public/heroes/*.jpg` mis à jour par Scott —
+  `home.jpg` quasi identique à la frame 0001 (diff 3,4/255 mesurée) : aucun
+  flash poster→canvas possible.
+- `heroes.ts` : `frameCount` home 240→**162**, `scrubVh` 260→**300**
+  (traversée ~8 s dégustée). Chemins des deux slots vérifiés.
+- **Bug d'affichage initial corrigé** (constaté par l'audit pixel : canvas
+  transparent à 0 % de scrub) : le probe de la frame 0001 résolvait AVANT le
+  montage du canvas conditionnel, son premier dessin partait dans le vide —
+  ajout d'un dessin au montage du canvas (`useEffect` sur `mode`). La
+  mécanique pin/scrub/chargement est INTACTE.
+- Lisibilité sur footage clair : la séquence est golden hour (nettement plus
+  claire que l'étalonnage nocturne) — à 0 % le titre écru se perdait dans le
+  ciel. Ajout de deux voiles DANS l'overlay de la page (radial derrière le
+  texte + dégradé en tête pour la nav), qui s'évanouissent avec l'overlay
+  dès 15 % de scrub. Aucune retouche de ScrollHero pour ça.
+- Audit `audits/hero-frames/` : 0/33/66/100 % × desktop/mobile — 8 positions
+  vérifiées AU PIXEL (canvas couvrant, jamais noir) : cour → porte →
+  galerie dorée → séjour ouvert sur l'océan (la piscine à débordement est
+  visible en fin de traversée).
+
+---
+
 ## AU RÉVEIL (mis à jour au fil des chantiers)
 - **Remote GitHub** : `gh` indisponible pendant le run → créer le repo et
   pousser : `gh repo create scospott/tideline --private --source=. --push`
@@ -481,12 +506,15 @@ documenté (frames vidéo, visuels IA).
   restaurant étoilé à côté ? » (attendu : aveu d'ignorance + renvoi), et une
   question en anglais (attendu : réponse en anglais). Si Maël invente un
   prix ou un nom de restaurant, durcir les règles dans `src/lib/knowledge.ts`.
-- **Frames vidéo héros** (après génération Kling/Luma) : extraire les frames
-  WebP (commandes dans `TIDELINE-chantiers-2-7.md`, section shot-list) vers
-  `public/frames/hero-home/` et `public/frames/hero-reservation/`, puis
-  renseigner `frameCount` exact dans `src/lib/heroes.ts` (provisoires :
-  240/168) — seul changement de code nécessaire. Bonus conseillé : remplacer
-  aussi `fallbackSrc` (public/heroes/*.jpg) par une vraie frame fixe.
+- **Frames vidéo héros** : ~~home~~ ✅ branché (162 frames, scrubVh 300).
+  Reste le slot **reservation** : extraire vers
+  `public/frames/hero-reservation/` puis renseigner `frameCount` exact
+  (provisoire : 168) dans `src/lib/heroes.ts`. En attendant, son fallback
+  `reservation.jpg` (mis à jour) s'affiche proprement.
+  NOTE étalonnage : la séquence home est golden hour, plus chaude/claire que
+  l'étalonnage « blue hour » de la shot-list — des voiles de lisibilité ont
+  été ajoutés à l'overlay ; si tu régénères en nocturne un jour, ils
+  pourront s'alléger (page.tsx, deux div aria-hidden dans le hero).
 - **Visuels IA espaces + galerie** : exporter JPEG q82 ≤2000px vers
   `public/espaces/` et `public/gallery/`, puis renseigner le champ `image`
   dans `src/lib/espaces.ts` et `src/lib/gallery.ts` — les composants (y
