@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { bodoni, instrument } from "@/lib/fonts";
 import SmoothScroll from "@/components/motion/SmoothScroll";
+import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 import "../globals.css";
 
 export function generateStaticParams() {
@@ -31,7 +33,9 @@ export default async function LocaleLayout({
       <body>
         <NextIntlClientProvider messages={messages}>
           <SmoothScroll />
+          <Nav />
           {children}
+          <Footer />
         </NextIntlClientProvider>
       </body>
     </html>
