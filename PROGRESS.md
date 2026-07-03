@@ -354,6 +354,70 @@ desktop/390 + nav mobile ouverte + widget ouvert + 404).
 
 ---
 
+## CHANTIER 8 — Couche signature « Lumière dans la nuit » ✅ (2026-07-03)
+
+**Statut : terminé, les 5 effets actifs.** Un commit par effet, audit visuel
+après chacun (`audits/chantier-8/`), vidéo de scroll complet
+`scroll-accueil-desktop.webm` (~12 s, 1440p), tsc OK, build vert.
+Docs consultées AVANT d'écrire (fallback Context7) : R3F v9 (canvas/hooks/
+scaling-performance), drei shaderMaterial (+ source), three r185.
+Versions : three 0.185.1, @react-three/fiber 9.6.1, drei 10.7.7.
+
+### Effets livrés (flags dans `src/lib/effects.ts`, tous débrayables)
+1. **Titre-condensation** (`effects/HeroTitleReveal.tsx`, GSAP seul) :
+   lignes du H1 depuis blur(14px)/alpha 0/letter-spacing +0.04em → net,
+   stagger 120 ms, 1.6 s expo.out, une fois au load ; eyebrow/baseline/CTA
+   en fade simple. Blur = exception unique assumée. Message du titre
+   restructuré en balises `<l>` (2 lignes).
+2. **Curseur-lanterne + spotlight** (`effects/CursorLantern.tsx` + CSS,
+   zéro WebGL) : pointer fine uniquement, curseur natif conservé ; disque
+   écume 8px + halo 240px (opacité 0.1) en lerp 0.12 rAF ;
+   `[data-cursor="link"]` → disque 40px filet (boutons, logo) ;
+   items galerie → pastille « Voir »/« View » Bodoni. Spotlight :
+   images/aplats assombris brightness(0.72), copie claire masquée
+   radial-gradient 240px suivant --mx/--my lissées, survol 400 ms → version
+   claire entière ; galerie + panneau espaces, PAS la lightbox ; tactile =
+   images claires. Piège corrigé : mon CSS non-layered `display:block`
+   écrasait le `flex` Tailwind des copies (libellé décentré) → `display:flex`.
+3. **NightLayer** (`effects/NightLayer(-Canvas).tsx`, R3F — pièce
+   maîtresse) : Canvas transparent absolute z-[5] entre le canvas de frames
+   et l'overlay texte des DEUX heros (insertion de markup seule dans
+   ScrollHero — mécanique pin/scrub intouchée). Brume : plane clip-space,
+   fbm 4 octaves, 2 couches à vitesses différentes, alpha max 0.3 (0.2
+   mobile), teinte écru + 7 % écume, uMouse lerp 0.025 (la brume s'écarte à
+   peine), uScrollVel branché sur la vélocité Lenis. Lucioles : Points 120
+   desktop / 50 mobile, positions déterministes concentrées dans le tiers
+   bas, scintillement sin, tailles 1-3px, blending additif. Budget tenu :
+   dpr [1,1.5], antialias false, pas de post-processing, frameloop 'never'
+   hors viewport (IntersectionObserver), montage +300 ms après first paint
+   + fade-in 0.8s, dynamic import ssr:false.
+4. **Océan nocturne** (`effects/Ocean*.tsx`) : bande 180px au pied du
+   footer — sinus superposés + bruit compressés en perspective, chemin de
+   lune central en glints écume seuillés. DPR 1 mobile, pause hors
+   viewport. Le footer est la lisière complète (forêt en tête, océan en pied).
+5. **Nappes de brume** (upgrade `PageTransition`) : deux nappes #0D1511 puis
+   #16241D/60 se retirent avec 60 ms de décalage, contenu entrant
+   fade+translateY(16px), 0.6 s ; flag coupé → retour au voile simple.
+
+### Vérifications
+- `three` ABSENT du First Load JS — vérifié par signature
+  (WebGLRenderer/REVISION) dans le CONTENU des 12 scripts du HTML initial
+  (les noms de chunks Turbopack sont hashés, le simple nom ne suffit pas) :
+  First Load ≈ 898 kB brut (~ niveau pré-chantier-8), chunk R3F/three
+  (~900 kB brut) chargé en lazy 300 ms après le paint.
+- Console propre sur les 2 pages avec WebGL actif ; reduced-motion : les 5
+  effets NON MONTÉS (retours anticipés avant création du Canvas).
+- Correctif connexe : l'augmentation JSX de R3F rendait `never` le typage
+  polymorphe de `<Reveal as>` → prop `as` restreint à une union d'éléments
+  HTML + createElement.
+
+### Barre de qualité (regard prospect)
+- Brume : mouvement lent et organique, texte du hero parfaitement lisible,
+  différence nette entre deux captures espacées de 1.8 s (elle vit).
+- Aucun effet dégradé ou coupé : les 6 flags sont à `true`.
+
+---
+
 ## AU RÉVEIL (mis à jour au fil des chantiers)
 - **Remote GitHub** : `gh` indisponible pendant le run → créer le repo et
   pousser : `gh repo create scospott/tideline --private --source=. --push`
