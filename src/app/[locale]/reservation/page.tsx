@@ -12,6 +12,14 @@ export async function generateMetadata({
   return {
     title: t("reservation.title"),
     description: t("reservation.description"),
+    alternates: {
+      canonical: locale === "fr" ? "/reservation" : "/en/reservation",
+      languages: {
+        fr: "/reservation",
+        en: "/en/reservation",
+        "x-default": "/reservation",
+      },
+    },
   };
 }
 

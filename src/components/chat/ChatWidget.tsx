@@ -1,8 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
-import ChatWindow from "./ChatWindow";
+
+// Chargé à la demande : react-markdown et la fenêtre de chat restent hors
+// du JS initial des pages.
+const ChatWindow = dynamic(() => import("./ChatWindow"), { ssr: false });
 
 /**
  * Widget flottant global — bulle bas-droite, panneau 380×560 (plein écran
@@ -36,7 +40,7 @@ export default function ChatWidget() {
         } inset-0 origin-bottom-right p-3 md:inset-auto md:right-6 md:bottom-24 md:h-[560px] md:w-[380px] md:p-0`}
       >
         <div className="h-full w-full">
-          <ChatWindow compact />
+          {open && <ChatWindow compact />}
         </div>
       </div>
 

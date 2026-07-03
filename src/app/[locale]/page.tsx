@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import Button from "@/components/Button";
 import Eyebrow from "@/components/Eyebrow";
@@ -7,6 +8,18 @@ import Espaces from "@/components/sections/Espaces";
 import Galerie from "@/components/sections/Galerie";
 import Avis from "@/components/sections/Avis";
 import Hote from "@/components/sections/Hote";
+
+export async function generateMetadata({
+  params,
+}: PageProps<"/[locale]">): Promise<Metadata> {
+  const { locale } = await params;
+  return {
+    alternates: {
+      canonical: locale === "fr" ? "/" : "/en",
+      languages: { fr: "/", en: "/en", "x-default": "/" },
+    },
+  };
+}
 
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const { locale } = await params;

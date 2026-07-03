@@ -295,6 +295,65 @@ calendrier mobile 390px + carte récap repliable.
 
 ---
 
+## CHANTIER 7 — Polish i18n + SEO + perf + transitions ✅ (2026-07-03)
+
+**Statut : terminé.** tsc OK, build vert, QA finale
+(`audits/chantier-7/` : 8 captures pleine page 2 pages × 2 locales ×
+desktop/390 + nav mobile ouverte + widget ouvert + 404).
+
+### i18n
+- Audit console automatisé (`scripts/console-audit.mjs`) sur /, /en,
+  /reservation, /en/reservation, /styleguide et une 404 : ZÉRO erreur, zéro
+  « missing message ». Le switch FR·EN conserve la page courante (usePathname
+  i18n + Link locale).
+
+### SEO
+- `app/sitemap.ts` : 4 URLs avec alternates hreflang xhtml:link (vérifié) ;
+  `app/robots.ts` : /styleguide, /en/styleguide et /api exclus + sitemap.
+- Canonical + hreflang (fr/en/x-default) par page via Metadata API —
+  vérifiés dans le head rendu. metadataBase déjà en place.
+- og:image DÉFINITIVE 1200×630 rendue avec la **vraie Bodoni Moda**
+  (TTF Google Fonts + FONTCONFIG_FILE pour sharp/librsvg —
+  `scripts/generate-final-assets.mjs`) ; favicon monogramme T Bodoni
+  96px + apple-icon 180px, branchés via metadata.icons (aucun fichier
+  convention dans app/).
+- JSON-LD `LodgingBusiness` minimal marqué fictif (description « site
+  concept »), sans adresse ni téléphone.
+
+### Performance
+- LCP : fallback hero rendu en `loading="eager"` + `fetchPriority="high"`
+  (`priority` est déprécié en Next 16) ; fonts en display swap.
+- Cleanup vérifié : tous les listeners scroll/resize retirés au démontage,
+  ScrollTriggers révoqués par useGSAP/matchMedia.
+- Bundles mesurés sur le réseau (`scripts/bundle-audit.mjs`, non gzip) :
+  « / » ≈ 937 kB, « /reservation » ≈ 822 kB (≈ 300/260 kB gzip), dont
+  framework Next+React ≈ 446 kB. Hors framework ≈ 490/376 kB bruts —
+  au-dessus du seuil indicatif de 200 kB à cause de GSAP
+  (+Draggable/Inertia) et next-intl : assumé pour un site d'animation ;
+  react-markdown + fenêtre de chat passés en dynamic import (‑112 kB sur
+  /reservation, chargement à l'ouverture du widget). `three` absent du JS
+  initial (vérifié — précondition chantier 8).
+
+### Finitions
+- Transition de page : voile #0D1511 qui balaie + contenu entrant en
+  fade/translateY(16px) 0.5s (usePathname AVEC préfixe : le switch de
+  langue anime aussi), désactivée en reduced-motion, `clearProps` pour ne
+  pas laisser de transform sur main (piège position:fixed des pins).
+- 404 stylée : `[locale]/not-found.tsx` + catch-all `[...rest]` —
+  « Vous avez quitté le sentier » / « You've wandered off the path »,
+  status HTTP 404 vérifié. (La convention `global-not-found` de Next 16
+  reste expérimentale — non utilisée.)
+- CSS lightbox ajouté (fade+scale 0.3s — les classes existaient sans
+  keyframes, oubli du chantier 4 corrigé).
+- Passe reduced-motion revalidée : manifeste allumé d'emblée, galerie en
+  grille, avis en scroll-snap, heros statiques, étapes sans animation.
+
+### Décisions
+- Domaine canonique : https://tideline.scottlab.app (métadonnées + sitemap
+  + JSON-LD) — à ajuster si le déploiement diffère.
+
+---
+
 ## AU RÉVEIL (mis à jour au fil des chantiers)
 - **Remote GitHub** : `gh` indisponible pendant le run → créer le repo et
   pousser : `gh repo create scospott/tideline --private --source=. --push`

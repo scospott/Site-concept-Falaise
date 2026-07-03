@@ -9,6 +9,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { bodoni, instrument } from "@/lib/fonts";
 import SmoothScroll from "@/components/motion/SmoothScroll";
+import PageTransition from "@/components/motion/PageTransition";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { VillaChatProvider } from "@/components/chat/VillaChat";
@@ -35,6 +36,7 @@ export async function generateMetadata({
     description: t("description"),
     icons: {
       icon: "/favicon.png",
+      apple: "/apple-icon.png",
     },
     openGraph: {
       siteName: "Tideline",
@@ -63,15 +65,33 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
   const messages = await getMessages();
 
+  // JSON-LD léger — hébergement FICTIF : ni adresse précise, ni téléphone.
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LodgingBusiness",
+    name: "Tideline",
+    description:
+      locale === "fr"
+        ? "Site concept — villa fictive. Démonstration ScottLab."
+        : "Concept site — fictional villa. A ScottLab demonstration.",
+    url: "https://tideline.scottlab.app",
+    image: "https://tideline.scottlab.app/og.jpg",
+  };
+
   return (
     <html
       lang={locale}
       className={`${bodoni.variable} ${instrument.variable}`}
     >
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <NextIntlClientProvider messages={messages}>
           <VillaChatProvider>
             <SmoothScroll />
+            <PageTransition />
             <Nav />
             {children}
             <Footer />

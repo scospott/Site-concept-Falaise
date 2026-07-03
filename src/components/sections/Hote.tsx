@@ -1,10 +1,18 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
 import Eyebrow from "@/components/Eyebrow";
 import SectionTitle from "@/components/SectionTitle";
 import Reveal from "@/components/motion/Reveal";
-import ChatWindow from "@/components/chat/ChatWindow";
+
+// Sous la ligne de flottaison : chargé à la demande, hors JS initial.
+const ChatWindow = dynamic(() => import("@/components/chat/ChatWindow"), {
+  ssr: false,
+  loading: () => (
+    <div className="h-full animate-pulse rounded-2xl border border-filet bg-sousbois/50" />
+  ),
+});
 
 /** Section inline « Demandez à Maël » — entre Avis et Footer. */
 export default function Hote() {

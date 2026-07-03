@@ -148,6 +148,11 @@
       "newRequest": "Nouvelle demande"
     }
   },
+  "notFound": {
+    "title": "Vous avez quitté le sentier",
+    "body": "La page que vous cherchez n’existe pas — la marée l’a peut-être emportée.",
+    "back": "Retour à la villa"
+  },
   "footer": {
     "baseline": "Une villa entre l’océan et la forêt, quelque part sur la côte sauvage.",
     "explore": "Explorer",
