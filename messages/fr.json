@@ -57,6 +57,24 @@
     "prev": "Avis précédents",
     "next": "Avis suivants"
   },
+  "hote": {
+    "eyebrow": "Votre hôte",
+    "title": "Demandez à Maël",
+    "intro": "Couchages, équipements, environs, horaires d’arrivée : Maël connaît la villa par cœur et répond en quelques secondes.",
+    "welcome": "Bonsoir — je suis Maël, l’hôte de Tideline. Posez-moi vos questions sur la villa, les équipements ou les environs. Pour les tarifs et les disponibilités, la page Réservation vous attend.",
+    "placeholder": "Écrivez à Maël…",
+    "send": "Envoyer",
+    "loading": "Maël écrit…",
+    "error": "Maël est momentanément indisponible. Réessayez dans un instant, ou passez par la page Réservation pour toute demande.",
+    "suggestions": {
+      "s1": "Combien de couchages ?",
+      "s2": "Que trouve-t-on à proximité ?",
+      "s3": "Le bain nordique est-il utilisable l’hiver ?",
+      "s4": "À quelle heure peut-on arriver ?"
+    },
+    "widgetOpen": "Ouvrir la conversation avec Maël",
+    "widgetClose": "Fermer la conversation"
+  },
   "reservation": {
     "eyebrow": "Réserver",
     "title": "Vos nuits sur la lisière"

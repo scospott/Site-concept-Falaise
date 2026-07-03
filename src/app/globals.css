@@ -94,6 +94,62 @@
   }
 }
 
+/* Chat Maël — indicateur de frappe + rendu markdown des réponses */
+@keyframes chat-typing-pulse {
+  0%,
+  80%,
+  100% {
+    opacity: 0.25;
+    transform: translateY(0);
+  }
+  40% {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+}
+
+.chat-typing i {
+  animation: chat-typing-pulse 1.2s ease-in-out infinite;
+}
+.chat-typing i:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.chat-typing i:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chat-typing i {
+    animation: none;
+  }
+}
+
+.chat-markdown p + p,
+.chat-markdown p + ul,
+.chat-markdown ul + p {
+  margin-top: 0.6em;
+}
+
+.chat-markdown ul,
+.chat-markdown ol {
+  padding-left: 1.1em;
+  list-style: disc;
+}
+
+.chat-markdown ol {
+  list-style: decimal;
+}
+
+.chat-markdown li + li {
+  margin-top: 0.25em;
+}
+
+.chat-markdown a {
+  color: var(--color-ecume);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* Manifeste lumineux — état éteint (galet), allumé par GSAP au scroll.
    reduced-motion : texte allumé d'emblée, aucune animation. */
 .manifeste-word {

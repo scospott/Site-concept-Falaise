@@ -57,6 +57,24 @@
     "prev": "Previous reviews",
     "next": "Next reviews"
   },
+  "hote": {
+    "eyebrow": "Your host",
+    "title": "Ask Maël",
+    "intro": "Sleeping arrangements, amenities, the surroundings, arrival times: Maël knows the villa by heart and replies within seconds.",
+    "welcome": "Good evening — I am Maël, Tideline's host. Ask me anything about the villa, its amenities or the surroundings. For rates and availability, the booking page awaits.",
+    "placeholder": "Write to Maël…",
+    "send": "Send",
+    "loading": "Maël is typing…",
+    "error": "Maël is momentarily unavailable. Please try again shortly, or use the booking page for any request.",
+    "suggestions": {
+      "s1": "How many guests can sleep here?",
+      "s2": "What is there nearby?",
+      "s3": "Can the nordic bath be used in winter?",
+      "s4": "What time can we arrive?"
+    },
+    "widgetOpen": "Open the conversation with Maël",
+    "widgetClose": "Close the conversation"
+  },
   "reservation": {
     "eyebrow": "Book",
     "title": "Your nights on the tideline"

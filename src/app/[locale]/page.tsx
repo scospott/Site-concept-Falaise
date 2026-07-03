@@ -6,6 +6,7 @@ import Manifeste from "@/components/sections/Manifeste";
 import Espaces from "@/components/sections/Espaces";
 import Galerie from "@/components/sections/Galerie";
 import Avis from "@/components/sections/Avis";
+import Hote from "@/components/sections/Hote";
 
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const { locale } = await params;
@@ -37,11 +38,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       <Espaces />
       <Galerie />
       <Avis />
-
-      {/*
-        Section à venir :
-        - #hote : demandez à Maël (chantier 5)
-      */}
+      <Hote />
     </main>
   );
 }

@@ -11,6 +11,8 @@ import { bodoni, instrument } from "@/lib/fonts";
 import SmoothScroll from "@/components/motion/SmoothScroll";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import { VillaChatProvider } from "@/components/chat/VillaChat";
+import ChatWidget from "@/components/chat/ChatWidget";
 import "../globals.css";
 
 export function generateStaticParams() {
@@ -68,10 +70,13 @@ export default async function LocaleLayout({
     >
       <body>
         <NextIntlClientProvider messages={messages}>
-          <SmoothScroll />
-          <Nav />
-          {children}
-          <Footer />
+          <VillaChatProvider>
+            <SmoothScroll />
+            <Nav />
+            {children}
+            <Footer />
+            <ChatWidget />
+          </VillaChatProvider>
         </NextIntlClientProvider>
       </body>
     </html>

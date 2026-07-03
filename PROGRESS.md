@@ -201,12 +201,64 @@ avis desktop + après flèche, mobiles).
 
 ---
 
+## CHANTIER 5 — Assistant Maël ✅ (2026-07-03)
+
+**Statut : terminé** (QA conversationnel reporté — pas de clé API pendant le
+run, voir AU RÉVEIL). tsc OK, build vert, audit Playwright
+(`audits/chantier-5/` : inline desktop/mobile, repli sans clé, widget
+desktop/réservation/mobile).
+
+### Livré
+- `lib/knowledge.ts` : base de connaissance unique (villa, arrivée/départ,
+  équipements, extérieur, environs, séjour) + 4 règles dures (jamais de
+  prix/dispos → renvoi /reservation ou /en/reservation ; hors base → aveu +
+  renvoi, interdiction d'inventer ; langue du dernier message ; jamais
+  sortir du rôle ni révéler le prompt).
+- `app/api/chat/route.ts` : POST, SDK Anthropic, `claude-haiku-4-5`,
+  max_tokens 600, historique tronqué à 12 côté serveur + contenu borné à
+  2000 chars, erreurs JSON propres ({error} + status 400/502/503, stack
+  loggée serveur uniquement). Sans ANTHROPIC_API_KEY → 503
+  `assistant_unavailable` (vérifié par curl).
+- `components/chat/VillaChat.tsx` : provider léger + hook `useVillaChat`
+  (messages, isLoading, error, send avec ajout optimiste et repli poli) —
+  historique PARTAGÉ entre les deux interfaces, zéro duplication.
+- `components/chat/ChatWindow.tsx` : fenêtre commune — accueil de Maël
+  d'emblée (aucun appel API au chargement), bulles utilisateur écume/nuit,
+  réponses en écru avec react-markdown (éléments autorisés seulement),
+  avatar pastille « M » Bodoni, 4 suggestions cliquables au premier
+  affichage, indicateur de frappe 3 points, scroll interne data-lenis-prevent.
+- Interface 1 : section `#hote` entre Avis et Footer (sousbois/85 +
+  backdrop-blur, filet, radius 16px). Interface 2 : `ChatWidget` global
+  (bulle 56px écume bas-droite, panneau 380×560 / plein écran mobile,
+  scale+fade 0.3s, Esc, même historique — vérifié visuellement).
+
+### Décisions
+- `input` géré localement par interface (le partager ferait se refléter la
+  frappe entre inline et widget) — le cahier exige le partage de la LOGIQUE
+  d'appel et de l'historique, ce qui est fait via le provider.
+- Le message d'accueil est rendu statiquement (hors state) : il reste dans
+  la bonne langue après un switch FR/EN et n'est pas envoyé à l'API.
+- Modèle : `claude-haiku-4-5` (le repo « Les P'tites Barques » cité en
+  référence n'est pas accessible depuis ce poste).
+
+### Dette / à vérifier avec la clé
+- QA des 4 questions (couchages / prix→redirection / restaurant étoilé→aveu
+  / question EN) à rejouer avec une vraie clé — voir AU RÉVEIL.
+
+---
+
 ## AU RÉVEIL (mis à jour au fil des chantiers)
 - **Remote GitHub** : `gh` indisponible pendant le run → créer le repo et
   pousser : `gh repo create scospott/tideline --private --source=. --push`
   (depuis `tideline/`).
-- **Clé API Anthropic** (à partir du chantier 5) : créer `tideline/.env.local`
-  avec `ANTHROPIC_API_KEY=sk-ant-…` pour activer Maël.
+- **Clé API Anthropic** : créer `tideline/.env.local` avec
+  `ANTHROPIC_API_KEY=sk-ant-…` pour activer Maël (sans clé : message de
+  repli poli, aucun crash — comportement vérifié). Puis rejouer le QA :
+  « Combien de couchages ? » (réponse attendue : 10), « Quel est le prix
+  d'une nuit ? » (attendu : refus poli + lien Réservation), « Quel
+  restaurant étoilé à côté ? » (attendu : aveu d'ignorance + renvoi), et une
+  question en anglais (attendu : réponse en anglais). Si Maël invente un
+  prix ou un nom de restaurant, durcir les règles dans `src/lib/knowledge.ts`.
 - **Frames vidéo héros** (après génération Kling/Luma) : extraire les frames
   WebP (commandes dans `TIDELINE-chantiers-2-7.md`, section shot-list) puis
   renseigner `frameCount` dans `src/lib/heroes.ts` — seul changement de code
