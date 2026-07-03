@@ -10,10 +10,10 @@ const base =
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-ecume text-nuit hover:bg-[#c2e4d5] hover:-translate-y-px " +
+    "bg-pin text-creme hover:bg-[#c2e4d5] hover:-translate-y-px " +
     "active:translate-y-0",
   ghost:
-    "border border-ecru/30 text-ecru hover:border-ecume hover:text-ecume",
+    "border border-encre/35 text-encre hover:border-pin hover:text-pin",
 };
 
 type CommonProps = {

@@ -10,7 +10,7 @@ import Reveal from "@/components/motion/Reveal";
 const ChatWindow = dynamic(() => import("@/components/chat/ChatWindow"), {
   ssr: false,
   loading: () => (
-    <div className="h-full animate-pulse rounded-2xl border border-filet bg-sousbois/50" />
+    <div className="h-full animate-pulse rounded-2xl border border-filet bg-sable/50" />
   ),
 });
 
@@ -26,7 +26,7 @@ export default function Hote() {
       <Reveal>
         <Eyebrow>{t("eyebrow")}</Eyebrow>
         <SectionTitle className="mt-4">{t("title")}</SectionTitle>
-        <p className="mt-4 max-w-md text-ecru/60">{t("intro")}</p>
+        <p className="mt-4 max-w-md text-encre/60">{t("intro")}</p>
       </Reveal>
       <Reveal delay={0.1} className="mt-12">
         <div className="mx-auto h-[520px] max-w-3xl md:h-[560px]">

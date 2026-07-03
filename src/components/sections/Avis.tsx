@@ -20,7 +20,7 @@ function Stars({ label, className }: { label: string; className?: string }) {
     <span
       role="img"
       aria-label={label}
-      className={`flex gap-1 text-ecume ${className ?? ""}`}
+      className={`flex gap-1 text-pin ${className ?? ""}`}
     >
       {Array.from({ length: 5 }).map((_, i) => (
         <svg key={i} viewBox="0 0 24 24" className="h-3.5 w-3.5" aria-hidden>
@@ -46,21 +46,21 @@ function initiales(nom: string): string {
 function Carte({ item, locale }: { item: AvisType; locale: Lang }) {
   const t = useTranslations("avis");
   return (
-    <article className="flex h-full w-[340px] shrink-0 snap-start flex-col rounded-[10px] border border-filet bg-sousbois p-6 transition-all duration-500 ease-luxe hover:-translate-y-[3px] hover:border-ecume/45 md:w-[380px]">
+    <article className="flex h-full w-[340px] shrink-0 snap-start flex-col rounded-[10px] border border-filet bg-sable p-6 transition-all duration-500 ease-luxe hover:-translate-y-[3px] hover:border-pin/45 md:w-[380px]">
       <div className="flex items-center gap-3">
         <span
           aria-hidden
-          className="flex h-10 w-10 items-center justify-center rounded-full bg-ecume font-display text-sm text-nuit"
+          className="flex h-10 w-10 items-center justify-center rounded-full bg-pin font-display text-sm text-creme"
         >
           {initiales(item.nom)}
         </span>
         <div>
-          <p className="text-sm text-ecru">{item.nom}</p>
+          <p className="text-sm text-encre">{item.nom}</p>
           <p className="eyebrow !text-[10px]">{item.ville[locale]}</p>
         </div>
       </div>
       <Stars label={t("stars")} className="mt-4" />
-      <blockquote lang={item.lang} className="mt-3 text-sm text-ecru/80">
+      <blockquote lang={item.lang} className="mt-3 text-sm text-encre/80">
         {item.texte}
       </blockquote>
     </article>
@@ -178,17 +178,17 @@ export default function Avis() {
 
       {/* Bandeau récap */}
       <Reveal className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-5">
-        <p className="font-display text-[56px] leading-none text-ecru">
+        <p className="font-display text-[56px] leading-none text-encre">
           {t("note")}
         </p>
         <div className="flex flex-col gap-2">
           <Stars label={t("stars")} />
-          <p className="text-sm text-ecru/60">{t("stays")}</p>
+          <p className="text-sm text-encre/60">{t("stays")}</p>
         </div>
-        <span className="rounded-full border border-ecume/40 px-4 py-1.5 text-xs tracking-wide text-ecume">
+        <span className="rounded-full border border-pin/40 px-4 py-1.5 text-xs tracking-wide text-pin">
           {t("badge")}
         </span>
-        <span className="basis-full text-xs text-ecru/40">
+        <span className="basis-full text-xs text-encre/40">
           {t("originalNote")}
         </span>
       </Reveal>
@@ -209,7 +209,7 @@ export default function Avis() {
           <div className="h-px w-56 bg-filet">
             <div
               ref={progressRef}
-              className="h-px origin-left bg-ecume"
+              className="h-px origin-left bg-pin"
               style={{ transform: "scaleX(0.06)" }}
             />
           </div>
@@ -218,7 +218,7 @@ export default function Avis() {
               type="button"
               onClick={() => shift(-1)}
               aria-label={t("prev")}
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-ecru/30 text-ecru transition-colors duration-300 hover:border-ecume hover:text-ecume"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-encre/35 text-encre transition-colors duration-300 hover:border-pin hover:text-pin"
             >
               <svg viewBox="0 0 16 16" className="h-4 w-4" aria-hidden>
                 <path
@@ -233,7 +233,7 @@ export default function Avis() {
               type="button"
               onClick={() => shift(1)}
               aria-label={t("next")}
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-ecru/30 text-ecru transition-colors duration-300 hover:border-ecume hover:text-ecume"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-encre/35 text-encre transition-colors duration-300 hover:border-pin hover:text-pin"
             >
               <svg viewBox="0 0 16 16" className="h-4 w-4" aria-hidden>
                 <path

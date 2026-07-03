@@ -122,7 +122,7 @@ export default function Manifeste() {
               />
             )}
             <div className="figure-item">
-              <p className="font-display text-[26px] text-ecru">
+              <p className="font-display text-[26px] text-encre">
                 {t(`figures.${key}.value`)}
               </p>
               <p className="eyebrow mt-2">{t(`figures.${key}.label`)}</p>

@@ -148,13 +148,13 @@ export default function Espaces() {
                 aria-current={active === i}
                 className={`group flex w-full items-baseline gap-4 py-3 text-left font-display text-[clamp(1.6rem,2.2vw,2.2rem)] transition-all duration-500 ease-luxe ${
                   active === i
-                    ? "translate-x-2 text-ecru"
-                    : "text-ecru/45 hover:translate-x-2 hover:text-ecru"
+                    ? "translate-x-2 text-encre"
+                    : "text-encre/45 hover:translate-x-2 hover:text-encre"
                 }`}
               >
                 <span
                   className={`font-sans text-xs tracking-[0.2em] transition-opacity duration-500 ${
-                    active === i ? "text-ecume opacity-100" : "opacity-0"
+                    active === i ? "text-pin opacity-100" : "opacity-0"
                   }`}
                 >
                   {String(i + 1).padStart(2, "0")}
@@ -192,7 +192,7 @@ export default function Espaces() {
             ))}
           </div>
           <div ref={descRef} className="mt-6">
-            <p className="max-w-md text-ecru/70">
+            <p className="max-w-md text-encre/70">
               {espaces[active].description[locale]}
             </p>
           </div>
@@ -211,13 +211,13 @@ export default function Espaces() {
                 label={t("visualLabel")}
               />
             </div>
-            <p className="mt-5 flex items-baseline gap-3 font-display text-2xl text-ecru">
-              <span className="font-sans text-xs tracking-[0.2em] text-ecume">
+            <p className="mt-5 flex items-baseline gap-3 font-display text-2xl text-encre">
+              <span className="font-sans text-xs tracking-[0.2em] text-pin">
                 {String(i + 1).padStart(2, "0")}
               </span>
               {espace.nom[locale]}
             </p>
-            <p className="mt-2 text-sm text-ecru/70">
+            <p className="mt-2 text-sm text-encre/70">
               {espace.description[locale]}
             </p>
           </Reveal>

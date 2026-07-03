@@ -243,7 +243,7 @@ export default function ScrollHero({ slot, children }: ScrollHeroProps) {
         aria-hidden
         className="pointer-events-none absolute bottom-10 left-1/2 z-10 -translate-x-1/2 transition-opacity duration-500 motion-reduce:hidden"
       >
-        <span className="hero-scroll-hint block h-12 w-px bg-ecume" />
+        <span className="hero-scroll-hint block h-12 w-px bg-pin" />
       </div>
 
       <ForestLine className="pointer-events-none absolute bottom-0 left-0 z-10 h-14 w-full text-[#0b120e] md:h-20" />

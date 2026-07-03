@@ -79,7 +79,7 @@ function Plate({
       style={{ backgroundColor: item.couleur }}
     >
       {withLabel && (
-        <span className="text-[11px] tracking-[0.25em] text-ecume/60 uppercase">
+        <span className="text-[11px] tracking-[0.25em] text-pin/60 uppercase">
           {figureLabel} {String(index + 1).padStart(2, "0")}
         </span>
       )}
@@ -144,7 +144,7 @@ function Lightbox({
       aria-label={item.legende[locale]}
       data-lenis-prevent
       onClick={onClose}
-      className="lightbox-overlay fixed inset-0 z-[70] flex items-center justify-center bg-nuit/95 p-6"
+      className="lightbox-overlay fixed inset-0 z-[70] flex items-center justify-center bg-calcaire/95 p-6"
     >
       <figure
         onClick={(e) => e.stopPropagation()}
@@ -159,8 +159,8 @@ function Lightbox({
           />
         </div>
         <figcaption className="mt-4 flex items-baseline justify-between gap-4">
-          <span className="text-sm text-ecru/80">{item.legende[locale]}</span>
-          <span className="text-[11px] tracking-[0.25em] text-ecume/60 uppercase">
+          <span className="text-sm text-encre/80">{item.legende[locale]}</span>
+          <span className="text-[11px] tracking-[0.25em] text-pin/60 uppercase">
             {t("figure")} {String(index + 1).padStart(2, "0")}
           </span>
         </figcaption>
@@ -169,7 +169,7 @@ function Lightbox({
           type="button"
           onClick={onClose}
           aria-label={t("lightboxClose")}
-          className="absolute -top-3 -right-3 flex h-10 w-10 items-center justify-center rounded-full border border-filet bg-nuit text-ecru transition-colors duration-300 hover:border-ecume hover:text-ecume"
+          className="absolute -top-3 -right-3 flex h-10 w-10 items-center justify-center rounded-full border border-filet bg-calcaire text-encre transition-colors duration-300 hover:border-pin hover:text-pin"
         >
           <svg viewBox="0 0 16 16" className="h-4 w-4" aria-hidden>
             <path
@@ -278,7 +278,7 @@ export default function Galerie() {
         >
           <div className="mx-auto w-full max-w-6xl px-10">
             {header}
-            <p className="mt-3 text-xs tracking-wide text-ecru/40">
+            <p className="mt-3 text-xs tracking-wide text-encre/40">
               {t("hint")}
             </p>
           </div>
@@ -302,7 +302,7 @@ export default function Galerie() {
                     })}
                     aria-haspopup="dialog"
                     data-cursor="view"
-                    className="spotlight-wrap group relative block w-full overflow-hidden rounded-[10px] border border-filet transition-colors duration-500 hover:border-ecume/40"
+                    className="spotlight-wrap group relative block w-full overflow-hidden rounded-[10px] border border-filet transition-colors duration-500 hover:border-pin/40"
                     style={{ height: h }}
                   >
                     <div className="galerie-parallax absolute inset-y-0 -left-[6%] w-[112%]">
@@ -315,7 +315,7 @@ export default function Galerie() {
                       />
                     </div>
                   </button>
-                  <p className="mt-3 text-[11px] tracking-wide text-ecume/80">
+                  <p className="mt-3 text-[11px] tracking-wide text-pin/80">
                     {item.legende[locale]}
                   </p>
                 </div>
@@ -365,7 +365,7 @@ export default function Galerie() {
                         index={i}
                       />
                     </button>
-                    <p className="mt-2 text-[11px] tracking-wide text-ecume/80">
+                    <p className="mt-2 text-[11px] tracking-wide text-pin/80">
                       {item.legende[locale]}
                     </p>
                   </Reveal>

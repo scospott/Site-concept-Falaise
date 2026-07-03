@@ -30,18 +30,18 @@ function Champ({
 }) {
   return (
     <div>
-      <label htmlFor={id} className="mb-2 block text-sm text-ecru/70">
+      <label htmlFor={id} className="mb-2 block text-sm text-encre/70">
         {label}
       </label>
       {children}
-      {error && <p className="mt-1.5 text-xs text-bois">{error}</p>}
+      {error && <p className="mt-1.5 text-xs text-soleil">{error}</p>}
     </div>
   );
 }
 
 const inputClass = (hasError: boolean) =>
-  `w-full rounded-[10px] border bg-sousbois px-4 py-3 text-sm text-ecru placeholder:text-ecru/35 transition-colors duration-300 focus:outline-none ${
-    hasError ? "border-bois" : "border-filet focus:border-ecume/60"
+  `w-full rounded-[10px] border bg-sable px-4 py-3 text-sm text-encre placeholder:text-encre/35 transition-colors duration-300 focus:outline-none ${
+    hasError ? "border-soleil" : "border-filet focus:border-pin/60"
   }`;
 
 function Compteur({
@@ -64,12 +64,12 @@ function Compteur({
   increaseLabel: string;
 }) {
   const btn =
-    "flex h-11 w-11 items-center justify-center rounded-full border border-ecru/30 text-lg text-ecru transition-colors duration-300 hover:border-ecume hover:text-ecume disabled:cursor-not-allowed disabled:opacity-30";
+    "flex h-11 w-11 items-center justify-center rounded-full border border-encre/35 text-lg text-encre transition-colors duration-300 hover:border-pin hover:text-pin disabled:cursor-not-allowed disabled:opacity-30";
   return (
     <div className="flex items-center justify-between border-b border-filet py-5">
       <div>
-        <p className="text-ecru">{label}</p>
-        <p className="text-xs text-ecru/50">{hint}</p>
+        <p className="text-encre">{label}</p>
+        <p className="text-xs text-encre/50">{hint}</p>
       </div>
       <div className="flex items-center gap-4">
         <button
@@ -81,7 +81,7 @@ function Compteur({
         >
           −
         </button>
-        <span className="w-8 text-center font-display text-2xl text-ecru">
+        <span className="w-8 text-center font-display text-2xl text-encre">
           {value}
         </span>
         <button
@@ -125,56 +125,56 @@ function RecapContenu({
   );
 
   if (!start || !end || !devis) {
-    return <p className="text-sm text-ecru/50">{t("empty")}</p>;
+    return <p className="text-sm text-encre/50">{t("empty")}</p>;
   }
   return (
     <div className="space-y-4 text-sm">
       <div className="flex justify-between gap-4">
-        <span className="text-ecru/60">{t("arrival")}</span>
-        <span className="text-right text-ecru">
+        <span className="text-encre/60">{t("arrival")}</span>
+        <span className="text-right text-encre">
           {dateFmt.format(fromISO(start))}
         </span>
       </div>
       <div className="flex justify-between gap-4">
-        <span className="text-ecru/60">{t("departure")}</span>
-        <span className="text-right text-ecru">
+        <span className="text-encre/60">{t("departure")}</span>
+        <span className="text-right text-encre">
           {dateFmt.format(fromISO(end))}
         </span>
       </div>
       <div className="flex justify-between gap-4 border-b border-filet pb-4">
-        <span className="text-ecru/60">
+        <span className="text-encre/60">
           {t("travellers", { adults, children })}
         </span>
       </div>
       <div className="flex justify-between gap-4">
-        <span className="text-ecru/60">
+        <span className="text-encre/60">
           {t("nightsLine", {
             n: devis.nights,
             price: formatPrice(devis.nightly, locale),
           })}
         </span>
-        <span className="text-ecru">
+        <span className="text-encre">
           {formatPrice(devis.accommodation, locale)}
         </span>
       </div>
       <div className="flex justify-between gap-4">
-        <span className="text-ecru/60">{t("cleaning")}</span>
-        <span className="text-ecru">{formatPrice(devis.cleaning, locale)}</span>
+        <span className="text-encre/60">{t("cleaning")}</span>
+        <span className="text-encre">{formatPrice(devis.cleaning, locale)}</span>
       </div>
       <div className="flex justify-between gap-4 border-b border-filet pb-4">
-        <span className="text-ecru/60">
+        <span className="text-encre/60">
           {t("touristTax")}
-          <span className="mt-0.5 block text-[11px] text-ecru/40">
+          <span className="mt-0.5 block text-[11px] text-encre/40">
             {t("touristTaxHint")}
           </span>
         </span>
-        <span className="text-ecru">
+        <span className="text-encre">
           {formatPrice(devis.touristTax, locale)}
         </span>
       </div>
       <div className="flex items-baseline justify-between gap-4 pt-1">
-        <span className="text-ecru/60">{t("total")}</span>
-        <span className="font-display text-[32px] leading-none text-ecru">
+        <span className="text-encre/60">{t("total")}</span>
+        <span className="font-display text-[32px] leading-none text-encre">
           {formatPrice(devis.total, locale)}
         </span>
       </div>
@@ -226,11 +226,11 @@ function Confirmation({
           strokeLinejoin="round"
         />
       </svg>
-      <h2 className="display-l mt-8 text-ecru">{t("title")}</h2>
-      <p className="mt-3 text-sm tracking-wide text-ecume">
+      <h2 className="display-l mt-8 text-encre">{t("title")}</h2>
+      <p className="mt-3 text-sm tracking-wide text-pin">
         {t("reference", { ref: reference })}
       </p>
-      <div className="mt-10 rounded-[10px] border border-filet bg-sousbois p-6 text-left">
+      <div className="mt-10 rounded-[10px] border border-filet bg-sable p-6 text-left">
         <RecapContenu
           start={start}
           end={end}
@@ -240,8 +240,8 @@ function Confirmation({
           locale={locale}
         />
       </div>
-      <p className="mt-6 text-sm text-ecru/70">{t("reply")}</p>
-      <p className="mx-auto mt-8 max-w-md rounded-[10px] border border-filet px-5 py-4 text-xs leading-relaxed text-ecru/50">
+      <p className="mt-6 text-sm text-encre/70">{t("reply")}</p>
+      <p className="mx-auto mt-8 max-w-md rounded-[10px] border border-filet px-5 py-4 text-xs leading-relaxed text-encre/50">
         {t("demo")}
       </p>
       <div className="mt-10">
@@ -325,7 +325,7 @@ export default function Parcours() {
   if (!mounted) {
     return (
       <div className="mx-auto max-w-6xl px-6 pb-32 md:px-10">
-        <div className="h-96 animate-pulse rounded-[10px] border border-filet bg-sousbois/50" />
+        <div className="h-96 animate-pulse rounded-[10px] border border-filet bg-sable/50" />
       </div>
     );
   }
@@ -362,12 +362,12 @@ export default function Parcours() {
               >
                 <span
                   className={`block h-[3px] rounded-full transition-colors duration-500 ${
-                    i <= step ? "bg-ecume" : "bg-filet"
+                    i <= step ? "bg-pin" : "bg-filet"
                   }`}
                 />
                 <span
                   className={`mt-2 hidden text-[11px] tracking-[0.15em] uppercase md:block ${
-                    i === step ? "text-ecume" : "text-ecru/40"
+                    i === step ? "text-pin" : "text-encre/40"
                   }`}
                 >
                   {t(`steps.${key}`)}
@@ -376,7 +376,7 @@ export default function Parcours() {
             </li>
           ))}
         </ol>
-        <p className="mt-3 text-[11px] tracking-[0.15em] text-ecru/50 uppercase md:hidden">
+        <p className="mt-3 text-[11px] tracking-[0.15em] text-encre/50 uppercase md:hidden">
           {t(`steps.${STEPS[step]}`)} — {t("stepLabel", { current: step + 1, total: 4 })}
         </p>
       </nav>
@@ -417,15 +417,15 @@ export default function Parcours() {
                 decreaseLabel={t("guests.decrease")}
                 increaseLabel={t("guests.increase")}
               />
-              <p className="mt-5 text-xs text-ecru/50">
+              <p className="mt-5 text-xs text-encre/50">
                 {t("guests.capacity")} · {t("guests.crib")}
               </p>
             </div>
           )}
 
           {step === 2 && (
-            <div className="rounded-[10px] border border-filet bg-sousbois p-6 md:p-8 lg:border-transparent lg:bg-transparent lg:p-0">
-              <h2 className="display-l mb-8 text-ecru">
+            <div className="rounded-[10px] border border-filet bg-sable p-6 md:p-8 lg:border-transparent lg:bg-transparent lg:p-0">
+              <h2 className="display-l mb-8 text-encre">
                 {t("summary.title")}
               </h2>
               <RecapContenu
@@ -538,9 +538,9 @@ export default function Parcours() {
 
         {/* Récap sticky desktop — visible dès l'étape 1, pleine lumière à l'étape 3 */}
         <aside
-          className={`sticky top-28 hidden rounded-[10px] border bg-sousbois p-6 transition-all duration-500 lg:block ${
+          className={`sticky top-28 hidden rounded-[10px] border bg-sable p-6 transition-all duration-500 lg:block ${
             step === 2
-              ? "border-ecume/50 shadow-[0_0_50px_rgba(169,216,198,0.07)]"
+              ? "border-pin/50 shadow-[0_0_50px_rgba(169,216,198,0.07)]"
               : "border-filet"
           }`}
         >
@@ -557,17 +557,17 @@ export default function Parcours() {
       </div>
 
       {/* Récap mobile — carte repliable en bas d'écran */}
-      <div className="fixed inset-x-0 bottom-0 z-30 border-t border-filet bg-sousbois lg:hidden">
+      <div className="fixed inset-x-0 bottom-0 z-30 border-t border-filet bg-sable lg:hidden">
         <button
           type="button"
           onClick={() => setSheetOpen((o) => !o)}
           aria-expanded={sheetOpen}
           className="flex w-full items-center justify-between px-6 py-4 pr-24"
         >
-          <span className="text-xs tracking-[0.15em] text-ecru/60 uppercase">
+          <span className="text-xs tracking-[0.15em] text-encre/60 uppercase">
             {sheetOpen ? t("summary.hide") : t("summary.show")}
           </span>
-          <span className="font-display text-xl text-ecru">
+          <span className="font-display text-xl text-encre">
             {devis ? formatPrice(devis.total, locale) : "—"}
           </span>
         </button>

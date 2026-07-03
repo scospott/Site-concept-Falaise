@@ -46,7 +46,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
               <div data-hero-fade>
                 <Eyebrow>{t("eyebrow")}</Eyebrow>
               </div>
-              <h1 className="display-xl mt-6 text-ecru">
+              <h1 className="display-xl mt-6 text-encre">
                 {t.rich("title", {
                   i: (chunks) => <em>{chunks}</em>,
                   l: (chunks) => (
@@ -56,7 +56,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
                   ),
                 })}
               </h1>
-              <p data-hero-fade className="mt-6 max-w-md text-ecru/70">
+              <p data-hero-fade className="mt-6 max-w-md text-encre/70">
                 {t("baseline")}
               </p>
               <div

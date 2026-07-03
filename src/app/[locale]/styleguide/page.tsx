@@ -12,21 +12,23 @@ export const metadata: Metadata = {
 };
 
 const palette = [
-  { name: "Nuit", token: "nuit", hex: "#101914", usage: "Fond global" },
-  { name: "Sous-bois", token: "sousbois", hex: "#16211B", usage: "Surfaces, cartes" },
-  { name: "Écru", token: "ecru", hex: "#ECE8DC", usage: "Texte" },
-  { name: "Écume", token: "ecume", hex: "#A9D8C6", usage: "Accent, CTA, liens actifs" },
-  { name: "Bois", token: "bois", hex: "#8C7355", usage: "Accent chaud, rare" },
-  { name: "Filet", token: "filet", hex: "#2A362F", usage: "Bordures, séparateurs" },
+  { name: "Calcaire", token: "calcaire", hex: "#F7F3EA", usage: "Fond global chaud" },
+  { name: "Sable", token: "sable", hex: "#EFE7D7", usage: "Surfaces, cartes, calendrier" },
+  { name: "Encre", token: "encre", hex: "#26332B", usage: "Texte principal" },
+  { name: "Pin", token: "pin", hex: "#3E5C42", usage: "Accent : CTA, liens actifs, sélections" },
+  { name: "Soleil", token: "soleil", hex: "#C9903F", usage: "Accent chaud rare : étoiles, index" },
+  { name: "Filet", token: "filet", hex: "#DCD3BE", usage: "Bordures, séparateurs" },
+  { name: "Abysse", token: "abysse", hex: "#1B2A21", usage: "Blocs profonds : footer" },
 ];
 
 const swatchBg: Record<string, string> = {
-  nuit: "bg-nuit",
-  sousbois: "bg-sousbois",
-  ecru: "bg-ecru",
-  ecume: "bg-ecume",
-  bois: "bg-bois",
+  calcaire: "bg-calcaire",
+  sable: "bg-sable",
+  encre: "bg-encre",
+  pin: "bg-pin",
+  soleil: "bg-soleil",
   filet: "bg-filet",
+  abysse: "bg-abysse",
 };
 
 function Bloc({
@@ -54,9 +56,9 @@ export default async function StyleguidePage({
     <main className="mx-auto max-w-5xl px-6 pb-32 pt-32 md:px-10">
       <Eyebrow>Système de design</Eyebrow>
       <h1 className="display-xl mt-4">
-        Nocturne <em>— styleguide</em>
+        Solaire <em>— styleguide</em>
       </h1>
-      <p className="mt-4 max-w-lg text-ecru/60">
+      <p className="mt-4 max-w-lg text-encre/60">
         Page d&apos;audit de la direction artistique. Non indexée, réservée à
         la validation visuelle des fondations.
       </p>
@@ -70,12 +72,12 @@ export default async function StyleguidePage({
                 className="overflow-hidden rounded-[10px] border border-filet"
               >
                 <div className={`h-24 ${swatchBg[c.token]}`} />
-                <div className="bg-sousbois p-4">
-                  <p className="text-sm text-ecru">{c.name}</p>
-                  <p className="mt-1 font-mono text-xs text-ecru/50">
+                <div className="bg-sable p-4">
+                  <p className="text-sm text-encre">{c.name}</p>
+                  <p className="mt-1 font-mono text-xs text-encre/50">
                     {c.hex} · --color-{c.token}
                   </p>
-                  <p className="mt-1 text-xs text-ecru/50">{c.usage}</p>
+                  <p className="mt-1 text-xs text-encre/50">{c.usage}</p>
                 </div>
               </div>
             ))}
@@ -85,19 +87,19 @@ export default async function StyleguidePage({
         <Bloc title="Échelle typographique">
           <div className="space-y-10">
             <div>
-              <p className="mb-2 text-xs text-ecru/40">
+              <p className="mb-2 text-xs text-encre/40">
                 display-xl — Bodoni Moda, clamp(2.6rem, 7vw, 4.5rem)
               </p>
               <p className="display-xl">Where the sea meets the forest</p>
             </div>
             <div>
-              <p className="mb-2 text-xs text-ecru/40">
+              <p className="mb-2 text-xs text-encre/40">
                 display-l — Bodoni Moda, clamp(1.8rem, 4vw, 2.6rem)
               </p>
               <p className="display-l">La lisière, à la nuit tombée</p>
             </div>
             <div>
-              <p className="mb-2 text-xs text-ecru/40">
+              <p className="mb-2 text-xs text-encre/40">
                 Spécimen italique — Bodoni Moda Italic
               </p>
               <p className="display-l">
@@ -105,11 +107,11 @@ export default async function StyleguidePage({
               </p>
             </div>
             <div>
-              <p className="mb-2 text-xs text-ecru/40">eyebrow — 11px, 0.3em</p>
+              <p className="mb-2 text-xs text-encre/40">eyebrow — 11px, 0.3em</p>
               <Eyebrow>Villa · Côte sauvage</Eyebrow>
             </div>
             <div>
-              <p className="mb-2 text-xs text-ecru/40">
+              <p className="mb-2 text-xs text-encre/40">
                 Corps — Instrument Sans 15–16px, interligne 1.7
               </p>
               <p className="max-w-xl">
@@ -117,8 +119,8 @@ export default async function StyleguidePage({
                 s&apos;ouvre sur la canopée. Entre les deux : un seuil, une
                 maison, un silence. Les nuances de texte atténué passent par
                 l&apos;opacité —{" "}
-                <span className="text-ecru/70">écru 70&nbsp;%</span>,{" "}
-                <span className="text-ecru/50">écru 50&nbsp;%</span>.
+                <span className="text-encre/70">écru 70&nbsp;%</span>,{" "}
+                <span className="text-encre/50">écru 50&nbsp;%</span>.
               </p>
             </div>
           </div>
@@ -135,9 +137,9 @@ export default async function StyleguidePage({
               Découvrir la villa
             </Button>
           </div>
-          <p className="mt-4 text-xs text-ecru/40">
+          <p className="mt-4 text-xs text-encre/40">
             Pill 999px · transition 0.35s cubic-bezier(.22,1,.36,1) · hover :
-            écume éclaircie + translateY(-1px) / filet + texte écume
+            pin plus profond + translateY(-1px) / filet + texte pin
           </p>
         </Bloc>
 
@@ -146,10 +148,10 @@ export default async function StyleguidePage({
             {[1, 2, 3].map((n) => (
               <div
                 key={n}
-                className="rounded-[10px] border border-filet bg-sousbois p-6"
+                className="rounded-[10px] border border-filet bg-sable p-6"
               >
-                <p className="font-display text-2xl text-ecume">0{n}</p>
-                <p className="mt-2 text-sm text-ecru/70">
+                <p className="font-display text-2xl text-pin">0{n}</p>
+                <p className="mt-2 text-sm text-encre/70">
                   Révélé au scroll — fade + translateY(24px), expo.out, 1s.
                 </p>
               </div>
@@ -167,7 +169,7 @@ export default async function StyleguidePage({
 
         <Bloc title="ForestLine">
           <div className="overflow-hidden rounded-[10px] border border-filet bg-[#1a2a22]">
-            <ForestLine className="block h-28 w-full text-nuit" />
+            <ForestLine className="block h-28 w-full text-creme" />
           </div>
         </Bloc>
       </div>

@@ -123,14 +123,14 @@ export default function Calendrier({ start, end, onChange }: CalendrierProps) {
         key={`${def.year}-${def.month}`}
         className={hideOnMobile ? "hidden md:block" : ""}
       >
-        <p className="text-center font-display text-lg text-ecru capitalize">
+        <p className="text-center font-display text-lg text-encre capitalize">
           {monthFmt.format(first)}
         </p>
         <div className="mt-4 grid grid-cols-7 gap-1">
           {dayNames.map((name) => (
             <span
               key={name}
-              className="pb-1 text-center text-[10px] tracking-[0.15em] text-ecru/40 uppercase"
+              className="pb-1 text-center text-[10px] tracking-[0.15em] text-encre/40 uppercase"
             >
               {name}
             </span>
@@ -159,7 +159,7 @@ export default function Calendrier({ start, end, onChange }: CalendrierProps) {
                 <span
                   key={iso}
                   aria-hidden
-                  className="flex aspect-square items-center justify-center text-sm text-ecru/15"
+                  className="flex aspect-square items-center justify-center text-sm text-encre/15"
                 >
                   {dayNumber}
                 </span>
@@ -185,10 +185,10 @@ export default function Calendrier({ start, end, onChange }: CalendrierProps) {
                 aria-pressed={isStart || isEnd}
                 className={`group relative flex aspect-square items-center justify-center rounded-[8px] border text-sm transition-colors duration-300 ${
                   isStart || isEnd
-                    ? "border-ecume bg-ecume text-nuit"
+                    ? "border-pin bg-pin text-creme"
                     : inRange
-                      ? "cal-range border-transparent text-ecru"
-                      : "border-transparent bg-sousbois text-ecru/85 hover:border-ecume/60"
+                      ? "cal-range border-transparent text-encre"
+                      : "border-transparent bg-sable text-encre/85 hover:border-pin/60"
                 }`}
                 style={
                   inRange
@@ -200,7 +200,7 @@ export default function Calendrier({ start, end, onChange }: CalendrierProps) {
                 {(insufficient || tooltipDay === iso) && (
                   <span
                     role="tooltip"
-                    className={`pointer-events-none absolute -top-9 left-1/2 z-10 -translate-x-1/2 rounded-md border border-filet bg-nuit px-2.5 py-1 text-[11px] whitespace-nowrap text-ecru/90 transition-opacity duration-200 ${
+                    className={`pointer-events-none absolute -top-9 left-1/2 z-10 -translate-x-1/2 rounded-md border border-filet bg-calcaire px-2.5 py-1 text-[11px] whitespace-nowrap text-encre/90 transition-opacity duration-200 ${
                       tooltipDay === iso
                         ? "opacity-100"
                         : "opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100"
@@ -229,13 +229,13 @@ export default function Calendrier({ start, end, onChange }: CalendrierProps) {
           onClick={() => setOffset((o) => Math.max(0, o - 1))}
           disabled={offset === 0}
           aria-label={t("prevMonth")}
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-ecru/30 text-ecru transition-colors duration-300 hover:border-ecume hover:text-ecume disabled:cursor-not-allowed disabled:opacity-30"
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-encre/35 text-encre transition-colors duration-300 hover:border-pin hover:text-pin disabled:cursor-not-allowed disabled:opacity-30"
         >
           <svg viewBox="0 0 16 16" className="h-4 w-4" aria-hidden>
             <path d="M10 2L4 8l6 6" stroke="currentColor" strokeWidth="1.2" fill="none" />
           </svg>
         </button>
-        <p className="text-sm text-ecru/60">
+        <p className="text-sm text-encre/60">
           {!start
             ? t("selectPrompt")
             : !end
@@ -247,7 +247,7 @@ export default function Calendrier({ start, end, onChange }: CalendrierProps) {
           onClick={() => setOffset((o) => Math.min(maxOffset, o + 1))}
           disabled={offset >= maxOffset}
           aria-label={t("nextMonth")}
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-ecru/30 text-ecru transition-colors duration-300 hover:border-ecume hover:text-ecume disabled:cursor-not-allowed disabled:opacity-30"
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-encre/35 text-encre transition-colors duration-300 hover:border-pin hover:text-pin disabled:cursor-not-allowed disabled:opacity-30"
         >
           <svg viewBox="0 0 16 16" className="h-4 w-4" aria-hidden>
             <path d="M6 2l6 6-6 6" stroke="currentColor" strokeWidth="1.2" fill="none" />
@@ -261,7 +261,7 @@ export default function Calendrier({ start, end, onChange }: CalendrierProps) {
       </div>
 
       <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-filet pt-5">
-        <p className="text-xs text-ecru/60">
+        <p className="text-xs text-encre/60">
           {visibleSeason === "haute"
             ? t("seasonHaute", {
                 price: formatPrice(PRICING.haute.nightly, locale),
@@ -270,9 +270,9 @@ export default function Calendrier({ start, end, onChange }: CalendrierProps) {
                 price: formatPrice(PRICING.basse.nightly, locale),
               })}
         </p>
-        <ul className="flex flex-wrap gap-x-5 gap-y-2 text-[11px] text-ecru/50">
+        <ul className="flex flex-wrap gap-x-5 gap-y-2 text-[11px] text-encre/50">
           <li className="flex items-center gap-2">
-            <span className="h-3 w-3 rounded-[3px] border border-ecru/25 bg-sousbois" />
+            <span className="h-3 w-3 rounded-[3px] border border-filet bg-sable" />
             {t("legendAvailable")}
           </li>
           <li className="flex items-center gap-2">
@@ -280,7 +280,7 @@ export default function Calendrier({ start, end, onChange }: CalendrierProps) {
             {t("legendBooked")}
           </li>
           <li className="flex items-center gap-2">
-            <span className="h-3 w-3 rounded-[3px] bg-ecume" />
+            <span className="h-3 w-3 rounded-[3px] bg-pin" />
             {t("legendSelected")}
           </li>
         </ul>

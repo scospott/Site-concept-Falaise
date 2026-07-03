@@ -69,15 +69,15 @@ export default function Nav() {
 
   const localeSwitch = (tabbable: boolean) => (
     <span className="flex items-center gap-1.5 text-xs tracking-[0.15em]">
-      <span aria-current="true" className="text-ecume">
+      <span aria-current="true" className="text-pin">
         {locale.toUpperCase()}
       </span>
-      <span className="text-ecru/30">·</span>
+      <span className="text-encre/30">·</span>
       <Link
         href={pathname}
         locale={otherLocale}
         tabIndex={tabbable ? 0 : -1}
-        className="-m-2 inline-flex p-2 text-ecru/50 transition-colors duration-300 hover:text-ecru"
+        className="-m-2 inline-flex p-2 text-encre/50 transition-colors duration-300 hover:text-encre"
       >
         {otherLocale.toUpperCase()}
       </Link>
@@ -88,7 +88,7 @@ export default function Nav() {
     <header
       className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-500 ${
         scrolled || open
-          ? "border-filet bg-nuit"
+          ? "border-filet bg-calcaire"
           : "border-transparent bg-transparent"
       }`}
     >
@@ -97,7 +97,7 @@ export default function Nav() {
           href="/"
           aria-label={t("home")}
           data-cursor="link"
-          className="relative z-50 font-display text-xl tracking-wide text-ecru transition-colors duration-300 hover:text-ecume"
+          className="relative z-50 font-display text-xl tracking-wide text-encre transition-colors duration-300 hover:text-pin"
         >
           Tideline
         </Link>
@@ -116,8 +116,8 @@ export default function Nav() {
                   }
                   className={`transition-colors duration-300 ${
                     link.key === "reserver"
-                      ? "text-ecume hover:text-ecru"
-                      : "text-ecru/80 hover:text-ecume"
+                      ? "text-pin hover:text-encre"
+                      : "text-encre/80 hover:text-pin"
                   }`}
                 >
                   {t(link.key)}
@@ -138,12 +138,12 @@ export default function Nav() {
           className="relative z-50 flex h-10 w-10 items-center justify-center md:hidden"
         >
           <span
-            className={`absolute h-px w-6 bg-ecru transition-transform duration-300 ease-luxe ${
+            className={`absolute h-px w-6 bg-encre transition-transform duration-300 ease-luxe ${
               open ? "rotate-45" : "-translate-y-[4px]"
             }`}
           />
           <span
-            className={`absolute h-px w-6 bg-ecru transition-transform duration-300 ease-luxe ${
+            className={`absolute h-px w-6 bg-encre transition-transform duration-300 ease-luxe ${
               open ? "-rotate-45" : "translate-y-[4px]"
             }`}
           />
@@ -154,7 +154,7 @@ export default function Nav() {
       <div
         id="mobile-menu"
         aria-hidden={!open}
-        className={`fixed inset-0 z-40 flex flex-col justify-center bg-nuit px-8 transition-transform duration-500 ease-luxe md:hidden ${
+        className={`fixed inset-0 z-40 flex flex-col justify-center bg-calcaire px-8 transition-transform duration-500 ease-luxe md:hidden ${
           open ? "translate-y-0" : "-translate-y-full"
         }`}
         style={{ pointerEvents: open ? "auto" : "none" }}
@@ -176,7 +176,7 @@ export default function Nav() {
                     ? (e) => onAnchorClick(e, link.hash)
                     : () => setOpen(false)
                 }
-                className="font-display text-4xl text-ecru transition-colors duration-300 hover:text-ecume"
+                className="font-display text-4xl text-encre transition-colors duration-300 hover:text-pin"
               >
                 {t(link.key)}
               </Link>

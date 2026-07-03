@@ -10,7 +10,7 @@ export default function SectionTitle({
   as?: "h1" | "h2" | "h3";
 }) {
   return (
-    <Tag className={`display-l text-ecru${className ? ` ${className}` : ""}`}>
+    <Tag className={`display-l text-encre${className ? ` ${className}` : ""}`}>
       {children}
     </Tag>
   );

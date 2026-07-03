@@ -17,7 +17,7 @@ function Avatar() {
   return (
     <span
       aria-hidden
-      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-ecume/50 font-display text-sm text-ecume"
+      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-pin/50 font-display text-sm text-pin"
     >
       M
     </span>
@@ -34,7 +34,7 @@ function Bulle({
   if (role === "user") {
     return (
       <div className="flex justify-end">
-        <div className="max-w-[85%] rounded-2xl rounded-br-sm bg-ecume px-4 py-2.5 text-sm text-nuit">
+        <div className="max-w-[85%] rounded-2xl rounded-br-sm bg-pin px-4 py-2.5 text-sm text-creme">
           {children}
         </div>
       </div>
@@ -43,7 +43,7 @@ function Bulle({
   return (
     <div className="flex items-start gap-3">
       <Avatar />
-      <div className="chat-markdown max-w-[85%] pt-1 text-sm text-ecru">
+      <div className="chat-markdown max-w-[85%] pt-1 text-sm text-encre">
         {children}
       </div>
     </div>
@@ -75,7 +75,7 @@ export default function ChatWindow({ compact = false }: { compact?: boolean }) {
 
   return (
     <div
-      className={`flex h-full flex-col overflow-hidden rounded-2xl border border-filet bg-sousbois/85 backdrop-blur ${
+      className={`flex h-full flex-col overflow-hidden rounded-2xl border border-filet bg-sable/85 backdrop-blur ${
         compact ? "" : "shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
       }`}
     >
@@ -122,9 +122,9 @@ export default function ChatWindow({ compact = false }: { compact?: boolean }) {
               className="chat-typing flex gap-1.5 pt-1"
               aria-label={t("loading")}
             >
-              <i className="h-1.5 w-1.5 rounded-full bg-ecume/70" />
-              <i className="h-1.5 w-1.5 rounded-full bg-ecume/70" />
-              <i className="h-1.5 w-1.5 rounded-full bg-ecume/70" />
+              <i className="h-1.5 w-1.5 rounded-full bg-pin/70" />
+              <i className="h-1.5 w-1.5 rounded-full bg-pin/70" />
+              <i className="h-1.5 w-1.5 rounded-full bg-pin/70" />
             </span>
           </div>
         )}
@@ -132,7 +132,7 @@ export default function ChatWindow({ compact = false }: { compact?: boolean }) {
         {error && (
           <div className="flex items-start gap-3">
             <Avatar />
-            <p className="max-w-[85%] pt-1 text-sm text-bois">{error}</p>
+            <p className="max-w-[85%] pt-1 text-sm text-soleil">{error}</p>
           </div>
         )}
 
@@ -143,7 +143,7 @@ export default function ChatWindow({ compact = false }: { compact?: boolean }) {
                 key={key}
                 type="button"
                 onClick={() => send(t(`suggestions.${key}`))}
-                className="rounded-full border border-filet px-3.5 py-1.5 text-xs text-ecru/80 transition-colors duration-300 hover:border-ecume hover:text-ecume"
+                className="rounded-full border border-filet px-3.5 py-1.5 text-xs text-encre/80 transition-colors duration-300 hover:border-pin hover:text-pin"
               >
                 {t(`suggestions.${key}`)}
               </button>
@@ -168,13 +168,13 @@ export default function ChatWindow({ compact = false }: { compact?: boolean }) {
           onChange={(e) => setInput(e.target.value)}
           placeholder={t("placeholder")}
           autoComplete="off"
-          className="min-w-0 flex-1 bg-transparent text-sm text-ecru placeholder:text-ecru/40 focus:outline-none"
+          className="min-w-0 flex-1 bg-transparent text-sm text-encre placeholder:text-encre/40 focus:outline-none"
         />
         <button
           type="submit"
           disabled={isLoading || !input.trim()}
           aria-label={t("send")}
-          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-ecume text-nuit transition-all duration-300 ease-luxe enabled:hover:-translate-y-px disabled:cursor-not-allowed disabled:opacity-40"
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-pin text-creme transition-all duration-300 ease-luxe enabled:hover:-translate-y-px disabled:cursor-not-allowed disabled:opacity-40"
         >
           <svg viewBox="0 0 16 16" className="h-4 w-4" aria-hidden>
             <path
