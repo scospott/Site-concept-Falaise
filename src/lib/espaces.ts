@@ -56,4 +56,13 @@ export const espaces: Espace[] = [
     },
     couleur: "#16241D",
   },
+  {
+    id: "piscine-horizon",
+    nom: { fr: "La piscine de l’horizon", en: "The horizon pool" },
+    description: {
+      fr: "Un bassin à débordement posé au bord du vide. L’eau de la piscine et celle de l’océan ne font plus qu’une.",
+      en: "An infinity pool set on the edge of the void. Where the water of the pool and the ocean become one.",
+    },
+    couleur: "#1E3A33",
+  },
 ];

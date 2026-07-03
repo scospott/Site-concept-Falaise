@@ -19,6 +19,7 @@ ARRIVÉE / DÉPART
 ÉQUIPEMENTS
 - Verrière double hauteur avec cheminée suspendue.
 - Cuisine équipée : piano de cuisson, cave à vin, machine espresso.
+- Piscine à débordement chauffée (mai-septembre), terrasse ouest face à l'océan.
 - Bain nordique chauffé au bois, sauna.
 - Wifi fibre, espaces de travail.
 - Linge de maison fourni, lave-linge et sèche-linge.

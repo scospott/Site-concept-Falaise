@@ -455,6 +455,20 @@ documenté (frames vidéo, visuels IA).
 
 ---
 
+## PATCH — piscine à débordement ✅ (2026-07-03, post-run)
+
+- `knowledge.ts` : « Piscine à débordement chauffée (mai-septembre),
+  terrasse ouest face à l'océan » ajoutée aux équipements de Maël.
+- `espaces.ts` : 6e espace « La piscine de l'horizon » / « The horizon
+  pool » (placeholder #1E3A33) — la section, le wipe et l'index 06 suivent
+  automatiquement (vérifié FR + EN au Playwright, `audits/patch-piscine.png`).
+- messages/*.json : AUCUNE clé à ajouter — les textes des espaces vivent
+  dans `espaces.ts` (bilingue) par conception (chantier 3) ; audit i18n
+  re-passé : zéro clé manquante. Penser au visuel IA de la piscine
+  (champ `image`) avec les autres.
+
+---
+
 ## AU RÉVEIL (mis à jour au fil des chantiers)
 - **Remote GitHub** : `gh` indisponible pendant le run → créer le repo et
   pousser : `gh repo create scospott/tideline --private --source=. --push`
