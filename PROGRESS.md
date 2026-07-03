@@ -494,6 +494,53 @@ documenté (frames vidéo, visuels IA).
 
 ---
 
+## PATCH — photos identifiées et branchées (galerie + espaces) ✅ (2026-07-04)
+
+Identification VISUELLE des 11 PNG UUID de public/gallery/ + 5 keyframes de
+bible/ (chaque image regardée une à une), optimisation JPEG q82 ≤2000px
+(~30 Mo PNG → 3,9 Mo JPEG), sources UUID déplacées vers bible/ (gitignoré).
+
+### Mapping retenu (image → slot)
+ESPACES : bible/3.png → verriere.jpg (salon cathédrale, cheminée suspendue,
+baie océan) · b8e7c8d5 → bain-nordique.jpg (bain bois fumant sous les pins)
+· 1896d19d → suite-falaise.jpg (lit lin face baie couchant) · abf86f57 →
+cuisine.jpg (îlot pierre, table pour dix) · 0fe29842 → sentier.jpg (marches
+dans la roche vers la crique) · bible/4.png → piscine.jpg (infinity pool
+dorée).
+GALERIE : bible/2.png → 01-seuil (porte ouverte contre-jour) · a8fbe905 →
+02-terrasse (loungers face couchant) · b6804183 → 03-matiere (macro
+calcaire/chêne/laiton, carré) · 33d7b7ff → 04-bain (portrait) · 5ce1dae1 →
+05-feu (portrait) · b1837c27 → 06-table · 78693f3a → 08-crique ·
+063c17c7 → 09-villa-mer.
+
+### Photos manquantes (placeholders conservés)
+- **07-pins** (sous-bois de pins doré) et **10-mer** (surface de mer aux
+  reflets dorés) : aucune source correcte — les mp4 de bible/ (s1/s2,
+  échantillonnés) ne montrent que la traversée cour→séjour. À générer.
+
+### Heroes & og
+- `heroes/reservation.jpg` : VÉRIFIÉ à l'œil — c'est bien la piscine/océan
+  golden hour (l'échec ffmpeg évoqué avait déjà été réparé, fichier daté du
+  même lot que home.jpg). `heroes/home.jpg` : vérifié = cour k0. Aucune
+  régénération nécessaire.
+- `og.jpg` : régénérée depuis la keyframe cour (bible/k0-cour.png) recadrée
+  1200×630 (fit cover). Branchement Metadata API inchangé (chemin /og.jpg).
+- Config heroes revérifiée : frameCount 162 = frames réelles, scrubVh 300,
+  fallbacks corrects.
+
+### Réalignement golden hour
+- `villa.title` : « La lisière, à l'heure dorée » / « The tideline, at
+  golden hour ».
+- 3 descriptions espaces réalignées (bain nordique « le soir qui descend »,
+  suite falaise « la lumière du soir sur le lin », cuisine « chêne clair »)
+  + EN adaptées. Parité de clés fr/en vérifiée (script, zéro écart).
+- QA `audits/galerie/` : hero 0/33/66/100 % desktop+mobile, espaces
+  (verrière/cuisine/piscine survolés), galerie mi-traversée, lightbox,
+  mobiles — la bascule placeholder → next/image (avec spotlight) constatée
+  sur chaque slot branché.
+
+---
+
 ## AU RÉVEIL (mis à jour au fil des chantiers)
 - **Remote GitHub** : `gh` indisponible pendant le run → créer le repo et
   pousser : `gh repo create scospott/tideline --private --source=. --push`
@@ -515,10 +562,10 @@ documenté (frames vidéo, visuels IA).
   l'étalonnage « blue hour » de la shot-list — des voiles de lisibilité ont
   été ajoutés à l'overlay ; si tu régénères en nocturne un jour, ils
   pourront s'alléger (page.tsx, deux div aria-hidden dans le hero).
-- **Visuels IA espaces + galerie** : exporter JPEG q82 ≤2000px vers
-  `public/espaces/` et `public/gallery/`, puis renseigner le champ `image`
-  dans `src/lib/espaces.ts` et `src/lib/gallery.ts` — les composants (y
-  compris le spotlight lanterne) basculent sur next/image sans refactor.
+- **Visuels IA espaces + galerie** : ✅ branchés (14 slots sur 16). Il ne
+  manque que **07-pins** (sous-bois doré) et **10-mer** (surface de mer,
+  reflets dorés) — générer, exporter JPEG q82 ≤2000px dans public/gallery/,
+  renseigner `image` dans `src/lib/gallery.ts`.
 - **Effets chantier 8** : les 6 flags de `src/lib/effects.ts` sont actifs,
   aucun effet dégradé ni coupé. À valider à l'œil sur machine réelle
   (l'audit headless ne juge pas la fluidité) : brume + lucioles des heros,

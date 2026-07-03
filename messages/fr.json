@@ -25,7 +25,7 @@
   },
   "villa": {
     "eyebrow": "La villa",
-    "title": "La lisière, à la nuit tombée",
+    "title": "La lisière, à l’heure dorée",
     "manifesto": "Il y a une ligne, quelque part entre le dernier pin et la première vague, où la forêt s’arrête de pousser et où l’océan commence à respirer. La villa est posée dessus. Côté ouest, le verre encadre le large. Côté est, le chêne s’ouvre sur la canopée. Entre les deux : un seuil, une maison, un silence.",
     "figures": {
       "rooms": { "value": "4", "label": "Chambres" },

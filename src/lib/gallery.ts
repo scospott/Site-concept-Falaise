@@ -1,6 +1,6 @@
-// Galerie « La dérive » — 10 visuels. `image` optionnel : une fois les
-// visuels IA exportés dans public/gallery/, renseigner le champ et le
-// composant bascule sur next/image sans autre changement.
+// Galerie « La dérive » — 10 visuels identifiés et branchés
+// (public/gallery/). 07-pins et 10-mer n'ont pas encore de visuel correct :
+// ils gardent leur aplat placeholder (voir PROGRESS « Photos manquantes »).
 
 export type GalleryFormat = "portrait" | "paysage" | "carre";
 
@@ -14,72 +14,76 @@ export type GalleryItem = {
 
 export const gallery: GalleryItem[] = [
   {
-    id: "verriere-crepuscule",
-    legende: {
-      fr: "La verrière au crépuscule",
-      en: "The glass hall at dusk",
-    },
+    id: "seuil",
+    legende: { fr: "Le seuil", en: "The threshold" },
     format: "paysage",
     couleur: "#1E3A33",
+    image: "/gallery/01-seuil.jpg",
   },
   {
-    id: "crique-maree-basse",
-    legende: { fr: "La crique à marée basse", en: "The cove at low tide" },
+    id: "terrasse-ouest",
+    legende: { fr: "La terrasse ouest", en: "The west terrace" },
     format: "paysage",
     couleur: "#16241D",
+    image: "/gallery/02-terrasse.jpg",
   },
   {
-    id: "brume-pins",
-    legende: { fr: "La brume dans les pins", en: "Mist through the pines" },
+    id: "matiere",
+    legende: { fr: "Calcaire et chêne", en: "Limestone and oak" },
+    format: "carre",
+    couleur: "#8C7355",
+    image: "/gallery/03-matiere.jpg",
+  },
+  {
+    id: "baignoire-pins",
+    legende: {
+      fr: "La baignoire face aux pins",
+      en: "The bath among the pines",
+    },
     format: "portrait",
     couleur: "#182A20",
-  },
-  {
-    id: "facade-ouest",
-    legende: { fr: "La façade ouest", en: "The west face" },
-    format: "paysage",
-    couleur: "#22302A",
-  },
-  {
-    id: "table-de-nuit",
-    legende: { fr: "La table de nuit", en: "The night table" },
-    format: "carre",
-    couleur: "#2A2420",
-  },
-  {
-    id: "bain-etoiles",
-    legende: {
-      fr: "Le bain sous les étoiles",
-      en: "The bath under the stars",
-    },
-    format: "paysage",
-    couleur: "#16211B",
-  },
-  {
-    id: "suite-aube",
-    legende: { fr: "La suite à l’aube", en: "The suite at dawn" },
-    format: "portrait",
-    couleur: "#22302A",
-  },
-  {
-    id: "sentier",
-    legende: { fr: "Le sentier", en: "The path" },
-    format: "portrait",
-    couleur: "#1E3A33",
+    image: "/gallery/04-bain.jpg",
   },
   {
     id: "feu",
     legende: { fr: "Le feu", en: "The fire" },
-    format: "carre",
-    couleur: "#8C7355",
+    format: "portrait",
+    couleur: "#2A2420",
+    image: "/gallery/05-feu.jpg",
   },
   {
-    id: "lisiere-large",
-    legende: {
-      fr: "La lisière vue du large",
-      en: "The tideline from the open sea",
-    },
+    id: "table-du-soir",
+    legende: { fr: "La table du soir", en: "The evening table" },
+    format: "paysage",
+    couleur: "#16211B",
+    image: "/gallery/06-table.jpg",
+  },
+  {
+    id: "pins-dores",
+    legende: { fr: "Les pins dorés", en: "Golden pines" },
+    format: "portrait",
+    couleur: "#1E3A33",
+    // Visuel manquant — placeholder conservé
+  },
+  {
+    id: "crique",
+    legende: { fr: "La crique", en: "The cove" },
+    format: "paysage",
+    couleur: "#22302A",
+    image: "/gallery/08-crique.jpg",
+  },
+  {
+    id: "villa-mer",
+    legende: { fr: "La villa, vue du large", en: "The villa from the sea" },
     format: "paysage",
     couleur: "#16241D",
+    image: "/gallery/09-villa-mer.jpg",
+  },
+  {
+    id: "mer-scintillante",
+    legende: { fr: "La mer scintillante", en: "The glittering sea" },
+    format: "paysage",
+    couleur: "#16211B",
+    // Visuel manquant — placeholder conservé
   },
 ];
