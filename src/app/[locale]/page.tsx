@@ -2,6 +2,8 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import Button from "@/components/Button";
 import Eyebrow from "@/components/Eyebrow";
 import ScrollHero from "@/components/ScrollHero";
+import Manifeste from "@/components/sections/Manifeste";
+import Espaces from "@/components/sections/Espaces";
 
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const { locale } = await params;
@@ -29,10 +31,11 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
         </div>
       </ScrollHero>
 
+      <Manifeste />
+      <Espaces />
+
       {/*
         Sections à venir :
-        - #villa    : manifeste lumineux + chiffres clés (chantier 3)
-        - #espaces  : les espaces (chantier 3)
         - #galerie  : galerie « La dérive » (chantier 4)
         - #avis     : ce qu'ils en disent (chantier 4)
         - #hote     : demandez à Maël (chantier 5)

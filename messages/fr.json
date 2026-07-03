@@ -2,7 +2,7 @@
   "metadata": {
     "title": "Tideline — Where the sea meets the forest",
     "template": "%s — Tideline",
-    "description": "Villa de luxe posée sur la lisière, entre l'océan et la forêt. Quatre chambres, une falaise privée, un silence. Site concept ScottLab.",
+    "description": "Villa de luxe posée sur la lisière, entre l’océan et la forêt. Quatre chambres, une falaise privée, un silence. Site concept ScottLab.",
     "reservation": {
       "title": "Réserver",
       "description": "Vos nuits sur la lisière — disponibilités et demande de réservation de la villa Tideline. Site concept ScottLab."
@@ -23,12 +23,28 @@
     "ctaPrimary": "Réserver un séjour",
     "ctaSecondary": "Découvrir la villa"
   },
+  "villa": {
+    "eyebrow": "La villa",
+    "title": "La lisière, à la nuit tombée",
+    "manifesto": "Il y a une ligne, quelque part entre le dernier pin et la première vague, où la forêt s’arrête de pousser et où l’océan commence à respirer. La villa est posée dessus. Côté ouest, le verre encadre le large. Côté est, le chêne s’ouvre sur la canopée. Entre les deux : un seuil, une maison, un silence.",
+    "figures": {
+      "rooms": { "value": "4", "label": "Chambres" },
+      "surface": { "value": "320", "label": "m² habitables" },
+      "sleeps": { "value": "10", "label": "Couchages" },
+      "cliff": { "value": "Falaise", "label": "Privée" }
+    }
+  },
+  "espaces": {
+    "eyebrow": "Les espaces",
+    "title": "La villa, pièce par pièce",
+    "visualLabel": "Visuel IA"
+  },
   "reservation": {
     "eyebrow": "Réserver",
     "title": "Vos nuits sur la lisière"
   },
   "footer": {
-    "baseline": "Une villa entre l'océan et la forêt, quelque part sur la côte sauvage.",
+    "baseline": "Une villa entre l’océan et la forêt, quelque part sur la côte sauvage.",
     "explore": "Explorer",
     "practical": "Séjour",
     "checkin": "Arrivée à partir de 16 h",

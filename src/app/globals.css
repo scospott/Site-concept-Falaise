@@ -93,3 +93,18 @@
     animation: none;
   }
 }
+
+/* Manifeste lumineux — état éteint (galet), allumé par GSAP au scroll.
+   reduced-motion : texte allumé d'emblée, aucune animation. */
+.manifeste-word {
+  color: #3e4a42;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .manifeste-word {
+    color: var(--color-ecru);
+  }
+  .manifeste-word[data-accent] {
+    color: var(--color-ecume);
+  }
+}

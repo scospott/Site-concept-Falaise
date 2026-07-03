@@ -121,6 +121,45 @@ frame-0001, aucune boucle d'erreur).
 
 ---
 
+## CHANTIER 3 — Manifeste lumineux + Les espaces ✅ (2026-07-03)
+
+**Statut : terminé.** tsc OK, build vert, audit Playwright
+(`audits/chantier-3/` : mi-allumage, chiffres clés, espaces défaut/hover ×2,
+mobile full).
+
+### Livré
+- Section `#villa` (`sections/Manifeste.tsx`) : manifeste Bodoni
+  clamp(1.4→2rem) lh 1.5 max-w 28ch, split MANUEL en spans (choix permis par
+  le cahier : texte intact au SSR + gestion fiable des mots-clés accentués et
+  élisions « l’océan ») ; chaque mot passe de galet #3E4A42 à écru sur une
+  timeline `scrub: true` liée à la traversée (stagger séquentiel), mots-clés
+  forêt/océan/seuil (fr) et forest/ocean/threshold (en) allumés en écume.
+  Chiffres clés 4 · 320 m² · 10 · Falaise privée en Bodoni 26px + libellés
+  eyebrow + filets verticaux tracés en scaleY (origin top) au reveal.
+- Section `#espaces` (`sections/Espaces.tsx`) + data `lib/espaces.ts`
+  (5 espaces bilingues, couleur placeholder, champ `image?` prêt pour le
+  branchement des visuels IA sans refactor). Desktop ≥1024 : liste Bodoni
+  éteinte écru/45 → hover/focus/clic = écru plein + translateX(8px) + index
+  01-05 écume ; panneau sticky révélé par wipe clip-path (inset vertical,
+  0.6s expo.out, gestion z-index incrémentale pour les wipes successifs),
+  description en fondu dessous ; premier item actif par défaut ; clavier =
+  hover (onFocus). Mobile : cartes empilées avec `<Reveal>`, pas de sticky.
+- reduced-motion : manifeste rendu allumé d'emblée (CSS média query sur
+  `.manifeste-word`), wipes remplacés par un set immédiat.
+
+### Décisions
+- Titre de la section espaces non spécifié par le cahier → « La villa,
+  pièce par pièce » / « The villa, room by room » ; eyebrow « Les espaces »
+  / « The spaces ».
+- Apostrophes typographiques (’) appliquées aux contenus FR.
+- Libellé chiffre 4 : « Falaise / Privée » (valeur Bodoni + libellé eyebrow)
+  pour garder le rythme des 4 items.
+
+### Dette
+- Aucune. Champ `image` des espaces en attente des visuels IA (côté Scott).
+
+---
+
 ## AU RÉVEIL (mis à jour au fil des chantiers)
 - **Remote GitHub** : `gh` indisponible pendant le run → créer le repo et
   pousser : `gh repo create scospott/tideline --private --source=. --push`
