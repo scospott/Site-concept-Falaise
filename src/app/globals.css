@@ -94,6 +94,85 @@
   }
 }
 
+/* Parcours de réservation */
+
+/* Jour occupé : galet barré d'une fine diagonale */
+.cal-booked {
+  background-image: linear-gradient(
+    to top right,
+    transparent 47.5%,
+    #3e4a42 47.5%,
+    #3e4a42 52.5%,
+    transparent 52.5%
+  );
+}
+
+/* Remplissage du range en cascade */
+@keyframes cal-range-in {
+  from {
+    background-color: transparent;
+  }
+  to {
+    background-color: color-mix(in srgb, var(--color-ecume) 15%, transparent);
+  }
+}
+
+.cal-range {
+  animation: cal-range-in 0.4s ease-out both;
+}
+
+/* Transition d'étape : fade + translateY léger */
+@keyframes step-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.step-enter {
+  animation: step-in 0.45s var(--ease-luxe) both;
+}
+
+/* Confirmation : coche qui se dessine */
+.confirm-check circle,
+.confirm-check path {
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  animation: confirm-draw 0.9s var(--ease-luxe) forwards;
+}
+
+.confirm-check path {
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+  animation-delay: 0.55s;
+  animation-duration: 0.5s;
+}
+
+@keyframes confirm-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cal-range,
+  .step-enter {
+    animation: none;
+  }
+  .cal-range {
+    background-color: color-mix(in srgb, var(--color-ecume) 15%, transparent);
+  }
+  .confirm-check circle,
+  .confirm-check path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+}
+
 /* Chat Maël — indicateur de frappe + rendu markdown des réponses */
 @keyframes chat-typing-pulse {
   0%,

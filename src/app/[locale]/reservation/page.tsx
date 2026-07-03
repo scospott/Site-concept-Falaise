@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import Eyebrow from "@/components/Eyebrow";
 import ScrollHero from "@/components/ScrollHero";
+import Parcours from "@/components/booking/Parcours";
 
 export async function generateMetadata({
   params,
@@ -30,7 +31,9 @@ export default async function ReservationPage({
         </div>
       </ScrollHero>
 
-      {/* Contenu à venir : calendrier + parcours de réservation (chantier 6) */}
+      <div className="pt-20 md:pt-28">
+        <Parcours />
+      </div>
     </main>
   );
 }

@@ -247,6 +247,54 @@ desktop/réservation/mobile).
 
 ---
 
+## CHANTIER 6 — Réservation : calendrier + parcours 4 étapes ✅ (2026-07-03)
+
+**Statut : terminé.** tsc OK, build vert, parcours joué de bout en bout au
+Playwright (`audits/chantier-6/`) : haute saison min 3 nuits vérifié
+(tooltip capturé), calcul exact contrôlé programmatiquement
+(3 × 1 900 = 5 700 € + ménage 250 € + taxe 2,50 × 3 nuits × 3 adultes =
+22,50 € → total 5 972,50 €), erreurs formulaire, confirmation TDL-2026-XXXX,
+calendrier mobile 390px + carte récap repliable.
+
+### Livré
+- `lib/pricing.ts` : saisons (juin-sept 1 900 €/min 3 nuits/60 % ; oct-mai
+  1 100 €/min 2 nuits/25 %), ménage 250 €, taxe 2,50 €/nuit/adulte,
+  `isBooked(dateISO)` par hash de chaîne PUR et déterministe (zéro
+  Math.random au render), fenêtre demain → +6 mois, `quote()`, formatage
+  Intl.NumberFormat fr-FR / en-GB.
+- `booking/Calendrier.tsx` (custom, aucune librairie) : 2 mois côte à côte
+  desktop / 1 mobile, navigation bornée sur la fenêtre glissante, états
+  complets (passé éteint, occupé galet barré diagonale non cliquable,
+  disponible sousbois hover filet écume, début/fin écume/nuit, range
+  écume/15 rempli en cascade avec délais), tooltip « Minimum X nuits »
+  au hover ET au clic invalide, sélection début→fin avec re-clic pour
+  recommencer, tarif de la saison affichée + légende.
+- `booking/Parcours.tsx` : barre de progression 4 segments (retour possible
+  par clic sur les étapes passées, sans perte de données), étapes Dates /
+  Voyageurs (steppers 1-10 adultes, 0-8 enfants, total ≤ 10, mention lit
+  bébé) / Récapitulatif (lignes + total Bodoni 32px) / Coordonnées
+  (validation client, erreurs en bois #8C7355 — pas de rouge criard).
+  Desktop : carte récap sticky à droite dès l'étape 1, mise à jour continue,
+  ring écume à l'étape 3. Mobile : carte repliable fixée en bas (total
+  toujours visible, dégagée de la bulle Maël). Envoi simulé 1 200 ms →
+  confirmation avec coche SVG qui se dessine (stroke-dashoffset), numéro
+  TDL-2026-XXXX dérivé du timestamp, récap, « sous 24 h », mention démo
+  encadrée. AUCUN appel réseau réel.
+- Piège hydration neutralisé : le parcours se rend après mount (skeleton
+  avant), les bornes de dates dépendant du jour réel.
+
+### Décisions
+- Une plage qui traverse une nuit occupée redémarre la sélection sur le
+  jour cliqué (UX calendrier standard) ; le minimum de nuits affiche le
+  tooltip sans rien sélectionner.
+- Adultes par défaut : 2. Transitions d'étape par remontage animé
+  (fade + translateY 0.45s) — pas de display:none pendant l'animation.
+
+### Dette
+- Aucune.
+
+---
+
 ## AU RÉVEIL (mis à jour au fil des chantiers)
 - **Remote GitHub** : `gh` indisponible pendant le run → créer le repo et
   pousser : `gh repo create scospott/tideline --private --source=. --push`

@@ -79,6 +79,75 @@
     "eyebrow": "Book",
     "title": "Your nights on the tideline"
   },
+  "booking": {
+    "steps": {
+      "dates": "Dates",
+      "guests": "Guests",
+      "summary": "Summary",
+      "details": "Details"
+    },
+    "stepLabel": "Step {current} of {total}",
+    "calendar": {
+      "prevMonth": "Previous month",
+      "nextMonth": "Next month",
+      "legendAvailable": "Available",
+      "legendBooked": "Booked",
+      "legendSelected": "Your stay",
+      "minNights": "Minimum {n} nights",
+      "seasonHaute": "High season · June – September · {price}/night · 3-night minimum",
+      "seasonBasse": "Low season · October – May · {price}/night · 2-night minimum",
+      "selectPrompt": "Pick your arrival date",
+      "selectEnd": "Pick your departure date",
+      "nightsSelected": "{n, plural, one {# night} other {# nights}} selected"
+    },
+    "guests": {
+      "adults": "Adults",
+      "adultsHint": "Ages 13 and up",
+      "children": "Children",
+      "childrenHint": "Ages 2 to 12",
+      "capacity": "Sleeps 10 at most",
+      "crib": "Cot and high chair available on request.",
+      "decrease": "Remove",
+      "increase": "Add"
+    },
+    "summary": {
+      "title": "Your stay",
+      "arrival": "Check-in",
+      "departure": "Check-out",
+      "travellers": "{adults, plural, one {# adult} other {# adults}}{children, plural, =0 {} one { · # child} other { · # children}}",
+      "nightsLine": "{n, plural, one {# night} other {# nights}} × {price}",
+      "cleaning": "Cleaning fee",
+      "touristTax": "Tourist tax",
+      "touristTaxHint": "€2.50 / night / adult",
+      "total": "Total",
+      "empty": "Select your dates to see the breakdown.",
+      "show": "Show summary",
+      "hide": "Hide summary"
+    },
+    "form": {
+      "name": "Full name",
+      "email": "Email",
+      "phone": "Phone",
+      "message": "Message (optional)",
+      "messagePlaceholder": "A question, a special request…",
+      "required": "This field is required",
+      "invalidEmail": "This email address looks invalid",
+      "invalidPhone": "This number looks invalid"
+    },
+    "nav": {
+      "back": "Back",
+      "next": "Continue",
+      "submit": "Send request",
+      "sending": "Sending…"
+    },
+    "confirmation": {
+      "title": "Request sent",
+      "reference": "Request no. {ref}",
+      "reply": "We will reply within 24 hours at the address provided.",
+      "demo": "Demo — no payment, no real booking. ScottLab concept site.",
+      "newRequest": "New request"
+    }
+  },
   "footer": {
     "baseline": "A villa between the ocean and the forest, somewhere on the wild coast.",
     "explore": "Explore",

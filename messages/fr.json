@@ -79,6 +79,75 @@
     "eyebrow": "Réserver",
     "title": "Vos nuits sur la lisière"
   },
+  "booking": {
+    "steps": {
+      "dates": "Dates",
+      "guests": "Voyageurs",
+      "summary": "Récapitulatif",
+      "details": "Coordonnées"
+    },
+    "stepLabel": "Étape {current} sur {total}",
+    "calendar": {
+      "prevMonth": "Mois précédent",
+      "nextMonth": "Mois suivant",
+      "legendAvailable": "Disponible",
+      "legendBooked": "Occupé",
+      "legendSelected": "Votre séjour",
+      "minNights": "Minimum {n} nuits",
+      "seasonHaute": "Haute saison · juin – septembre · {price}/nuit · min. 3 nuits",
+      "seasonBasse": "Basse saison · octobre – mai · {price}/nuit · min. 2 nuits",
+      "selectPrompt": "Choisissez votre date d’arrivée",
+      "selectEnd": "Choisissez votre date de départ",
+      "nightsSelected": "{n, plural, one {# nuit} other {# nuits}} sélectionnées"
+    },
+    "guests": {
+      "adults": "Adultes",
+      "adultsHint": "13 ans et plus",
+      "children": "Enfants",
+      "childrenHint": "2 à 12 ans",
+      "capacity": "10 couchages maximum",
+      "crib": "Lit bébé et chaise haute disponibles sur demande.",
+      "decrease": "Retirer",
+      "increase": "Ajouter"
+    },
+    "summary": {
+      "title": "Votre séjour",
+      "arrival": "Arrivée",
+      "departure": "Départ",
+      "travellers": "{adults, plural, one {# adulte} other {# adultes}}{children, plural, =0 {} one { · # enfant} other { · # enfants}}",
+      "nightsLine": "{n, plural, one {# nuit} other {# nuits}} × {price}",
+      "cleaning": "Frais de ménage",
+      "touristTax": "Taxe de séjour",
+      "touristTaxHint": "2,50 € / nuit / adulte",
+      "total": "Total",
+      "empty": "Sélectionnez vos dates pour voir le détail.",
+      "show": "Voir le récapitulatif",
+      "hide": "Masquer le récapitulatif"
+    },
+    "form": {
+      "name": "Nom complet",
+      "email": "Email",
+      "phone": "Téléphone",
+      "message": "Message (optionnel)",
+      "messagePlaceholder": "Une question, une demande particulière…",
+      "required": "Ce champ est requis",
+      "invalidEmail": "Cette adresse email semble invalide",
+      "invalidPhone": "Ce numéro semble invalide"
+    },
+    "nav": {
+      "back": "Retour",
+      "next": "Continuer",
+      "submit": "Envoyer la demande",
+      "sending": "Envoi en cours…"
+    },
+    "confirmation": {
+      "title": "Demande envoyée",
+      "reference": "Demande n° {ref}",
+      "reply": "Nous vous répondons sous 24 h à l’adresse indiquée.",
+      "demo": "Démonstration — aucun paiement, aucune réservation réelle. Site concept ScottLab.",
+      "newRequest": "Nouvelle demande"
+    }
+  },
   "footer": {
     "baseline": "Une villa entre l’océan et la forêt, quelque part sur la côte sauvage.",
     "explore": "Explorer",
