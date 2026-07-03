@@ -1,5 +1,10 @@
+import type { Metadata } from "next";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { getMessages, setRequestLocale } from "next-intl/server";
+import {
+  getMessages,
+  getTranslations,
+  setRequestLocale,
+} from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { bodoni, instrument } from "@/lib/fonts";
@@ -13,6 +18,37 @@ export function generateStaticParams() {
 }
 
 export const dynamicParams = false;
+
+export async function generateMetadata({
+  params,
+}: Omit<LayoutProps<"/[locale]">, "children">): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "metadata" });
+  return {
+    metadataBase: new URL("https://tideline.scottlab.app"),
+    title: {
+      default: t("title"),
+      template: t("template"),
+    },
+    description: t("description"),
+    icons: {
+      icon: "/favicon.png",
+    },
+    openGraph: {
+      siteName: "Tideline",
+      type: "website",
+      locale: locale === "fr" ? "fr_FR" : "en_US",
+      images: [
+        {
+          url: "/og.jpg",
+          width: 1200,
+          height: 630,
+          alt: "Tideline — Where the sea meets the forest",
+        },
+      ],
+    },
+  };
+}
 
 export default async function LocaleLayout({
   children,
