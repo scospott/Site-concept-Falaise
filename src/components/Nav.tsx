@@ -95,7 +95,7 @@ export default function Nav() {
         <Link
           href="/"
           aria-label={t("home")}
-          className="font-display text-xl tracking-wide text-ecru transition-colors duration-300 hover:text-ecume"
+          className="relative z-50 font-display text-xl tracking-wide text-ecru transition-colors duration-300 hover:text-ecume"
         >
           Tideline
         </Link>
