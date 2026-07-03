@@ -8,6 +8,7 @@ import Espaces from "@/components/sections/Espaces";
 import Galerie from "@/components/sections/Galerie";
 import Avis from "@/components/sections/Avis";
 import Hote from "@/components/sections/Hote";
+import HeroTitleReveal from "@/components/effects/HeroTitleReveal";
 
 export async function generateMetadata({
   params,
@@ -29,22 +30,35 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
   return (
     <main>
       <ScrollHero slot="home">
-        <div className="flex h-full flex-col items-center justify-center px-6 pt-16 text-center">
-          <Eyebrow>{t("eyebrow")}</Eyebrow>
-          <h1 className="display-xl mt-6 text-ecru">
-            {t.rich("title", {
-              i: (chunks) => <em>{chunks}</em>,
-              br: () => <br />,
-            })}
-          </h1>
-          <p className="mt-6 max-w-md text-ecru/70">{t("baseline")}</p>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <Button href="/reservation">{t("ctaPrimary")}</Button>
-            <Button href="#villa" variant="ghost">
-              {t("ctaSecondary")}
-            </Button>
+        <HeroTitleReveal>
+          <div className="flex h-full flex-col items-center justify-center px-6 pt-16 text-center">
+            <div data-hero-fade>
+              <Eyebrow>{t("eyebrow")}</Eyebrow>
+            </div>
+            <h1 className="display-xl mt-6 text-ecru">
+              {t.rich("title", {
+                i: (chunks) => <em>{chunks}</em>,
+                l: (chunks) => (
+                  <span data-hero-line className="block">
+                    {chunks}
+                  </span>
+                ),
+              })}
+            </h1>
+            <p data-hero-fade className="mt-6 max-w-md text-ecru/70">
+              {t("baseline")}
+            </p>
+            <div
+              data-hero-fade
+              className="mt-10 flex flex-wrap items-center justify-center gap-4"
+            >
+              <Button href="/reservation">{t("ctaPrimary")}</Button>
+              <Button href="#villa" variant="ghost">
+                {t("ctaSecondary")}
+              </Button>
+            </div>
           </div>
-        </div>
+        </HeroTitleReveal>
       </ScrollHero>
 
       <Manifeste />
