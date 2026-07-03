@@ -77,6 +77,50 @@ audit visuel Playwright fait (10 captures dans `audits/chantier-1/`).
 
 ---
 
+## CHANTIER 2 — ScrollHero scroll-scrubbed (2 slots) ✅ (2026-07-03)
+
+**Statut : terminé.** tsc OK, build vert, audit Playwright
+(`audits/chantier-2/` : initial / mi-scrub / sortie de pin × desktop/mobile
+× 2 pages) + vérification console (une seule 404 attendue : le probe de
+frame-0001, aucune boucle d'erreur).
+
+### Livré
+- `src/lib/heroes.ts` : manifest des 2 slots (framesPath, framePattern
+  `frame-%04d.webp`, frameCount provisoire 240/168, fallbackSrc, scrubVh
+  260/160) + helper `frameUrl`.
+- `src/components/ScrollHero.tsx` : section pinnée h-svh, ScrollTrigger
+  `pin + scrub:true + anticipatePin + invalidateOnRefresh`, canvas cover
+  (ratio préservé, crop centré, DPR cap 2, redraw au resize), préchargement
+  frame 0001 puis lots de 20 en tâche de fond, dessin de la frame chargée la
+  plus proche (pas de trou noir), fade-out overlay + translateY(-24) sur les
+  premiers 15 % du scrub piloté par onUpdate (pas de 2e ScrollTrigger sur la
+  section pinnée), indicateur ligne écume pulsante (CSS keyframes) masqué dès
+  2 % de scrub, fallback next/image plein écran si frame 0001 absente.
+- Poster/LCP : le fallback est TOUJOURS rendu sous le canvas
+  (`loading="eager"` + `fetchPriority="high"` — `priority` est déprécié en
+  Next 16) → zéro flash, LCP garanti dans les deux modes.
+- reduced-motion : ni pin ni scrub ni chargement de frames — fallback
+  statique + overlay fixe, indicateur caché.
+- Fallbacks générés (`scripts/generate-hero-fallbacks.mjs`, sharp 1920×1080) :
+  aplats #0D1511→#16241D + halo discret + ForestLine.
+- Intégration : accueil (même overlay qu'au chantier 1) et /reservation
+  (« Vos nuits sur la lisière » / « Your nights on the tideline »).
+
+### Décisions
+- La détection frames/fallback se fait par UN probe JS de la frame 0001 :
+  une unique 404 en console tant que les frames n'existent pas — c'est le
+  mécanisme prévu par le cahier des charges (« si la frame 0001 renvoie
+  404 »), impossible à détecter sans requête.
+- frameCount provisoires (240 home / 168 reservation) alignés sur la
+  recommandation shot-list (150-240) — à remplacer par les valeurs exactes.
+
+### Dette
+- Quand les vraies frames seront là : penser à remplacer aussi
+  `fallbackSrc` par une vraie frame fixe (poster plus fidèle), en plus de
+  `frameCount`.
+
+---
+
 ## AU RÉVEIL (mis à jour au fil des chantiers)
 - **Remote GitHub** : `gh` indisponible pendant le run → créer le repo et
   pousser : `gh repo create scospott/tideline --private --source=. --push`

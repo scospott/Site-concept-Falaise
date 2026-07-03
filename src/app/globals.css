@@ -69,3 +69,27 @@
   font-size: 0.96875rem; /* 15.5px */
   line-height: 1.7;
 }
+
+/* Indicateur de scroll des heros — pulse doux */
+@keyframes hero-hint-pulse {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scaleY(0.65);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scaleY(1);
+  }
+}
+
+.hero-scroll-hint {
+  transform-origin: top;
+  animation: hero-hint-pulse 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-scroll-hint {
+    animation: none;
+  }
+}

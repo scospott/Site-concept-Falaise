@@ -1,7 +1,7 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import Button from "@/components/Button";
 import Eyebrow from "@/components/Eyebrow";
-import ForestLine from "@/components/ForestLine";
+import ScrollHero from "@/components/ScrollHero";
 
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const { locale } = await params;
@@ -10,13 +10,8 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
 
   return (
     <main>
-      {/* Hero statique placeholder — remplacé par <ScrollHero slot="home"> au chantier 2 */}
-      <section className="relative flex min-h-svh flex-col items-center justify-center overflow-hidden text-center">
-        <div
-          aria-hidden
-          className="absolute inset-0 bg-[linear-gradient(to_bottom,#101914_0%,#121c16_55%,#1a2a22_86%,#101914_100%)]"
-        />
-        <div className="relative z-10 flex max-w-3xl flex-col items-center px-6 pt-16">
+      <ScrollHero slot="home">
+        <div className="flex h-full flex-col items-center justify-center px-6 pt-16 text-center">
           <Eyebrow>{t("eyebrow")}</Eyebrow>
           <h1 className="display-xl mt-6 text-ecru">
             {t.rich("title", {
@@ -32,8 +27,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             </Button>
           </div>
         </div>
-        <ForestLine className="absolute bottom-0 left-0 h-20 w-full text-[#0b120e] md:h-28" />
-      </section>
+      </ScrollHero>
 
       {/*
         Sections à venir :
