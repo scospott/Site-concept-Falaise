@@ -39,6 +39,24 @@
     "title": "The villa, room by room",
     "visualLabel": "AI visual"
   },
+  "galerie": {
+    "eyebrow": "Gallery",
+    "title": "The drift",
+    "hint": "Scroll — the coast drifts by",
+    "figure": "fig.",
+    "lightboxClose": "Close",
+    "lightboxOpen": "Enlarge {legende}"
+  },
+  "avis": {
+    "eyebrow": "Reviews",
+    "title": "What they say",
+    "note": "4.96",
+    "stays": "87 stays",
+    "badge": "Guests' favourite",
+    "stars": "5 out of 5 stars",
+    "prev": "Previous reviews",
+    "next": "Next reviews"
+  },
   "reservation": {
     "eyebrow": "Book",
     "title": "Your nights on the tideline"

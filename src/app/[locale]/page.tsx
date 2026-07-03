@@ -4,6 +4,8 @@ import Eyebrow from "@/components/Eyebrow";
 import ScrollHero from "@/components/ScrollHero";
 import Manifeste from "@/components/sections/Manifeste";
 import Espaces from "@/components/sections/Espaces";
+import Galerie from "@/components/sections/Galerie";
+import Avis from "@/components/sections/Avis";
 
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const { locale } = await params;
@@ -33,12 +35,12 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
 
       <Manifeste />
       <Espaces />
+      <Galerie />
+      <Avis />
 
       {/*
-        Sections à venir :
-        - #galerie  : galerie « La dérive » (chantier 4)
-        - #avis     : ce qu'ils en disent (chantier 4)
-        - #hote     : demandez à Maël (chantier 5)
+        Section à venir :
+        - #hote : demandez à Maël (chantier 5)
       */}
     </main>
   );

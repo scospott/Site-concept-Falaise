@@ -160,6 +160,47 @@ mobile full).
 
 ---
 
+## CHANTIER 4 — Galerie horizontale + Avis ✅ (2026-07-03)
+
+**Statut : terminé.** tsc OK, build vert, audit Playwright
+(`audits/chantier-4/` : mi-traversée, sortie de pin, lightbox desktop+mobile,
+avis desktop + après flèche, mobiles).
+
+### Livré
+- `lib/gallery.ts` : 10 items bilingues (formats portrait/paysage/carré,
+  couleurs déclinées de la palette, champ `image?` prêt à brancher).
+- Section `#galerie` (`sections/Galerie.tsx`) : desktop = section pinnée
+  h-svh, translateX scrubbed sur la piste (distance = scrollWidth −
+  innerWidth, invalidateOnRefresh), formats et hauteurs variés (300-460px) +
+  décalages verticaux — rythme de rivage ; micro-parallaxe interne ±4 % par
+  item via `containerAnimation` ; légendes 11px écume. Mobile ET desktop
+  reduced-motion : grille 2 colonnes rythmée (variantes Tailwind
+  motion-safe/motion-reduce), reveals au scroll. Lightbox commune :
+  overlay nuit/95, fermeture Esc/clic/bouton, focus trap simple,
+  fade+scale 0.3s, **portalisée dans body** (obligatoire : la section pinnée
+  est transformée, un fixed y serait piégé), lenis stoppé + data-lenis-prevent.
+- `lib/avis.ts` : 6 avis fictifs dans leur langue d'origine (attribut `lang`
+  posé sur chaque blockquote), villes traduites.
+- Section `#avis` (`sections/Avis.tsx`) : bandeau 4,96 Bodoni 56px + 5
+  étoiles SVG écume + « 87 séjours » + badge pill « Coup de cœur voyageurs »
+  (identité Tideline, pas de copie Airbnb) ; cartes sousbois/filet/10px,
+  pastille initiales écume/nuit, hover translateY(-3px) + filet écume/45.
+  Desktop : drag inertiel GSAP Draggable + InertiaPlugin (gratuits depuis
+  GSAP 3.13) + flèches ghost + fine ligne de progression écume ; bounds
+  recalculées au resize. Mobile + reduced-motion : scroll-snap natif.
+
+### Décisions
+- Draggable+InertiaPlugin GSAP plutôt qu'une réimplémentation maison du
+  drag : pattern éprouvé équivalent à celui du repo Solidor (inaccessible
+  pendant ce run), re-skinné DA Nocturne.
+- Formats galerie assignés d'après la shot-list (portraits : brume dans les
+  pins, suite à l'aube, sentier).
+
+### Dette
+- Aucune. Champ `image` en attente des visuels IA.
+
+---
+
 ## AU RÉVEIL (mis à jour au fil des chantiers)
 - **Remote GitHub** : `gh` indisponible pendant le run → créer le repo et
   pousser : `gh repo create scospott/tideline --private --source=. --push`

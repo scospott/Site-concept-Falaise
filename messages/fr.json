@@ -39,6 +39,24 @@
     "title": "La villa, pièce par pièce",
     "visualLabel": "Visuel IA"
   },
+  "galerie": {
+    "eyebrow": "Galerie",
+    "title": "La dérive",
+    "hint": "Scrollez — la côte défile",
+    "figure": "fig.",
+    "lightboxClose": "Fermer",
+    "lightboxOpen": "Agrandir {legende}"
+  },
+  "avis": {
+    "eyebrow": "Avis",
+    "title": "Ce qu’ils en disent",
+    "note": "4,96",
+    "stays": "87 séjours",
+    "badge": "Coup de cœur voyageurs",
+    "stars": "5 étoiles sur 5",
+    "prev": "Avis précédents",
+    "next": "Avis suivants"
+  },
   "reservation": {
     "eyebrow": "Réserver",
     "title": "Vos nuits sur la lisière"
