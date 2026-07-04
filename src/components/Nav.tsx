@@ -67,17 +67,33 @@ export default function Nav() {
 
   const otherLocale = routing.locales.find((l) => l !== locale) ?? "en";
 
+  // Sur les heros vidéo (accueil + réservation), la nav transparente passe
+  // en crème ombré ; partout ailleurs (styleguide, 404) elle reste solide.
+  const hasHero = pathname === "/" || pathname === "/reservation";
+  const onHero = hasHero && !scrolled && !open;
+
   const localeSwitch = (tabbable: boolean) => (
-    <span className="flex items-center gap-1.5 text-xs tracking-[0.15em]">
-      <span aria-current="true" className="text-pin">
+    <span
+      className={`flex items-center gap-1.5 text-xs tracking-[0.15em] ${
+        onHero ? "nav-hero-shadow" : ""
+      }`}
+    >
+      <span
+        aria-current="true"
+        className={onHero ? "text-creme" : "text-pin"}
+      >
         {locale.toUpperCase()}
       </span>
-      <span className="text-encre/30">·</span>
+      <span className={onHero ? "text-creme/40" : "text-encre/30"}>·</span>
       <Link
         href={pathname}
         locale={otherLocale}
         tabIndex={tabbable ? 0 : -1}
-        className="-m-2 inline-flex p-2 text-encre/50 transition-colors duration-300 hover:text-encre"
+        className={`-m-2 inline-flex p-2 transition-colors duration-300 ${
+          onHero
+            ? "text-creme/60 hover:text-creme"
+            : "text-encre/50 hover:text-encre"
+        }`}
       >
         {otherLocale.toUpperCase()}
       </Link>
@@ -87,9 +103,9 @@ export default function Nav() {
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-500 ${
-        scrolled || open
-          ? "border-filet bg-calcaire"
-          : "border-transparent bg-transparent"
+        onHero
+          ? "border-transparent bg-transparent"
+          : "border-filet bg-calcaire/95 backdrop-blur"
       }`}
     >
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 md:h-20 md:px-10">
@@ -97,7 +113,11 @@ export default function Nav() {
           href="/"
           aria-label={t("home")}
           data-cursor="link"
-          className="relative z-50 font-display text-xl tracking-wide text-encre transition-colors duration-300 hover:text-pin"
+          className={`relative z-50 font-display text-xl tracking-wide transition-colors duration-300 ${
+            onHero
+              ? "nav-hero-shadow text-creme hover:text-creme/80"
+              : "text-encre hover:text-pin"
+          }`}
         >
           Tideline
         </Link>
@@ -115,9 +135,11 @@ export default function Nav() {
                       : undefined
                   }
                   className={`transition-colors duration-300 ${
-                    link.key === "reserver"
-                      ? "text-pin hover:text-encre"
-                      : "text-encre/80 hover:text-pin"
+                    onHero
+                      ? "nav-hero-shadow text-creme/90 hover:text-creme"
+                      : link.key === "reserver"
+                        ? "text-pin hover:text-encre"
+                        : "text-encre/80 hover:text-pin"
                   }`}
                 >
                   {t(link.key)}
@@ -138,14 +160,14 @@ export default function Nav() {
           className="relative z-50 flex h-10 w-10 items-center justify-center md:hidden"
         >
           <span
-            className={`absolute h-px w-6 bg-encre transition-transform duration-300 ease-luxe ${
-              open ? "rotate-45" : "-translate-y-[4px]"
-            }`}
+            className={`absolute h-px w-6 transition-all duration-300 ease-luxe ${
+              onHero ? "bg-creme" : "bg-encre"
+            } ${open ? "rotate-45" : "-translate-y-[4px]"}`}
           />
           <span
-            className={`absolute h-px w-6 bg-encre transition-transform duration-300 ease-luxe ${
-              open ? "-rotate-45" : "translate-y-[4px]"
-            }`}
+            className={`absolute h-px w-6 transition-all duration-300 ease-luxe ${
+              onHero ? "bg-creme" : "bg-encre"
+            } ${open ? "-rotate-45" : "translate-y-[4px]"}`}
           />
         </button>
       </nav>

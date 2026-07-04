@@ -12,9 +12,9 @@ import {
 import { shaderMaterial } from "@react-three/drei";
 
 /**
- * Effet 4 — surface d'eau de nuit : ondulations horizontales lentes
- * (superposition de sinus + bruit) et chemin de lune central en glints
- * écume. Sobriété absolue : de l'eau qui respire, pas un écran de veille.
+ * Effet 4 — mer au couchant : ondulations horizontales lentes (superposition
+ * de sinus + bruit), eau teal profond et chemin de soleil central en glints
+ * dorés. Sobriété absolue : de l'eau qui respire, pas un écran de veille.
  */
 
 const OceanMaterial = shaderMaterial(
@@ -56,15 +56,16 @@ const OceanMaterial = shaderMaterial(
                  + sin(uv.x * uAspect * 4.7 - t * 1.0 + depth * 52.0) * 0.3;
       float n = noise(vec2(uv.x * uAspect * 1.6 + t * 0.7, depth * 34.0 - t * 0.9));
       float shade = 0.5 + 0.5 * sin(depth * 70.0 + wave * 1.8 + n * 4.2);
-      vec3 deep = vec3(0.028, 0.055, 0.043);
-      vec3 lit  = vec3(0.062, 0.115, 0.092);
+      // mer au couchant : eau teal profond
+      vec3 deep = vec3(0.071, 0.231, 0.212);
+      vec3 lit  = vec3(0.114, 0.353, 0.314);
       vec3 col = mix(deep, lit, shade * (0.25 + 0.35 * (1.0 - depth)));
-      // chemin de lune : colonne centrale de glints qui scintillent
+      // chemin de soleil : colonne centrale de glints DORÉS
       float moon = smoothstep(0.30, 0.02, abs(uv.x - 0.5));
       float g = noise(vec2(uv.x * uAspect * 14.0, depth * 120.0 - t * 3.2));
       float glint = smoothstep(0.80, 0.96, g) * moon;
       glint *= 0.45 + 0.55 * sin(uTime * 1.1 + uv.x * 60.0 + depth * 140.0);
-      col += vec3(0.663, 0.847, 0.776) * max(glint, 0.0) * 0.30;
+      col += vec3(0.851, 0.655, 0.373) * max(glint, 0.0) * 0.35;
       // fondu vers le footer en tête de bande
       float alpha = smoothstep(1.0, 0.72, uv.y);
       gl_FragColor = vec4(col, alpha);

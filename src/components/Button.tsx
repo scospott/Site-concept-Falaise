@@ -10,14 +10,25 @@ const base =
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-pin text-creme hover:bg-[#c2e4d5] hover:-translate-y-px " +
+    "bg-pin text-creme hover:bg-[#2f4833] hover:-translate-y-px " +
     "active:translate-y-0",
   ghost:
     "border border-encre/35 text-encre hover:border-pin hover:text-pin",
 };
 
+// Sur le hero (vidéo dorée) : boutons inversés
+const inverseVariants: Record<Variant, string> = {
+  primary:
+    "bg-creme text-encre hover:bg-blanc hover:-translate-y-px " +
+    "active:translate-y-0",
+  ghost:
+    "border border-creme/60 text-creme hover:border-creme hover:bg-creme/10",
+};
+
 type CommonProps = {
   variant?: Variant;
+  /** Variante hero : crème sur vidéo dorée */
+  inverse?: boolean;
   className?: string;
   children: ReactNode;
 };
@@ -31,11 +42,19 @@ type ButtonAsButton = CommonProps & {
 } & Omit<ComponentPropsWithoutRef<"button">, "className" | "children">;
 
 export default function Button(props: ButtonAsLink | ButtonAsButton) {
-  const { variant = "primary", className, children } = props;
-  const classes = `${base} ${variants[variant]}${className ? ` ${className}` : ""}`;
+  const { variant = "primary", inverse = false, className, children } = props;
+  const styles = inverse ? inverseVariants[variant] : variants[variant];
+  const classes = `${base} ${styles}${className ? ` ${className}` : ""}`;
 
   if (props.href !== undefined) {
-    const { href, variant: _v, className: _c, children: _ch, ...rest } = props;
+    const {
+      href,
+      variant: _v,
+      inverse: _i,
+      className: _c,
+      children: _ch,
+      ...rest
+    } = props;
     // Ancres locales : simple <a>, routes internes : Link i18n
     if (href.startsWith("#")) {
       return (
@@ -51,7 +70,13 @@ export default function Button(props: ButtonAsLink | ButtonAsButton) {
     );
   }
 
-  const { variant: _v, className: _c, children: _ch, ...rest } = props;
+  const {
+    variant: _v,
+    inverse: _i,
+    className: _c,
+    children: _ch,
+    ...rest
+  } = props;
   return (
     <button className={classes} data-cursor="link" {...rest}>
       {children}
