@@ -20,7 +20,7 @@ function Stars({ label, className }: { label: string; className?: string }) {
     <span
       role="img"
       aria-label={label}
-      className={`flex gap-1 text-pin ${className ?? ""}`}
+      className={`flex gap-1 text-soleil ${className ?? ""}`}
     >
       {Array.from({ length: 5 }).map((_, i) => (
         <svg key={i} viewBox="0 0 24 24" className="h-3.5 w-3.5" aria-hidden>
@@ -46,7 +46,7 @@ function initiales(nom: string): string {
 function Carte({ item, locale }: { item: AvisType; locale: Lang }) {
   const t = useTranslations("avis");
   return (
-    <article className="flex h-full w-[340px] shrink-0 snap-start flex-col rounded-[10px] border border-filet bg-sable p-6 transition-all duration-500 ease-luxe hover:-translate-y-[3px] hover:border-pin/45 md:w-[380px]">
+    <article className="flex h-full w-[340px] shrink-0 snap-start flex-col rounded-[10px] border border-filet bg-blanc p-6 transition-all duration-500 ease-luxe hover:-translate-y-[3px] hover:border-pin/45 md:w-[380px]">
       <div className="flex items-center gap-3">
         <span
           aria-hidden

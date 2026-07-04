@@ -62,7 +62,7 @@ export const gallery: GalleryItem[] = [
     id: "pins-dores",
     legende: { fr: "Les pins dorés", en: "Golden pines" },
     format: "portrait",
-    couleur: "#1E3A33",
+    couleur: "#E9E0CB",
     // Visuel manquant — placeholder conservé
   },
   {
@@ -83,7 +83,7 @@ export const gallery: GalleryItem[] = [
     id: "mer-scintillante",
     legende: { fr: "La mer scintillante", en: "The glittering sea" },
     format: "paysage",
-    couleur: "#16211B",
+    couleur: "#E3DAC5",
     // Visuel manquant — placeholder conservé
   },
 ];

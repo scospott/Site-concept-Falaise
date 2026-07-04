@@ -10,7 +10,7 @@ export default function NotFound() {
     <main className="relative flex min-h-svh flex-col items-center justify-center overflow-hidden px-6 text-center">
       <div
         aria-hidden
-        className="absolute inset-0 bg-[linear-gradient(to_bottom,#101914_0%,#121c16_55%,#1a2a22_86%,#101914_100%)]"
+        className="absolute inset-0 bg-[linear-gradient(to_bottom,#f7f3ea_0%,#f3ecdd_55%,#efe7d7_86%,#f7f3ea_100%)]"
       />
       <div className="relative z-10 flex max-w-xl flex-col items-center">
         <Eyebrow>404</Eyebrow>
@@ -20,7 +20,7 @@ export default function NotFound() {
           <Button href="/">{t("back")}</Button>
         </div>
       </div>
-      <ForestLine className="absolute bottom-0 left-0 h-20 w-full text-[#0b120e] md:h-28" />
+      <ForestLine className="absolute bottom-0 left-0 h-20 w-full text-pierre md:h-28" />
     </main>
   );
 }

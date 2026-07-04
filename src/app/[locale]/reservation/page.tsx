@@ -34,8 +34,8 @@ export default async function ReservationPage({
     <main>
       <ScrollHero slot="reservation">
         <div className="mx-auto flex h-full w-full max-w-6xl flex-col justify-end px-6 pb-28 pt-40 md:px-10">
-          <Eyebrow>{t("eyebrow")}</Eyebrow>
-          <h1 className="display-xl mt-4 text-encre">{t("title")}</h1>
+          <Eyebrow className="hero-text-shadow !text-creme">{t("eyebrow")}</Eyebrow>
+          <h1 className="hero-text-shadow display-xl mt-4 text-creme">{t("title")}</h1>
         </div>
       </ScrollHero>
 

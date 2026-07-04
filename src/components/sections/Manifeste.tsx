@@ -24,8 +24,8 @@ function isKeyword(word: string, keywords: string[]): boolean {
 }
 
 /**
- * Section « La villa » — le manifeste qui s'allume : chaque mot passe de
- * galet #3E4A42 à écru (mots-clés → écume) sur une timeline scrubbed liée
+ * Section « La villa » — le manifeste qui se pose : chaque mot passe de
+ * pierre claire #CBC3AE à encre (mots-clés → pin) sur une timeline scrubbed liée
  * à la traversée de la section. Split manuel en spans (texte intact au SSR,
  * gestion sûre des mots-clés accentués).
  */
@@ -43,10 +43,10 @@ export default function Manifeste() {
       if (!section) return;
       const mm = gsap.matchMedia();
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        // La lumière gagne sur le noir à mesure qu'on scrolle
+        // L'encre se pose sur la pierre à mesure qu'on scrolle
         gsap.to(section.querySelectorAll<HTMLElement>(".manifeste-word"), {
           color: (_i, el) =>
-            (el as HTMLElement).dataset.accent ? "#A9D8C6" : "#ECE8DC",
+            (el as HTMLElement).dataset.accent ? "#3E5C42" : "#26332B",
           ease: "none",
           stagger: 0.35,
           duration: 3,

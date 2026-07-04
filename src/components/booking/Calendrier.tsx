@@ -170,7 +170,7 @@ export default function Calendrier({ start, end, onChange }: CalendrierProps) {
                 <span
                   key={iso}
                   aria-label={`${dayFmt.format(date)} — ${t("legendBooked")}`}
-                  className="cal-booked flex aspect-square items-center justify-center rounded-[8px] text-sm text-[#3E4A42]"
+                  className="cal-booked flex aspect-square items-center justify-center rounded-[8px] text-sm text-encre/45"
                 >
                   {dayNumber}
                 </span>
@@ -188,7 +188,7 @@ export default function Calendrier({ start, end, onChange }: CalendrierProps) {
                     ? "border-pin bg-pin text-creme"
                     : inRange
                       ? "cal-range border-transparent text-encre"
-                      : "border-transparent bg-sable text-encre/85 hover:border-pin/60"
+                      : "border-filet bg-blanc text-encre/85 hover:border-pin/60"
                 }`}
                 style={
                   inRange
@@ -272,7 +272,7 @@ export default function Calendrier({ start, end, onChange }: CalendrierProps) {
         </p>
         <ul className="flex flex-wrap gap-x-5 gap-y-2 text-[11px] text-encre/50">
           <li className="flex items-center gap-2">
-            <span className="h-3 w-3 rounded-[3px] border border-filet bg-sable" />
+            <span className="h-3 w-3 rounded-[3px] border border-filet bg-blanc" />
             {t("legendAvailable")}
           </li>
           <li className="flex items-center gap-2">

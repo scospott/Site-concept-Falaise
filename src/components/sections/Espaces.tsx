@@ -149,12 +149,12 @@ export default function Espaces() {
                 className={`group flex w-full items-baseline gap-4 py-3 text-left font-display text-[clamp(1.6rem,2.2vw,2.2rem)] transition-all duration-500 ease-luxe ${
                   active === i
                     ? "translate-x-2 text-encre"
-                    : "text-encre/45 hover:translate-x-2 hover:text-encre"
+                    : "text-encre/40 hover:translate-x-2 hover:text-encre"
                 }`}
               >
                 <span
                   className={`font-sans text-xs tracking-[0.2em] transition-opacity duration-500 ${
-                    active === i ? "text-pin opacity-100" : "opacity-0"
+                    active === i ? "text-soleil opacity-100" : "opacity-0"
                   }`}
                 >
                   {String(i + 1).padStart(2, "0")}
@@ -212,7 +212,7 @@ export default function Espaces() {
               />
             </div>
             <p className="mt-5 flex items-baseline gap-3 font-display text-2xl text-encre">
-              <span className="font-sans text-xs tracking-[0.2em] text-pin">
+              <span className="font-sans text-xs tracking-[0.2em] text-soleil">
                 {String(i + 1).padStart(2, "0")}
               </span>
               {espace.nom[locale]}

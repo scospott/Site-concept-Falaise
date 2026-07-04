@@ -76,6 +76,11 @@
   line-height: 1.7;
 }
 
+/* Titre/overlay du hero : crème ombré doux sur la vidéo dorée */
+.hero-text-shadow {
+  text-shadow: 0 2px 24px rgba(20, 25, 18, 0.35);
+}
+
 /* Nav posée sur le hero vidéo : texte crème + ombre douce (lisibilité) */
 .nav-hero-shadow {
   text-shadow: 0 1px 16px rgba(20, 25, 18, 0.45);

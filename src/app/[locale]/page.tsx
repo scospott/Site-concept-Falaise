@@ -44,9 +44,9 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
             />
             <div className="relative flex flex-col items-center">
               <div data-hero-fade>
-                <Eyebrow>{t("eyebrow")}</Eyebrow>
+                <Eyebrow className="hero-text-shadow !text-creme">{t("eyebrow")}</Eyebrow>
               </div>
-              <h1 className="display-xl mt-6 text-encre">
+              <h1 className="hero-text-shadow display-xl mt-6 text-creme">
                 {t.rich("title", {
                   i: (chunks) => <em>{chunks}</em>,
                   l: (chunks) => (
@@ -56,15 +56,15 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
                   ),
                 })}
               </h1>
-              <p data-hero-fade className="mt-6 max-w-md text-encre/70">
+              <p data-hero-fade className="hero-text-shadow mt-6 max-w-md text-creme/85">
                 {t("baseline")}
               </p>
               <div
                 data-hero-fade
                 className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
               >
-                <Button href="/reservation">{t("ctaPrimary")}</Button>
-                <Button href="#villa" variant="ghost">
+                <Button href="/reservation" inverse>{t("ctaPrimary")}</Button>
+                <Button href="#villa" variant="ghost" inverse>
                   {t("ctaSecondary")}
                 </Button>
               </div>

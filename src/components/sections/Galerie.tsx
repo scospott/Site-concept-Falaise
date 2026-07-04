@@ -79,7 +79,7 @@ function Plate({
       style={{ backgroundColor: item.couleur }}
     >
       {withLabel && (
-        <span className="text-[11px] tracking-[0.25em] text-pin/60 uppercase">
+        <span className="text-[11px] tracking-[0.25em] text-encre/40 uppercase">
           {figureLabel} {String(index + 1).padStart(2, "0")}
         </span>
       )}
@@ -144,7 +144,7 @@ function Lightbox({
       aria-label={item.legende[locale]}
       data-lenis-prevent
       onClick={onClose}
-      className="lightbox-overlay fixed inset-0 z-[70] flex items-center justify-center bg-calcaire/95 p-6"
+      className="lightbox-overlay fixed inset-0 z-[70] flex items-center justify-center bg-calcaire/97 p-6"
     >
       <figure
         onClick={(e) => e.stopPropagation()}
@@ -160,7 +160,7 @@ function Lightbox({
         </div>
         <figcaption className="mt-4 flex items-baseline justify-between gap-4">
           <span className="text-sm text-encre/80">{item.legende[locale]}</span>
-          <span className="text-[11px] tracking-[0.25em] text-pin/60 uppercase">
+          <span className="text-[11px] tracking-[0.25em] text-encre/40 uppercase">
             {t("figure")} {String(index + 1).padStart(2, "0")}
           </span>
         </figcaption>
@@ -271,7 +271,7 @@ export default function Galerie() {
   return (
     <section id="galerie" ref={sectionRef} className="relative scroll-mt-24">
       {/* Desktop avec motion : piste horizontale pinnée */}
-      <div className="hidden motion-safe:lg:block">
+      <div className="hidden bg-sable motion-safe:lg:block">
         <div
           ref={pinRef}
           className="flex h-svh flex-col justify-center overflow-hidden"
@@ -315,7 +315,7 @@ export default function Galerie() {
                       />
                     </div>
                   </button>
-                  <p className="mt-3 text-[11px] tracking-wide text-pin/80">
+                  <p className="mt-3 text-[11px] tracking-wide text-encre/60">
                     {item.legende[locale]}
                   </p>
                 </div>
@@ -328,7 +328,7 @@ export default function Galerie() {
       {/* Mobile (toujours) + desktop reduced-motion : deux colonnes en
           maçonnerie (pas de rangées alignées — pas de trous), colonne
           droite décalée */}
-      <div className="mx-auto max-w-6xl px-6 py-28 md:px-10 motion-safe:lg:hidden">
+      <div className="bg-sable motion-safe:lg:hidden"><div className="mx-auto max-w-6xl px-6 py-28 md:px-10">
         <Reveal>{header}</Reveal>
         <div className="mt-12 flex gap-4 md:gap-6">
           {[0, 1].map((col) => (
@@ -365,7 +365,7 @@ export default function Galerie() {
                         index={i}
                       />
                     </button>
-                    <p className="mt-2 text-[11px] tracking-wide text-pin/80">
+                    <p className="mt-2 text-[11px] tracking-wide text-encre/60">
                       {item.legende[locale]}
                     </p>
                   </Reveal>
@@ -373,6 +373,7 @@ export default function Galerie() {
             </div>
           ))}
         </div>
+      </div>
       </div>
 
       {openIndex !== null && (

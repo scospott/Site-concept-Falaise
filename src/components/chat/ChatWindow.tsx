@@ -75,8 +75,8 @@ export default function ChatWindow({ compact = false }: { compact?: boolean }) {
 
   return (
     <div
-      className={`flex h-full flex-col overflow-hidden rounded-2xl border border-filet bg-sable/85 backdrop-blur ${
-        compact ? "" : "shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
+      className={`flex h-full flex-col overflow-hidden rounded-2xl border border-filet bg-calcaire/85 backdrop-blur ${
+        compact ? "" : "shadow-[0_20px_60px_rgba(38,51,43,0.12)]"
       }`}
     >
       <div

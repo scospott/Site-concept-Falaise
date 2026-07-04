@@ -10,7 +10,7 @@ import Reveal from "@/components/motion/Reveal";
 const ChatWindow = dynamic(() => import("@/components/chat/ChatWindow"), {
   ssr: false,
   loading: () => (
-    <div className="h-full animate-pulse rounded-2xl border border-filet bg-sable/50" />
+    <div className="h-full animate-pulse rounded-2xl border border-filet bg-calcaire/70" />
   ),
 });
 

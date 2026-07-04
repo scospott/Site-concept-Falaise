@@ -40,7 +40,7 @@ function Champ({
 }
 
 const inputClass = (hasError: boolean) =>
-  `w-full rounded-[10px] border bg-sable px-4 py-3 text-sm text-encre placeholder:text-encre/35 transition-colors duration-300 focus:outline-none ${
+  `w-full rounded-[10px] border bg-blanc px-4 py-3 text-sm text-encre placeholder:text-encre/35 transition-colors duration-300 focus:outline-none ${
     hasError ? "border-soleil" : "border-filet focus:border-pin/60"
   }`;
 
@@ -214,13 +214,13 @@ function Confirmation({
           cy="32"
           r="29"
           fill="none"
-          stroke="#A9D8C6"
+          stroke="#3E5C42"
           strokeWidth="1.5"
         />
         <path
           d="M20 33.5L28.5 42 44 24"
           fill="none"
-          stroke="#A9D8C6"
+          stroke="#3E5C42"
           strokeWidth="2.5"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -230,7 +230,7 @@ function Confirmation({
       <p className="mt-3 text-sm tracking-wide text-pin">
         {t("reference", { ref: reference })}
       </p>
-      <div className="mt-10 rounded-[10px] border border-filet bg-sable p-6 text-left">
+      <div className="mt-10 rounded-[10px] border border-filet bg-blanc p-6 text-left">
         <RecapContenu
           start={start}
           end={end}
@@ -325,7 +325,7 @@ export default function Parcours() {
   if (!mounted) {
     return (
       <div className="mx-auto max-w-6xl px-6 pb-32 md:px-10">
-        <div className="h-96 animate-pulse rounded-[10px] border border-filet bg-sable/50" />
+        <div className="h-96 animate-pulse rounded-[10px] border border-filet bg-sable/60" />
       </div>
     );
   }
@@ -424,7 +424,7 @@ export default function Parcours() {
           )}
 
           {step === 2 && (
-            <div className="rounded-[10px] border border-filet bg-sable p-6 md:p-8 lg:border-transparent lg:bg-transparent lg:p-0">
+            <div className="rounded-[10px] border border-filet bg-blanc p-6 md:p-8 lg:border-transparent lg:bg-transparent lg:p-0">
               <h2 className="display-l mb-8 text-encre">
                 {t("summary.title")}
               </h2>
@@ -538,9 +538,9 @@ export default function Parcours() {
 
         {/* Récap sticky desktop — visible dès l'étape 1, pleine lumière à l'étape 3 */}
         <aside
-          className={`sticky top-28 hidden rounded-[10px] border bg-sable p-6 transition-all duration-500 lg:block ${
+          className={`sticky top-28 hidden rounded-[10px] border bg-blanc p-6 transition-all duration-500 lg:block ${
             step === 2
-              ? "border-pin/50 shadow-[0_0_50px_rgba(169,216,198,0.07)]"
+              ? "border-pin/50 shadow-[0_0_50px_rgba(62,92,66,0.12)]"
               : "border-filet"
           }`}
         >
