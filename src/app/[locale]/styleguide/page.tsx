@@ -96,7 +96,7 @@ export default async function StyleguidePage({
               <p className="mb-2 text-xs text-encre/40">
                 display-l — Bodoni Moda, clamp(1.8rem, 4vw, 2.6rem)
               </p>
-              <p className="display-l">La lisière, à la nuit tombée</p>
+              <p className="display-l">La lisière, à l’heure dorée</p>
             </div>
             <div>
               <p className="mb-2 text-xs text-encre/40">
@@ -119,8 +119,8 @@ export default async function StyleguidePage({
                 s&apos;ouvre sur la canopée. Entre les deux : un seuil, une
                 maison, un silence. Les nuances de texte atténué passent par
                 l&apos;opacité —{" "}
-                <span className="text-encre/70">écru 70&nbsp;%</span>,{" "}
-                <span className="text-encre/50">écru 50&nbsp;%</span>.
+                <span className="text-encre/70">encre 70&nbsp;%</span>,{" "}
+                <span className="text-encre/50">encre 50&nbsp;%</span>.
               </p>
             </div>
           </div>
@@ -162,7 +162,7 @@ export default async function StyleguidePage({
         <Bloc title="Reveal (variante mask)">
           <Reveal variant="mask">
             <p className="display-l max-w-2xl">
-              La lumière gagne sur le noir, ligne après ligne.
+              La lumière dorée se pose, ligne après ligne.
             </p>
           </Reveal>
         </Bloc>
