@@ -8,9 +8,9 @@ export const effects = {
   enableLantern: true,
   /** Effet 2 — spotlight images (galerie + espaces) */
   enableSpotlight: true,
-  /** Effet 3 — brume shader dans les heros */
-  enableMist: true,
-  /** Effet 3 — lucioles dans les heros */
+  /** Effet 3 — brume shader dans les heros (OFF en DA Solaire) */
+  enableMist: false,
+  /** Effet 3 — poussières dorées dans la lumière des heros */
   enableFireflies: true,
   /** Effet 4 — océan nocturne au pied du footer */
   enableOcean: true,

@@ -14,9 +14,10 @@ import { getLenis } from "@/lib/lenis";
 import { effects } from "@/lib/effects";
 
 /**
- * Effet 3 — scène R3F des heros : brume fbm + lucioles.
- * Shaders en clip-space (gl_Position direct, caméra ignorée) : un plane et
- * un nuage de points, zéro post-processing, zéro modèle importé.
+ * Effet 3 — couche solaire des heros : poussières dorées en suspension dans
+ * la lumière (la brume fbm reste disponible derrière son flag, coupée en DA
+ * Solaire). Shaders en clip-space : un plane et un nuage de points, zéro
+ * post-processing, zéro modèle importé.
  */
 
 const MistMaterial = shaderMaterial(
@@ -102,12 +103,12 @@ const FireflyMaterial = shaderMaterial(
     varying float vAlpha;
     void main() {
       vec3 pos = position;
-      float t = uTime * 0.045; // dérive lente
-      pos.x += sin(t * (0.6 + aDrift.x) * 6.2831 + aOffset * 13.0) * 0.07;
-      pos.y += sin(t * (0.4 + aDrift.y) * 6.2831 + aOffset * 29.0) * 0.045
-             + sin(uTime * 0.09 + aOffset * 47.0) * 0.015;
-      // scintillement
-      vAlpha = 0.25 + 0.75 * (0.5 + 0.5 * sin(uTime * (0.7 + aDrift.x * 1.6) + aOffset * 40.0));
+      // dérive lente ASCENDANTE (poussières dans la lumière), bouclée
+      float rise = uTime * (0.010 + 0.018 * aDrift.y);
+      pos.y = -1.1 + mod(pos.y + 1.1 + rise, 2.2);
+      pos.x += sin(uTime * 0.05 * (0.6 + aDrift.x) * 6.2831 + aOffset * 13.0) * 0.05;
+      // scintillement discret
+      vAlpha = 0.30 + 0.45 * (0.5 + 0.5 * sin(uTime * (0.5 + aDrift.x) + aOffset * 40.0));
       gl_Position = vec4(pos.xy, 0.0, 1.0);
       gl_PointSize = aScale * uDpr;
     }
@@ -118,7 +119,7 @@ const FireflyMaterial = shaderMaterial(
     void main() {
       vec2 c = gl_PointCoord - 0.5;
       float a = smoothstep(0.5, 0.05, length(c)) * vAlpha;
-      gl_FragColor = vec4(0.663, 0.847, 0.776, a * 0.8);
+      gl_FragColor = vec4(0.910, 0.776, 0.522, a * 0.6);
     }
   `,
 );
@@ -186,11 +187,11 @@ type FireflyInstance = InstanceType<typeof FireflyMaterial> & {
 function Fireflies({ mobile }: { mobile: boolean }) {
   const ref = useRef<FireflyInstance>(null);
   const viewport = useThree((s) => s.viewport);
-  const count = mobile ? 50 : 120;
+  const count = mobile ? 40 : 100;
 
   const { positions, scales, offsets, drifts } = useMemo(() => {
-    // Génération déterministe (seed) — les lucioles vivent surtout dans le
-    // tiers bas du hero, au-dessus de la ForestLine.
+    // Génération déterministe (seed) — poussières réparties dans tout le
+    // cadre, légèrement plus denses vers le bas de la lumière.
     let seed = 987654321;
     const rnd = () => {
       seed = (seed * 1103515245 + 12345) % 2147483648;
@@ -202,10 +203,9 @@ function Fireflies({ mobile }: { mobile: boolean }) {
     const drifts = new Float32Array(count * 2);
     for (let i = 0; i < count; i++) {
       positions[i * 3] = -1.05 + rnd() * 2.1;
-      // y clip-space : -1 (bas) → concentration dans le tiers bas
-      positions[i * 3 + 1] = -0.95 + Math.pow(rnd(), 2.2) * 1.7;
+      positions[i * 3 + 1] = -1.05 + Math.pow(rnd(), 1.35) * 2.1;
       positions[i * 3 + 2] = 0;
-      scales[i] = 1 + rnd() * 2; // 1-3 px
+      scales[i] = 1 + rnd() * 1.5; // 1-2.5 px
       offsets[i] = rnd() * 6.2831;
       drifts[i * 2] = rnd();
       drifts[i * 2 + 1] = rnd();

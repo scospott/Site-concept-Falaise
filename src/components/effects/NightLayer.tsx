@@ -11,8 +11,9 @@ const NightLayerCanvas = dynamic(() => import("./NightLayerCanvas"), {
 });
 
 /**
- * Effet 3 — couche « nuit vivante » des heros (brume + lucioles), montée
- * PAR-DESSUS le canvas de frames et SOUS l'overlay texte du ScrollHero.
+ * Effet 3 — couche « lumière vivante » des heros (poussières dorées ; brume
+ * coupée en DA Solaire), montée PAR-DESSUS le canvas de frames et SOUS
+ * l'overlay texte du ScrollHero.
  * LCP intouchable : montage 300 ms après le first paint + fade-in 0.8s.
  * reduced-motion : non montée. Rendu en pause hors viewport
  * (IntersectionObserver → frameloop 'never').

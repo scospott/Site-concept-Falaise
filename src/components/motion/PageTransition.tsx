@@ -8,7 +8,8 @@ import { effects } from "@/lib/effects";
 /**
  * Transition de page. App Router assumé : on n'anime que l'ENTRÉE de la
  * nouvelle page (pas de délai de sortie).
- * Effet 5 (enablePageMist) : deux nappes (#0D1511 puis #16241D ~60 %) qui
+ * Effet 5 (enablePageMist) : deux nappes calcaire (#F7F3EA puis #EFE7D7
+ * ~70 %) qui
  * balaient l'écran avec 60 ms de décalage et se retirent, contenu entrant
  * en fade + translateY(16px), 0.6 s total. Flag coupé → simple voile
  * (comportement chantier 7). Désactivée en reduced-motion.
@@ -94,12 +95,12 @@ export default function PageTransition() {
       <div
         ref={nappe1Ref}
         aria-hidden
-        className="pointer-events-none fixed inset-0 z-[65] bg-[#0d1511] opacity-0"
+        className="pointer-events-none fixed inset-0 z-[65] bg-calcaire opacity-0"
       />
       <div
         ref={nappe2Ref}
         aria-hidden
-        className="pointer-events-none fixed inset-0 z-[66] bg-[#16241d]/60 opacity-0"
+        className="pointer-events-none fixed inset-0 z-[66] bg-sable/70 opacity-0"
       />
     </>
   );
