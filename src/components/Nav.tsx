@@ -105,7 +105,12 @@ export default function Nav() {
       className={`fixed inset-x-0 top-0 z-50 border-b transition-colors duration-500 ${
         onHero
           ? "border-transparent bg-transparent"
-          : "border-filet bg-calcaire/95 backdrop-blur"
+          : open
+            ? // PIÈGE : backdrop-filter sur le header ferait du panneau
+              // fixed inset-0 un enfant du header (containing block) —
+              // menu ouvert = fond opaque SANS blur.
+              "border-filet bg-calcaire"
+            : "border-filet bg-calcaire/95 backdrop-blur"
       }`}
     >
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 md:h-20 md:px-10">
