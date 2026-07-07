@@ -264,7 +264,7 @@ export default function Galerie() {
   const header = (
     <>
       <Eyebrow>{t("eyebrow")}</Eyebrow>
-      <SectionTitle className="mt-4">{t("title")}</SectionTitle>
+      <SectionTitle className="mt-6">{t("title")}</SectionTitle>
     </>
   );
 
@@ -328,9 +328,9 @@ export default function Galerie() {
       {/* Mobile (toujours) + desktop reduced-motion : deux colonnes en
           maçonnerie (pas de rangées alignées — pas de trous), colonne
           droite décalée */}
-      <div className="bg-sable motion-safe:lg:hidden"><div className="mx-auto max-w-6xl px-6 py-28 md:px-10">
+      <div className="bg-sable motion-safe:lg:hidden"><div className="mx-auto max-w-6xl px-6 py-36 md:px-10 md:py-48">
         <Reveal>{header}</Reveal>
-        <div className="mt-12 flex gap-4 md:gap-6">
+        <div className="mt-16 flex gap-4 md:gap-6">
           {[0, 1].map((col) => (
             <div
               key={col}

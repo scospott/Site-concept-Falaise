@@ -35,11 +35,11 @@ export default async function ReservationPage({
       <ScrollHero slot="reservation">
         <div className="mx-auto flex h-full w-full max-w-6xl flex-col justify-end px-6 pb-28 pt-40 md:px-10">
           <Eyebrow className="hero-text-shadow !text-creme">{t("eyebrow")}</Eyebrow>
-          <h1 className="hero-text-shadow display-xl mt-4 text-creme">{t("title")}</h1>
+          <h1 className="hero-text-shadow display-xl mt-6 text-creme">{t("title")}</h1>
         </div>
       </ScrollHero>
 
-      <div className="pt-20 md:pt-28">
+      <div className="pt-28 md:pt-40">
         <Parcours />
       </div>
     </main>

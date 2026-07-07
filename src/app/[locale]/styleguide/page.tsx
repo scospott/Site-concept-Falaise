@@ -56,7 +56,7 @@ export default async function StyleguidePage({
     <main className="mx-auto max-w-5xl px-6 pb-32 pt-32 md:px-10">
       <Eyebrow>Système de design</Eyebrow>
       <h1 className="display-xl mt-4">
-        Solaire <em>— styleguide</em>
+        Littoral <em>— styleguide</em>
       </h1>
       <p className="mt-4 max-w-lg text-encre/60">
         Page d&apos;audit de la direction artistique. Non indexée, réservée à
@@ -88,13 +88,13 @@ export default async function StyleguidePage({
           <div className="space-y-10">
             <div>
               <p className="mb-2 text-xs text-encre/40">
-                display-xl — Bodoni Moda, clamp(2.6rem, 7vw, 4.5rem)
+                display-xl — Bodoni Moda, clamp(3.2rem, 9vw, 6.8rem)
               </p>
               <p className="display-xl">Where the sea meets the forest</p>
             </div>
             <div>
               <p className="mb-2 text-xs text-encre/40">
-                display-l — Bodoni Moda, clamp(1.8rem, 4vw, 2.6rem)
+                display-l — Bodoni Moda, clamp(2.4rem, 5.5vw, 4.2rem)
               </p>
               <p className="display-l">La lisière, à l’heure dorée</p>
             </div>

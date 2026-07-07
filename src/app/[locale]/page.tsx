@@ -46,7 +46,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
               <div data-hero-fade>
                 <Eyebrow className="hero-text-shadow !text-creme">{t("eyebrow")}</Eyebrow>
               </div>
-              <h1 className="hero-text-shadow display-xl mt-6 text-creme">
+              <h1 className="hero-text-shadow display-xl mt-8 text-creme">
                 {t.rich("title", {
                   i: (chunks) => <em>{chunks}</em>,
                   l: (chunks) => (
@@ -56,12 +56,12 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
                   ),
                 })}
               </h1>
-              <p data-hero-fade className="hero-text-shadow mt-6 max-w-md text-creme/85">
+              <p data-hero-fade className="hero-text-shadow mt-8 max-w-md text-creme/85">
                 {t("baseline")}
               </p>
               <div
                 data-hero-fade
-                className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
+                className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row"
               >
                 <Button href="/reservation" inverse>{t("ctaPrimary")}</Button>
                 <Button href="#villa" variant="ghost" inverse>

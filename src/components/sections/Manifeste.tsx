@@ -91,14 +91,14 @@ export default function Manifeste() {
     <section
       id="villa"
       ref={sectionRef}
-      className="mx-auto max-w-6xl scroll-mt-24 px-6 py-28 md:px-10 md:py-40"
+      className="mx-auto max-w-6xl scroll-mt-24 px-6 py-36 md:px-10 md:py-48"
     >
       <Eyebrow>{t("eyebrow")}</Eyebrow>
-      <SectionTitle className="mt-4">{t("title")}</SectionTitle>
+      <SectionTitle className="mt-6">{t("title")}</SectionTitle>
 
       <p
         lang={locale}
-        className="manifeste-texte mt-12 max-w-[28ch] font-display text-[clamp(1.4rem,2.8vw,2rem)] leading-[1.5]"
+        className="manifeste-texte mt-16 max-w-[28ch] font-display text-[clamp(1.6rem,2.8vw,2.4rem)] leading-[1.5]"
       >
         {words.map((word, i) => (
           <Fragment key={i}>
@@ -112,7 +112,7 @@ export default function Manifeste() {
         ))}
       </p>
 
-      <div className="figures mt-20 grid grid-cols-2 gap-x-6 gap-y-10 md:flex md:items-stretch">
+      <div className="figures mt-24 grid grid-cols-2 gap-x-6 gap-y-10 md:flex md:items-stretch">
         {FIGURE_KEYS.map((key, i) => (
           <Fragment key={key}>
             {i > 0 && (
@@ -122,7 +122,7 @@ export default function Manifeste() {
               />
             )}
             <div className="figure-item">
-              <p className="font-display text-[26px] text-encre">
+              <p className="font-display text-[31px] text-encre">
                 {t(`figures.${key}.value`)}
               </p>
               <p className="eyebrow mt-2">{t(`figures.${key}.label`)}</p>

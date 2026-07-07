@@ -169,16 +169,16 @@ export default function Avis() {
     <section
       id="avis"
       ref={sectionRef}
-      className="mx-auto max-w-6xl scroll-mt-24 px-6 py-28 md:px-10 md:py-40"
+      className="mx-auto max-w-6xl scroll-mt-24 px-6 py-36 md:px-10 md:py-48"
     >
       <Reveal>
         <Eyebrow>{t("eyebrow")}</Eyebrow>
-        <SectionTitle className="mt-4">{t("title")}</SectionTitle>
+        <SectionTitle className="mt-6">{t("title")}</SectionTitle>
       </Reveal>
 
       {/* Bandeau récap */}
-      <Reveal className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-5">
-        <p className="font-display text-[56px] leading-none text-encre">
+      <Reveal className="mt-16 flex flex-wrap items-center gap-x-8 gap-y-5">
+        <p className="font-display text-[67px] leading-none text-encre">
           {t("note")}
         </p>
         <div className="flex flex-col gap-2">
@@ -194,7 +194,7 @@ export default function Avis() {
       </Reveal>
 
       {/* Desktop motion : carousel drag */}
-      <div className="mt-14 hidden motion-safe:lg:block">
+      <div className="mt-16 hidden motion-safe:lg:block">
         <div ref={viewportRef} className="overflow-hidden">
           <div
             ref={trackRef}
@@ -249,7 +249,7 @@ export default function Avis() {
       </div>
 
       {/* Mobile + reduced-motion : scroll-snap natif */}
-      <div className="-mx-6 mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-pl-6 px-6 pb-4 motion-safe:lg:hidden">
+      <div className="-mx-6 mt-16 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-pl-6 px-6 pb-4 motion-safe:lg:hidden">
         {avis.map((item) => (
           <Carte key={item.id} item={item} locale={locale} />
         ))}

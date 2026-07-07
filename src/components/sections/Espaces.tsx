@@ -128,15 +128,15 @@ export default function Espaces() {
     <section
       id="espaces"
       ref={sectionRef}
-      className="mx-auto max-w-6xl scroll-mt-24 px-6 py-28 md:px-10 md:py-40"
+      className="mx-auto max-w-6xl scroll-mt-24 px-6 py-36 md:px-10 md:py-48"
     >
       <Reveal>
         <Eyebrow>{t("eyebrow")}</Eyebrow>
-        <SectionTitle className="mt-4">{t("title")}</SectionTitle>
+        <SectionTitle className="mt-6">{t("title")}</SectionTitle>
       </Reveal>
 
       {/* Desktop ≥1024 : liste + panneau sticky */}
-      <div className="mt-16 hidden gap-16 lg:grid lg:grid-cols-2">
+      <div className="mt-20 hidden gap-16 lg:grid lg:grid-cols-2">
         <ul className="flex flex-col gap-2">
           {espaces.map((espace, i) => (
             <li key={espace.id}>
@@ -146,7 +146,7 @@ export default function Espaces() {
                 onFocus={() => activate(i)}
                 onClick={() => activate(i)}
                 aria-current={active === i}
-                className={`group flex w-full items-baseline gap-4 py-3 text-left font-display text-[clamp(1.6rem,2.2vw,2.2rem)] transition-all duration-500 ease-luxe ${
+                className={`group flex w-full items-baseline gap-4 py-3 text-left font-display text-[clamp(2rem,3.6vw,3.1rem)] transition-all duration-500 ease-luxe ${
                   active === i
                     ? "translate-x-2 text-encre"
                     : "text-encre/40 hover:translate-x-2 hover:text-encre"
@@ -200,7 +200,7 @@ export default function Espaces() {
       </div>
 
       {/* Mobile : cartes empilées */}
-      <div className="mt-12 flex flex-col gap-10 lg:hidden">
+      <div className="mt-16 flex flex-col gap-12 lg:hidden">
         {espaces.map((espace, i) => (
           <Reveal key={espace.id}>
             <div className="relative aspect-[4/3] overflow-hidden rounded-[10px] border border-filet">
@@ -211,7 +211,7 @@ export default function Espaces() {
                 label={t("visualLabel")}
               />
             </div>
-            <p className="mt-5 flex items-baseline gap-3 font-display text-2xl text-encre">
+            <p className="mt-5 flex items-baseline gap-3 font-display text-3xl text-encre">
               <span className="font-sans text-xs tracking-[0.2em] text-soleil">
                 {String(i + 1).padStart(2, "0")}
               </span>
