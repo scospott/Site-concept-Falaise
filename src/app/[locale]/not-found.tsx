@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import Button from "@/components/Button";
 import Eyebrow from "@/components/Eyebrow";
-import ForestLine from "@/components/ForestLine";
+import RockStrata from "@/components/RockStrata";
 
 export default function NotFound() {
   const t = useTranslations("notFound");
@@ -20,7 +20,11 @@ export default function NotFound() {
           <Button href="/">{t("back")}</Button>
         </div>
       </div>
-      <ForestLine className="absolute bottom-0 left-0 h-20 w-full text-pierre md:h-28" />
+      <RockStrata
+        back="#E0D2AF"
+        front="#D9CBA8"
+        className="absolute bottom-0 left-0 h-20 w-full md:h-28"
+      />
     </main>
   );
 }

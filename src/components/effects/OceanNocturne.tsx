@@ -7,8 +7,8 @@ import { effects } from "@/lib/effects";
 const OceanCanvas = dynamic(() => import("./OceanCanvas"), { ssr: false });
 
 /**
- * Effet 4 — bande océan nocturne au pied du footer (180px). Le footer
- * devient la lisière complète : ForestLine en tête, l'eau en pied.
+ * Effet 4 — bande océan au couchant au pied du footer (180px). Le footer
+ * devient la lisière complète : RockStrata en tête, l'eau en pied.
  * Pause hors viewport, DPR 1 sur mobile, absent en reduced-motion.
  */
 export default function OceanNocturne() {

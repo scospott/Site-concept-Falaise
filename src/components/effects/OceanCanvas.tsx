@@ -56,16 +56,17 @@ const OceanMaterial = shaderMaterial(
                  + sin(uv.x * uAspect * 4.7 - t * 1.0 + depth * 52.0) * 0.3;
       float n = noise(vec2(uv.x * uAspect * 1.6 + t * 0.7, depth * 34.0 - t * 0.9));
       float shade = 0.5 + 0.5 * sin(depth * 70.0 + wave * 1.8 + n * 4.2);
-      // mer au couchant : eau teal profond
-      vec3 deep = vec3(0.071, 0.231, 0.212);
-      vec3 lit  = vec3(0.114, 0.353, 0.314);
+      // mer au couchant — palette Littoral : eau #1E3A31, ondulations #27473C
+      vec3 deep = vec3(0.118, 0.227, 0.192);
+      vec3 lit  = vec3(0.153, 0.278, 0.235);
       vec3 col = mix(deep, lit, shade * (0.25 + 0.35 * (1.0 - depth)));
-      // chemin de soleil : colonne centrale de glints DORÉS
-      float moon = smoothstep(0.30, 0.02, abs(uv.x - 0.5));
+      // chemin du soleil : glints DORÉS #DCA65E concentrés central-droit,
+      // densité résiduelle faible sur le reste de l'eau
+      float sun = smoothstep(0.26, 0.03, abs(uv.x - 0.62));
       float g = noise(vec2(uv.x * uAspect * 14.0, depth * 120.0 - t * 3.2));
-      float glint = smoothstep(0.80, 0.96, g) * moon;
+      float glint = smoothstep(0.80 - 0.10 * sun, 0.96, g) * (0.06 + 0.94 * sun);
       glint *= 0.45 + 0.55 * sin(uTime * 1.1 + uv.x * 60.0 + depth * 140.0);
-      col += vec3(0.851, 0.655, 0.373) * max(glint, 0.0) * 0.35;
+      col += vec3(0.863, 0.651, 0.369) * max(glint, 0.0) * 0.42;
       // fondu vers le footer en tête de bande
       float alpha = smoothstep(1.0, 0.72, uv.y);
       gl_FragColor = vec4(col, alpha);

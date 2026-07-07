@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import Button from "@/components/Button";
 import Eyebrow from "@/components/Eyebrow";
-import ForestLine from "@/components/ForestLine";
+import RockStrata from "@/components/RockStrata";
 import SectionTitle from "@/components/SectionTitle";
 import Reveal from "@/components/motion/Reveal";
 
@@ -167,9 +167,9 @@ export default async function StyleguidePage({
           </Reveal>
         </Bloc>
 
-        <Bloc title="ForestLine">
-          <div className="overflow-hidden rounded-[10px] border border-filet bg-abysse">
-            <ForestLine className="block h-28 w-full text-creme" />
+        <Bloc title="RockStrata">
+          <div className="overflow-hidden rounded-[10px] border border-filet bg-calcaire">
+            <RockStrata className="block h-28 w-full" />
           </div>
         </Bloc>
       </div>
