@@ -278,7 +278,7 @@ export default function Galerie() {
         >
           <div className="mx-auto w-full max-w-6xl px-10">
             {header}
-            <p className="mt-3 text-xs tracking-wide text-encre/40">
+            <p className="mt-3 text-sm tracking-wide text-encre/75">
               {t("hint")}
             </p>
           </div>
@@ -315,7 +315,7 @@ export default function Galerie() {
                       />
                     </div>
                   </button>
-                  <p className="mt-3 text-[11px] tracking-wide text-encre/60">
+                  <p className="mt-3 text-[14px] tracking-wide text-encre/75">
                     {item.legende[locale]}
                   </p>
                 </div>
@@ -365,7 +365,7 @@ export default function Galerie() {
                         index={i}
                       />
                     </button>
-                    <p className="mt-2 text-[11px] tracking-wide text-encre/60">
+                    <p className="mt-2 text-[14px] tracking-wide text-encre/75">
                       {item.legende[locale]}
                     </p>
                   </Reveal>

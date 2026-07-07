@@ -74,7 +74,7 @@ export default function Nav() {
 
   const localeSwitch = (tabbable: boolean) => (
     <span
-      className={`flex items-center gap-1.5 text-xs tracking-[0.15em] ${
+      className={`flex items-center gap-1.5 text-sm tracking-[0.15em] ${
         onHero ? "nav-hero-shadow" : ""
       }`}
     >
@@ -91,8 +91,8 @@ export default function Nav() {
         tabIndex={tabbable ? 0 : -1}
         className={`-m-2 inline-flex p-2 transition-colors duration-300 ${
           onHero
-            ? "text-creme/60 hover:text-creme"
-            : "text-encre/50 hover:text-encre"
+            ? "text-creme/75 hover:text-creme"
+            : "text-encre/75 hover:text-encre"
         }`}
       >
         {otherLocale.toUpperCase()}
@@ -118,7 +118,7 @@ export default function Nav() {
           href="/"
           aria-label={t("home")}
           data-cursor="link"
-          className={`relative z-50 font-display text-xl tracking-wide transition-colors duration-300 ${
+          className={`relative z-50 font-display text-[26px] tracking-wide transition-colors duration-300 ${
             onHero
               ? "nav-hero-shadow text-creme hover:text-creme/80"
               : "text-encre hover:text-pin"
@@ -129,7 +129,7 @@ export default function Nav() {
 
         {/* Desktop */}
         <div className="hidden items-center gap-8 md:flex">
-          <ul className="flex items-center gap-8 text-sm">
+          <ul className="flex items-center gap-8 text-base">
             {links.map((link) => (
               <li key={link.key}>
                 <Link

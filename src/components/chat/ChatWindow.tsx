@@ -34,7 +34,7 @@ function Bulle({
   if (role === "user") {
     return (
       <div className="flex justify-end">
-        <div className="max-w-[85%] rounded-2xl rounded-br-sm bg-pin px-4 py-2.5 text-sm text-creme">
+        <div className="max-w-[85%] rounded-2xl rounded-br-sm bg-pin px-4 py-2.5 text-[15px] leading-[1.6] text-creme">
           {children}
         </div>
       </div>
@@ -43,7 +43,7 @@ function Bulle({
   return (
     <div className="flex items-start gap-3">
       <Avatar />
-      <div className="chat-markdown max-w-[85%] pt-1 text-sm text-encre">
+      <div className="chat-markdown max-w-[85%] pt-1 text-[15px] leading-[1.6] text-encre">
         {children}
       </div>
     </div>
@@ -143,7 +143,7 @@ export default function ChatWindow({ compact = false }: { compact?: boolean }) {
                 key={key}
                 type="button"
                 onClick={() => send(t(`suggestions.${key}`))}
-                className="rounded-full border border-filet px-3.5 py-1.5 text-xs text-encre/80 transition-colors duration-300 hover:border-pin hover:text-pin"
+                className="rounded-full border border-filet px-3.5 py-1.5 text-sm text-encre/80 transition-colors duration-300 hover:border-pin hover:text-pin"
               >
                 {t(`suggestions.${key}`)}
               </button>
@@ -168,7 +168,7 @@ export default function ChatWindow({ compact = false }: { compact?: boolean }) {
           onChange={(e) => setInput(e.target.value)}
           placeholder={t("placeholder")}
           autoComplete="off"
-          className="min-w-0 flex-1 bg-transparent text-sm text-encre placeholder:text-encre/40 focus:outline-none"
+          className="min-w-0 flex-1 bg-transparent text-[15px] text-encre placeholder:text-encre/40 focus:outline-none"
         />
         <button
           type="submit"

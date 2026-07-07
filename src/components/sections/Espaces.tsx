@@ -149,7 +149,7 @@ export default function Espaces() {
                 className={`group flex w-full items-baseline gap-4 py-3 text-left font-display text-[clamp(2rem,3.6vw,3.1rem)] transition-all duration-500 ease-luxe ${
                   active === i
                     ? "translate-x-2 text-encre"
-                    : "text-encre/40 hover:translate-x-2 hover:text-encre"
+                    : "text-encre/75 hover:translate-x-2 hover:text-encre"
                 }`}
               >
                 <span
@@ -192,7 +192,7 @@ export default function Espaces() {
             ))}
           </div>
           <div ref={descRef} className="mt-6">
-            <p className="max-w-md text-encre/70">
+            <p className="max-w-md text-[17px] leading-[1.65] text-encre/75">
               {espaces[active].description[locale]}
             </p>
           </div>
@@ -217,7 +217,7 @@ export default function Espaces() {
               </span>
               {espace.nom[locale]}
             </p>
-            <p className="mt-2 text-sm text-encre/70">
+            <p className="mt-2 text-[17px] leading-[1.65] text-encre/75">
               {espace.description[locale]}
             </p>
           </Reveal>

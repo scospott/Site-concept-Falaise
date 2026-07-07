@@ -24,13 +24,20 @@
 }
 
 @layer base {
+  /* Corps confortable : 16px mobile, 17px desktop, interligne 1.65 */
   body {
     background-color: var(--color-calcaire);
     color: var(--color-encre);
     font-family: var(--font-sans);
     font-size: 1rem;
-    line-height: 1.7;
+    line-height: 1.65;
     -webkit-font-smoothing: antialiased;
+  }
+
+  @media (min-width: 768px) {
+    body {
+      font-size: 1.0625rem; /* 17px */
+    }
   }
 
   ::selection {
@@ -66,7 +73,7 @@
 
 @utility eyebrow {
   display: inline-block;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.3em;
@@ -74,8 +81,8 @@
 }
 
 @utility body-copy {
-  font-size: 0.96875rem; /* 15.5px */
-  line-height: 1.7;
+  font-size: 1.0625rem; /* 17px */
+  line-height: 1.65;
 }
 
 /* Titre/overlay du hero : crème ombré doux sur la vidéo dorée */

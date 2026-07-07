@@ -51,17 +51,17 @@ export default function Footer() {
         <div className="relative mx-auto grid max-w-6xl gap-10 px-6 py-14 md:grid-cols-3 md:px-10">
           <div>
             <p className="font-display text-2xl text-creme">Tideline</p>
-            <p className="mt-3 max-w-xs text-sm text-creme/60">
+            <p className="mt-3 max-w-xs text-[15px] leading-[1.65] text-creme/75">
               {t("baseline")}
             </p>
           </div>
           <div>
             <p className="eyebrow !text-soleil">{t("explore")}</p>
-            <ul className="mt-4 space-y-2.5 text-sm">
+            <ul className="mt-4 space-y-2.5 text-[15px]">
               <li>
                 <Link
                   href="/#villa"
-                  className="text-creme/80 transition-colors duration-300 hover:text-soleil"
+                  className="text-creme/85 transition-colors duration-300 hover:text-soleil"
                 >
                   {tNav("villa")}
                 </Link>
@@ -69,7 +69,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/#galerie"
-                  className="text-creme/80 transition-colors duration-300 hover:text-soleil"
+                  className="text-creme/85 transition-colors duration-300 hover:text-soleil"
                 >
                   {tNav("galerie")}
                 </Link>
@@ -77,7 +77,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/reservation"
-                  className="text-creme/80 transition-colors duration-300 hover:text-soleil"
+                  className="text-creme/85 transition-colors duration-300 hover:text-soleil"
                 >
                   {t("reserveCta")}
                 </Link>
@@ -86,7 +86,7 @@ export default function Footer() {
           </div>
           <div>
             <p className="eyebrow !text-soleil">{t("practical")}</p>
-            <ul className="mt-4 space-y-2.5 text-sm text-creme/60">
+            <ul className="mt-4 space-y-2.5 text-[15px] text-creme/75">
               <li>{t("checkin")}</li>
               <li>{t("checkout")}</li>
               <li>{t("guests")}</li>
@@ -94,7 +94,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="relative border-t border-[#4A4536]">
-          <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 py-6 text-xs text-creme/45 md:flex-row md:px-10">
+          <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 py-6 text-[13px] text-creme/60 md:flex-row md:px-10">
             <p>© 2026 {t("rights")}</p>
             <a
               href="https://scottlab.app"

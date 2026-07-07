@@ -15,7 +15,7 @@ export default function NotFound() {
       <div className="relative z-10 flex max-w-xl flex-col items-center">
         <Eyebrow>404</Eyebrow>
         <h1 className="display-xl mt-6 text-encre">{t("title")}</h1>
-        <p className="mt-6 max-w-md text-encre/70">{t("body")}</p>
+        <p className="mt-6 max-w-md text-encre/75">{t("body")}</p>
         <div className="mt-10">
           <Button href="/">{t("back")}</Button>
         </div>

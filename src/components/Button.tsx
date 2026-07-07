@@ -4,7 +4,7 @@ import { Link } from "@/i18n/navigation";
 type Variant = "primary" | "ghost";
 
 const base =
-  "inline-flex items-center justify-center rounded-full px-7 py-3 text-sm " +
+  "inline-flex items-center justify-center rounded-full px-8 py-3.5 text-[15px] " +
   "font-medium tracking-wide transition-all duration-[350ms] ease-luxe " +
   "cursor-pointer select-none";
 

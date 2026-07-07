@@ -26,7 +26,7 @@ export default function Hote() {
       <Reveal>
         <Eyebrow>{t("eyebrow")}</Eyebrow>
         <SectionTitle className="mt-6">{t("title")}</SectionTitle>
-        <p className="mt-4 max-w-md text-encre/60">{t("intro")}</p>
+        <p className="mt-4 max-w-md text-encre/75">{t("intro")}</p>
       </Reveal>
       <Reveal delay={0.1} className="mt-16">
         <div className="mx-auto h-[520px] max-w-3xl md:h-[560px]">

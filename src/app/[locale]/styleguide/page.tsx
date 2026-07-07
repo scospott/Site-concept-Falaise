@@ -107,12 +107,12 @@ export default async function StyleguidePage({
               </p>
             </div>
             <div>
-              <p className="mb-2 text-xs text-encre/40">eyebrow — 11px, 0.3em</p>
+              <p className="mb-2 text-xs text-encre/40">eyebrow — 13px, 0.3em</p>
               <Eyebrow>Villa · Côte sauvage</Eyebrow>
             </div>
             <div>
               <p className="mb-2 text-xs text-encre/40">
-                Corps — Instrument Sans 15–16px, interligne 1.7
+                Corps — Instrument Sans 16–17px, interligne 1.65
               </p>
               <p className="max-w-xl">
                 Côté ouest, le verre encadre le large. Côté est, le chêne
