@@ -1,5 +1,9 @@
 # TIDELINE — Journal de bord du run maître
 
+> ⚠ **2026-07-07 — chantier « Littoral » terminé** (palette photos,
+> footer-rocher, typo XXL — section dédiée plus bas). **Push impossible :
+> toujours aucun remote configuré**, les 4 commits `littoral N` sont locaux.
+
 Run autonome démarré le 2026-07-03. Chantiers 1 → 8 exécutés dans l'ordre.
 
 ## Environnement constaté au démarrage
@@ -592,7 +596,98 @@ océan doré. tsc + build verts à chaque commit.
 
 ---
 
+## CHANTIER LITTORAL — palette photos, footer-rocher, typo XXL ✅ (2026-07-07)
+
+**4 commits (`littoral 1: palette` → `littoral 4: qa`), tsc + build verts à
+chaque étape, aucun remote → commits locaux.** Aucune mécanique touchée
+(scrub, wipe, galerie, lightbox, carousel, calendrier, stepper, hook Maël),
+aucun contenu, aucune image, aucune font. Images de bible/ regardées avant
+de commencer (référence chromatique).
+
+### 1. Palette « Littoral » (tokens re-valués, zéro renommage)
+- calcaire #EFE6D2 · sable #E6D7B8 · encre #2C3024 · pin #3C5638 (hover CTA
+  #2E4429) · soleil #C08A45 · filet #D9CBA8 · abysse #3A362C (granit).
+- Tokens de service ajustés en cohérence (décision autonome) : creme
+  #F5EEDC, blanc #FAF3E2 (cartes avis/récap/jours dispo), pierre #DFD1B0.
+  Cartes avis + récaps : filet spécifique #E2D4B4. Manifeste : départ
+  #C6B58C → encre/pin (valeurs GSAP mises à jour). Aplats placeholder
+  re-teintés famille Littoral (mer #1E3A31, pin sombre #2E4429, granit
+  #3A362C, encre #2C3024, bois doré #8A6B3F, pierres claires
+  #E2D4B4/#DFD1B0). Voiles de lisibilité du hero re-dérivés (rgba 20,22,15).
+- Contrastes mesurés : encre/calcaire 10,9:1, encre/sable 9,5:1,
+  pin/calcaire 6,6:1, pin/sable 5,7:1, creme/pin 7,0:1, creme/abysse
+  10,4:1. **soleil/calcaire 2,4:1 → le miel ne porte JAMAIS de texte
+  courant** (labels uppercase courts, index, étoiles, décor uniquement).
+- Grep final : plus aucune valeur de l'ancienne palette Solaire dans src/.
+- Lightbox : `bg-calcaire/97` = voile pierre/97 demandé (aucun changement
+  de code nécessaire). Poussières dorées inchangées (#E8C685).
+
+### 2. Footer-rocher + mer dorée
+- Nouveau `RockStrata` (SVG, preserveAspectRatio none, props back/front,
+  flip) : strate horizontale anguleuse — méplats inclinés, décrochés
+  verticaux, zéro pointe de sapin — 2 couches #55503F (arrière) / #3A362C
+  (avant). **Silhouette validée à l'œil en preview avant branchement**
+  (1er jet trop régulier « créneaux » → méplats irrégularisés, couches
+  désynchronisées).
+- Remplace ForestLine partout : footer, 404 (tons sable #E0D2AF/#D9CBA8),
+  styleguide (bloc démo). **ForestLine supprimée du projet.**
+- Footer granit : liens creme/80, légal creme/45, labels colonnes miel,
+  filet interne #4A4536, 3 fissures SVG #46412F 1px (quasi subliminales,
+  vectorEffect non-scaling) posées en absolu dans le fond.
+- Océan « mer au couchant » : eau #1E3A31, ondulations #27473C, glints
+  DORÉS #DCA65E. Chemin du soleil décalé central-droit (uv.x 0.62) ;
+  1re passe trop uniforme (constat capture) → seuil de glints abaissé DANS
+  le chemin (0.80 − 0.10·sun) + densité résiduelle 0.06 ailleurs.
+  Mécanique du shader intouchée (couleurs/masque du fragment uniquement).
+- Bulle Maël vérifiée sur granit (footer/mer) ET sur pierre : pin + icône
+  crème + ombre portée, lisible partout.
+
+### 3. Typo XXL + respiration
+- display-xl `clamp(3.2rem,9vw,6.8rem)` lh 1.02 ; display-l
+  `clamp(2.4rem,5.5vw,4.2rem)` lh 1.1 ; items espaces
+  `clamp(2rem,3.6vw,3.1rem)` ; manifeste `clamp(1.6rem,2.8vw,2.4rem)` ;
+  stats +20 % (chiffres clés 26→31px, note avis 56→67px).
+  `text-wrap: balance` intégré aux utilities display.
+- Sections : py-36 (9rem) mobile / md:py-48 (12rem) desktop. NOTE
+  interprétation : la consigne « +45 % → desktop 10-12rem, mobile ~6rem »
+  était contradictoire avec l'existant (py-28/py-40 = 7/10rem par côté) —
+  retenu : 12rem/côté desktop (= joints simples à 12rem, haut de la
+  fourchette demandée), 9rem/côté mobile (l'absolu « 6rem » aurait RÉDUIT
+  l'espacement, contraire à l'esprit). Plus d'air eyebrow/titre/contenu
+  (mt-6/mt-16), hero aéré (mt-8/mt-12), piste galerie pinnée intouchée.
+- **Titre hero /reservation : clamp réduit spécifique**
+  `clamp(2.7rem,8.5vw,6.8rem)` (classes explicites, plus de display-xl) —
+  à 390/360px la fin de « sur la lisière » passait sous la bulle Maël
+  (bottom 76px sur cette page). Règle appliquée : la borne de CE titre,
+  pas l'échelle globale.
+- Contrôles : zéro scroll horizontal à 1440/390/360 (mesuré au JS), H1
+  lisible sur la vidéo (text-shadow conservé), indicateur de scroll
+  dégagé, fade-out du titre au scrub intact (hero-0/50/100 vérifiés).
+
+### 4. QA (audits/littoral/)
+- 21 captures, TOUTES regardées : pages FR/EN × desktop/390 pleine page,
+  hero 0/50/100 %, espaces ×3 survols, galerie en traversée, lightbox,
+  Maël ouvert, calendrier avec sélection (récap 5 965 € exact), étape 3,
+  nav mobile ouverte, footer complet (strate + granit + mer) + zones
+  mobiles en viewport réel (galerie 2 colonnes, avis, footer).
+- Seul défaut trouvé → corrigé (titre resa vs bulle, ci-dessus), audit
+  re-généré après correctif.
+- Console : zéro erreur sur les 6 routes ; seuls les 2 warnings connus
+  (THREE.Clock interne R3F, GPU stall ReadPixels = artefact screenshot).
+- Artefact connu inchangé : les captures fullPage dédoublent le hero
+  pinné (stitching pin-spacer) — déjà réfuté aux QA précédentes.
+- Styleguide : hex/usages mis à jour, spécimens re-titrés « Littoral »,
+  bloc RockStrata à la place de ForestLine.
+
+---
+
 ## AU RÉVEIL (mis à jour au fil des chantiers)
+- **Littoral — à vérifier à l'œil sur machine réelle** : le chemin du
+  soleil de l'océan du footer (scintillement en mouvement), les fissures
+  du granit (doivent rester subliminales), la strate rocheuse en entrée
+  de footer au scroll réel, et l'échelle XXL au trackpad (rythme magazine).
+- **ForestLine n'existe plus** → `RockStrata` (props back/front/flip). Si
+  un vieux script/preview y fait référence, c'est du legacy.
 - **Remote GitHub** : `gh` indisponible pendant le run → créer le repo et
   pousser : `gh repo create scospott/tideline --private --source=. --push`
   (depuis `tideline/`).
