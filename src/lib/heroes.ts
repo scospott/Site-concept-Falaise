@@ -31,9 +31,11 @@ export const heroes: Record<HeroSlot, HeroConfig> = {
   reservation: {
     framesPath: "/frames/hero-reservation/",
     framePattern: "frame-%04d.webp",
-    frameCount: 168,
+    // 121 frames réelles extraites — vérifié sans trou 0001→0121 ;
+    // fallback ≈ frame 0001 (diff 1,86/255, aucun flash poster→canvas)
+    frameCount: 121,
     fallbackSrc: "/heroes/reservation.jpg",
-    scrubVh: 160,
+    scrubVh: 200,
   },
 };
 
