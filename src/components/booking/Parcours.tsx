@@ -127,7 +127,7 @@ function DetailLignes({ devis, locale }: { devis: Quote; locale: string }) {
         <div className="flex justify-between gap-4 py-3">
           <span className="text-encre/75">
             {t("touristTax")}
-            <span className="mt-0.5 block text-[13px] text-encre/60">
+            <span className="mt-0.5 block text-sm text-encre/60">
               {t("touristTaxHint")}
             </span>
           </span>

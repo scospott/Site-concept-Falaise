@@ -8,6 +8,12 @@
 > .gitignore pour que le template soit versionné. Aucune rotation de clé
 > indispensable puisque jamais publiée, mais elle reste sur ce disque :
 > à toi de juger.
+> **NB pendant le run** : la clé est RÉAPPARUE une fois dans
+> `.env.example` (sauvegarde IDE d'un vieux buffer ?) alors que le
+> fichier était devenu tracké — re-neutralisée AVANT tout commit,
+> vérifié ensuite avec la clé complète sur `git rev-list --all` :
+> l'historique est propre. Si ton IDE a encore l'ancien buffer ouvert,
+> ferme l'onglet sans sauvegarder.
 
 > ⚠ **2026-07-07 — chantier « Littoral » terminé** (palette photos,
 > footer-rocher, typo XXL — section dédiée plus bas). **Push impossible :
@@ -690,7 +696,104 @@ de commencer (référence chromatique).
 
 ---
 
+## CHANTIER LISIBILITÉ + AVIS + RÉSERVATION ✅ (2026-07-07)
+
+**5 commits (hygiène secrets → lisibilité → galerie → avis → réservation
+→ qa), tsc + build verts à chaque étape, toujours aucun remote.**
+Mécaniques intouchées (scrub, wipe, traversée, lightbox, logique
+calendrier/stepper, hook Maël).
+
+### 0. Hygiène secrets
+Voir la note 🔑 en tête de fichier. `.env.example` (vide) désormais
+versionné, vraie clé dans `.env.local` uniquement.
+
+### 1. Lisibilité — plancher typo relevé
+- Plancher : rien d'informatif sous 14px ; 11-13px réservé au décoratif
+  pur + tailles 13px explicitement prévues (eyebrows, labels de stats,
+  colonnes/légal footer, mentions démo).
+- Corps 17px desktop / 16px mobile (media query sur body), lh 1.65.
+  Nav : logo 26px, liens 16px, switch 14px. Footer : liens 15px, légal
+  13px. Descriptions espaces 17px, légendes galerie 14px, chat 15px,
+  boutons 15px (px-8 py-3.5).
+- Contraste : l'informatif passe à encre/75 minimum — mesuré 5,3:1 sur
+  pierre, 4,9:1 sur sable (AA) ; le /60 (3,6:1) reste décoratif. Liste
+  des espaces : items éteints encre/40 → encre/75 (l'état actif garde
+  translate + index miel).
+- Contrôle : zéro scroll horizontal à 390 et 360px (mesuré au JS).
+
+### 2. Galerie — vraies photos uniquement
+- gallery.ts : les 2 slots sans visuel retirés (ex-07-pins, ex-10-mer).
+  8 items, tous avec fichier vérifié sur disque ; FIG renumérotées par
+  l'index. Traversée vérifiée : translateX final = scrollWidth −
+  innerWidth exact (pas de trou en fin de piste).
+- Espaces : 6/6 images présentes — rien à signaler. Verrière (LCP
+  signalée par Next) : loading eager + fetchPriority high.
+
+### 3. Avis — pattern Airbnb re-skinné Tideline
+- En-tête « Coup de cœur » : badge pill, 4,96 Bodoni 64/72px entre deux
+  branches de laurier SVG maison (trait miel 1.4, feuilles alternées,
+  silhouette validée à l'œil en preview), « L'un des logements préférés
+  des voyageurs » 16px encre/75, ligne 87 séjours + langue d'origine.
+- Sous-notes par catégorie (`categoriesAvis` dans avis.ts) : 6 colonnes
+  à filets verticaux desktop / 2 mobile, barres piste filet / rempli pin.
+- Grille d'avis 2 col / 1 col, cartes SANS bordure (séparées par
+  l'espace), pastille pin 44px, nom 16px médium, ville · date 14px
+  encre/60 (choix explicite du cahier), dates fictives fév→juin 2026.
+- Carousel supprimé : Draggable/InertiaPlugin ne sont plus importés par
+  Avis (le bundle GSAP les garde pour rien ? NON — ils restent utilisés
+  nulle part ailleurs : voir AU RÉVEIL si tu veux purger la dépendance).
+- Clés i18n : + avis.loved, − avis.prev/next ; audit i18n zéro manquante.
+
+### 4. Réservation — design relevé (logique intouchée)
+- Desktop 2 colonnes : parcours / carte 380px sticky style plateforme
+  (blanc chaud #FAF3E2, filet #E2D4B4, radius 16px) : tarif de la saison
+  en Bodoni 28px + « / nuit » 15px (suit les dates sélectionnées),
+  champs encadrés cliquables Arrivée→Départ et Voyageurs (renvoient à
+  l'étape — uniquement vers les étapes déjà atteintes), détail à filets
+  fins, Total 20px médium, CTA pleine largeur, mention démo 13px.
+- Le « Continuer » du bas d'étape a été SUPPRIMÉ : le CTA vit dans la
+  carte (desktop) et dans la barre basse (mobile) ; seul « Retour »
+  reste sous le contenu d'étape.
+- Mobile : barre basse blanc chaud (total 20px + CTA pin visibles,
+  détail au tap) ; bulle Maël remontée 76→92px sur cette page.
+- Stepper : labels 15px, actif pin (segment 3px vs 2px), étapes faites
+  cochées ✓ pin, retour au clic conservé.
+- Calendrier : cases ≥44px (min-h-11), chiffres 16px, mois Bodoni 22px,
+  jours de semaine 14px, disponibles blanc chaud + hover pin/10,
+  occupés adoucis (pierre 55 % + barré fin encre 18 %), sélection
+  pin/crème, range pin/12 (inchangé), tarif 15px + légende 14px.
+- Voyageurs : +/− ronds 44px filet (hover pin), compteur 18px médium,
+  labels 16px, sous-labels 14px. Erreurs de formulaire en bois #8A6B3F
+  14px (le soleil sur blanc était à 2,4:1).
+- i18n : + booking.summary.perNight / demoNote.
+
+### 5. QA (audits/lisibilite/, 17 captures regardées)
+- Accueil FR pleine page desktop+390, galerie en traversée (aucun
+  aplat), avis desktop+mobile (en-tête + grille), parcours COMPLET
+  desktop+390 (étape 1 avec sélection + carte, voyageurs, étape 3,
+  coordonnées remplies, confirmation).
+- Scan programmatique de TOUT texte < 14px sur chaque page/état
+  (treewalker sur les nœuds visibles) : après correctif (précision de
+  taxe 13→14px), ne restent que les 13px explicitement prévus par le
+  cahier. Le scan vit dans scripts/audit-lisibilite.mjs — réutilisable.
+- Console : zéro erreur, zéro clé i18n manquante sur les 6 routes.
+- Artefact connu : fullPage + section pinnée = hero dédoublé sur les
+  captures (pin-spacer, déjà réfuté aux QA précédentes).
+
+---
+
 ## AU RÉVEIL (mis à jour au fil des chantiers)
+- **Lisibilité — à valider à l'œil** : le corps 17px et les nouveaux
+  contrastes /75 sur écran réel ; la grille d'avis (respire-t-elle assez
+  sans bordures ?) ; le calendrier adouci (les occupés se lisent-ils
+  encore comme indisponibles ?).
+- **GSAP Draggable/InertiaPlugin** : plus importés depuis la refonte du
+  bloc avis (le carousel a disparu). Ils ne pèsent que s'ils sont
+  importés — rien à faire, mais si un futur chantier veut du drag, ils
+  sont toujours dans node_modules.
+- **Clé API** : `.env.local` en place (chmod 600) → Maël actif. Rejouer
+  le QA conversationnel des 4 questions (couchages / prix→redirection /
+  restaurant étoilé→aveu / question EN) — non refait pendant ce run.
 - **Littoral — à vérifier à l'œil sur machine réelle** : le chemin du
   soleil de l'océan du footer (scintillement en mouvement), les fissures
   du granit (doivent rester subliminales), la strate rocheuse en entrée
