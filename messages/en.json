@@ -28,10 +28,22 @@
     "title": "The tideline, at golden hour",
     "manifesto": "There is a line, somewhere between the last pine and the first wave, where the forest stops growing and the ocean starts to breathe. The house sits on it. West, glass frames the open sea. East, oak opens onto the canopy. In between: a threshold, a home, a silence.",
     "figures": {
-      "rooms": { "value": "4", "label": "Bedrooms" },
-      "surface": { "value": "320", "label": "m² of living space" },
-      "sleeps": { "value": "10", "label": "Guests" },
-      "cliff": { "value": "Cliff", "label": "Private" }
+      "rooms": {
+        "value": "4",
+        "label": "Bedrooms"
+      },
+      "surface": {
+        "value": "320",
+        "label": "m² of living space"
+      },
+      "sleeps": {
+        "value": "10",
+        "label": "Guests"
+      },
+      "cliff": {
+        "value": "Cliff",
+        "label": "Private"
+      }
     }
   },
   "espaces": {
@@ -55,8 +67,7 @@
     "badge": "Guests' favourite",
     "originalNote": "Reviews shown in their original language",
     "stars": "5 out of 5 stars",
-    "prev": "Previous reviews",
-    "next": "Next reviews"
+    "loved": "One of the most loved homes by guests"
   },
   "hote": {
     "eyebrow": "Your host",

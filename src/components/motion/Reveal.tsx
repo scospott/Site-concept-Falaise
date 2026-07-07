@@ -10,7 +10,7 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 type RevealProps = {
   children: ReactNode;
   /** Élément rendu (div par défaut) */
-  as?: "div" | "section" | "span" | "article" | "ul" | "li" | "figure";
+  as?: "div" | "section" | "span" | "article" | "ul" | "li" | "figure" | "dl";
   className?: string;
   /** Délai avant l'animation, en secondes */
   delay?: number;

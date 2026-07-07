@@ -28,10 +28,22 @@
     "title": "La lisière, à l’heure dorée",
     "manifesto": "Il y a une ligne, quelque part entre le dernier pin et la première vague, où la forêt s’arrête de pousser et où l’océan commence à respirer. La villa est posée dessus. Côté ouest, le verre encadre le large. Côté est, le chêne s’ouvre sur la canopée. Entre les deux : un seuil, une maison, un silence.",
     "figures": {
-      "rooms": { "value": "4", "label": "Chambres" },
-      "surface": { "value": "320", "label": "m² habitables" },
-      "sleeps": { "value": "10", "label": "Couchages" },
-      "cliff": { "value": "Falaise", "label": "Privée" }
+      "rooms": {
+        "value": "4",
+        "label": "Chambres"
+      },
+      "surface": {
+        "value": "320",
+        "label": "m² habitables"
+      },
+      "sleeps": {
+        "value": "10",
+        "label": "Couchages"
+      },
+      "cliff": {
+        "value": "Falaise",
+        "label": "Privée"
+      }
     }
   },
   "espaces": {
@@ -55,8 +67,7 @@
     "badge": "Coup de cœur voyageurs",
     "originalNote": "Avis publiés dans leur langue d’origine",
     "stars": "5 étoiles sur 5",
-    "prev": "Avis précédents",
-    "next": "Avis suivants"
+    "loved": "L’un des logements préférés des voyageurs"
   },
   "hote": {
     "eyebrow": "Votre hôte",
