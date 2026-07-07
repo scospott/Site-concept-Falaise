@@ -858,6 +858,35 @@ versionné, vraie clé dans `.env.local` uniquement.
 
 ---
 
+## PATCH — hero réservation v3 : pan 2 segments ✅ (2026-07-08)
+
+- Nouvelles frames déposées par Scott dans `public/frames/hero-reservation/`
+  (2 clips de 6 s soudés par keyframe partagée) : **152 frames** vérifiées
+  sans trou 0001→0152 (14 Mo, remplace les 121 de la v2). `heroes.ts` :
+  frameCount 121→**152**, scrubVh 200→**260**. Mécanique ScrollHero intouchée.
+- Fallback `heroes/reservation.jpg` ≈ frame 0001 (vue océan depuis la
+  piscine) : diff globale 1,50/255, pire tuile 3,37/255 (reflets du soleil,
+  texture haute fréquence) — sous le seuil du patch home (3,4 accepté),
+  aucune régénération nécessaire, pas de flash poster→canvas.
+- **Jonction des 2 clips vérifiée propre** (attention spéciale demandée) :
+  1) captures 45/50/55 % desktop + 390 regardées — même scène latérale
+  (terrasse aux transats, colline de pins, angle de villa au bord droit),
+  aucune rupture de lumière/cadrage/géométrie ; 2) diff pixel inter-frames
+  sur les 151 paires : moyenne 11,95/255, AUCUN spike isolé — autour de la
+  soudure (75→76 = 4,5 ; 76→77 = 5,2) les écarts sont les PLUS FAIBLES du
+  voisinage (le pan décélère dans la keyframe partagée puis repart). Les
+  maxima (~22, frames 94-111) forment un plateau continu = portion rapide
+  du pan (façade texturée), pas une coupure.
+- Traversée complète : océan/piscine → soleil à gauche → terrasse aux
+  transats + angle de villa (jonction) → salon ouvert au couchant →
+  façade frontale complète. Build vert, audit
+  `scripts/audit-hero-resa-v3.mjs` → `audits/hero-resa-v3/`
+  (0/25/45/50/55/75/100 % × desktop/390, canvas vivant partout).
+- `.env.example` contrôlé AVANT commit (grep sk-ant = 0) — l'onglet IDE
+  est TOUJOURS ouvert côté Scott, vigilance maintenue.
+
+---
+
 ## AU RÉVEIL (mis à jour au fil des chantiers)
 - **La Falaise — à valider à l'œil** : le rim light du couchant (assez
   subliminal ?), le cône du soleil en mouvement réel, les écueils à
@@ -895,11 +924,10 @@ versionné, vraie clé dans `.env.local` uniquement.
   restaurant étoilé à côté ? » (attendu : aveu d'ignorance + renvoi), et une
   question en anglais (attendu : réponse en anglais). Si Maël invente un
   prix ou un nom de restaurant, durcir les règles dans `src/lib/knowledge.ts`.
-- **Frames vidéo héros** : ~~home~~ ✅ branché (162 frames, scrubVh 300).
-  Reste le slot **reservation** : extraire vers
-  `public/frames/hero-reservation/` puis renseigner `frameCount` exact
-  (provisoire : 168) dans `src/lib/heroes.ts`. En attendant, son fallback
-  `reservation.jpg` (mis à jour) s'affiche proprement.
+- **Frames vidéo héros** : ~~home~~ ✅ (162 frames, scrubVh 300) et
+  ~~reservation~~ ✅ (pan 2 segments v3, 152 frames, scrubVh 260 —
+  jonction vérifiée propre, voir le PATCH du 2026-07-08). Les deux slots
+  sont branchés, plus rien à extraire.
   NOTE étalonnage : la séquence home est golden hour, plus chaude/claire que
   l'étalonnage « blue hour » de la shot-list — des voiles de lisibilité ont
   été ajoutés à l'overlay ; si tu régénères en nocturne un jour, ils
