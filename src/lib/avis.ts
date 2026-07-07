@@ -15,7 +15,7 @@ export type Avis = {
   texte: string;
 };
 
-/** Sous-notes par catégorie (pattern plateforme, re-skinné Tideline) */
+/** Sous-notes par catégorie (pattern plateforme, re-skinné La Falaise) */
 export type AvisCategorie = {
   key: string;
   label: { fr: string; en: string };

@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "title": "Tideline — Where the sea meets the forest",
-    "template": "%s — Tideline",
-    "description": "A luxury villa set on the tideline, between the ocean and the forest. Four bedrooms, a private cliff, a silence. A ScottLab concept site.",
+    "title": "La Falaise — Where the sea meets the forest",
+    "template": "%s — La Falaise",
+    "description": "A luxury villa set on the clifftop, between the ocean and the forest. Four bedrooms, a private cove, a silence. A ScottLab concept site.",
     "reservation": {
       "title": "Book your stay",
-      "description": "Your nights on the tideline — availability and booking requests for the Tideline villa. A ScottLab concept site."
+      "description": "Your nights on the cliff — availability and booking requests for the villa La Falaise. A ScottLab concept site."
     }
   },
   "nav": {
@@ -19,13 +19,13 @@
   "hero": {
     "eyebrow": "Villa · Wild coast",
     "title": "<l>Where the sea <i>meets</i></l><l>the forest</l>",
-    "baseline": "A villa set on the tideline, between the last pine and the first wave.",
+    "baseline": "A villa set on the cliff, between the last pine and the first wave.",
     "ctaPrimary": "Book a stay",
     "ctaSecondary": "Discover the villa"
   },
   "villa": {
     "eyebrow": "The villa",
-    "title": "The tideline, at golden hour",
+    "title": "The cliff, at golden hour",
     "manifesto": "There is a line, somewhere between the last pine and the first wave, where the forest stops growing and the ocean starts to breathe. The house sits on it. West, glass frames the open sea. East, oak opens onto the canopy. In between: a threshold, a home, a silence.",
     "figures": {
       "rooms": {
@@ -73,7 +73,7 @@
     "eyebrow": "Your host",
     "title": "Ask Maël",
     "intro": "Sleeping arrangements, amenities, the surroundings, arrival times: Maël knows the villa by heart and replies within seconds.",
-    "welcome": "Good evening — I am Maël, Tideline's host. Ask me anything about the villa, its amenities or the surroundings. For rates and availability, the booking page awaits.",
+    "welcome": "Good evening — I am Maël, the host of La Falaise. Ask me anything about the villa, its amenities or the surroundings. For rates and availability, the booking page awaits.",
     "placeholder": "Write to Maël…",
     "send": "Send",
     "loading": "Maël is typing…",
@@ -89,7 +89,7 @@
   },
   "reservation": {
     "eyebrow": "Book",
-    "title": "Your nights on the tideline"
+    "title": "Your nights on the cliff"
   },
   "booking": {
     "steps": {
@@ -171,7 +171,7 @@
     "back": "Back to the villa"
   },
   "footer": {
-    "baseline": "A villa between the ocean and the forest, somewhere on the wild coast.",
+    "baseline": "Where the sea meets the forest.",
     "explore": "Explore",
     "practical": "Your stay",
     "checkin": "Check-in from 4 pm",
@@ -179,6 +179,6 @@
     "guests": "Sleeps 10 · 4 bedrooms",
     "reserveCta": "Book a stay",
     "concept": "Concept site — a ScottLab demonstration",
-    "rights": "Tideline — fictional villa"
+    "rights": "La Falaise — fictional villa"
   }
 }

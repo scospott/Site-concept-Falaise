@@ -94,7 +94,7 @@ function Carte({ item, locale }: { item: AvisType; locale: Lang }) {
 }
 
 /**
- * Section « Ce qu'ils en disent » — pattern plateforme re-skinné Tideline :
+ * Section « Ce qu'ils en disent » — pattern plateforme re-skinné La Falaise :
  * en-tête « Coup de cœur » (note géante entre deux lauriers), sous-notes par
  * catégorie avec barres, puis grille d'avis séparés par l'espace (le
  * carousel a disparu — plus de drag ni de flèches).

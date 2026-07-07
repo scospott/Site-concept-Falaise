@@ -50,7 +50,7 @@ export default function Footer() {
         <Fissures />
         <div className="relative mx-auto grid max-w-6xl gap-10 px-6 py-14 md:grid-cols-3 md:px-10">
           <div>
-            <p className="font-display text-2xl text-creme">Tideline</p>
+            <p className="font-display text-2xl text-creme">La Falaise</p>
             <p className="mt-3 max-w-xs text-[15px] leading-[1.65] text-creme/75">
               {t("baseline")}
             </p>
@@ -106,7 +106,7 @@ export default function Footer() {
             </a>
           </div>
         </div>
-        {/* La lisière complète : la roche en tête, la mer au couchant en pied */}
+        {/* Le pied de falaise complet : la roche en tête, la mer au couchant en pied */}
         <OceanNocturne />
       </div>
     </footer>

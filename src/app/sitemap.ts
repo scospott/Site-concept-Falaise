@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const BASE = "https://tideline.scottlab.app";
+const BASE = "https://la-falaise.scottlab.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const pages: { fr: string; en: string; priority: number }[] = [

@@ -124,7 +124,7 @@ export default function Nav() {
               : "text-encre hover:text-pin"
           }`}
         >
-          Tideline
+          La Falaise
         </Link>
 
         {/* Desktop */}

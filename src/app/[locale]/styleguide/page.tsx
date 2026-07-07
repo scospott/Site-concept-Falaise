@@ -96,7 +96,7 @@ export default async function StyleguidePage({
               <p className="mb-2 text-xs text-encre/40">
                 display-l — Bodoni Moda, clamp(2.4rem, 5.5vw, 4.2rem)
               </p>
-              <p className="display-l">La lisière, à l’heure dorée</p>
+              <p className="display-l">La falaise, à l’heure dorée</p>
             </div>
             <div>
               <p className="mb-2 text-xs text-encre/40">

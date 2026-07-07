@@ -44,8 +44,8 @@ export const espaces: Espace[] = [
     id: "cuisine-de-nuit",
     nom: { fr: "La cuisine de nuit", en: "The night kitchen" },
     description: {
-      fr: "Pierre, chêne clair et laiton. Une table d’hôte pour dix, tournée vers la lisière.",
-      en: "Stone, pale oak and brass. A table for ten, turned toward the treeline.",
+      fr: "Pierre, chêne clair et laiton. Une table d’hôte pour dix, tournée vers la falaise.",
+      en: "Stone, pale oak and brass. A table for ten, turned toward the cliff.",
     },
     couleur: "#8A6B3F",
     image: "/espaces/cuisine.jpg",

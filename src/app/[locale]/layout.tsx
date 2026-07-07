@@ -29,7 +29,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "metadata" });
   return {
-    metadataBase: new URL("https://tideline.scottlab.app"),
+    metadataBase: new URL("https://la-falaise.scottlab.app"),
     title: {
       default: t("title"),
       template: t("template"),
@@ -40,7 +40,7 @@ export async function generateMetadata({
       apple: "/apple-icon.png",
     },
     openGraph: {
-      siteName: "Tideline",
+      siteName: "La Falaise",
       type: "website",
       locale: locale === "fr" ? "fr_FR" : "en_US",
       images: [
@@ -48,7 +48,7 @@ export async function generateMetadata({
           url: "/og.jpg",
           width: 1200,
           height: 630,
-          alt: "Tideline — Where the sea meets the forest",
+          alt: "La Falaise — Where the sea meets the forest",
         },
       ],
     },
@@ -70,13 +70,13 @@ export default async function LocaleLayout({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "LodgingBusiness",
-    name: "Tideline",
+    name: "La Falaise",
     description:
       locale === "fr"
         ? "Site concept — villa fictive. Démonstration ScottLab."
         : "Concept site — fictional villa. A ScottLab demonstration.",
-    url: "https://tideline.scottlab.app",
-    image: "https://tideline.scottlab.app/og.jpg",
+    url: "https://la-falaise.scottlab.app",
+    image: "https://la-falaise.scottlab.app/og.jpg",
   };
 
   return (
