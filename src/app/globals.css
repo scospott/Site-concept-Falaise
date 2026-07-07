@@ -8,9 +8,9 @@
   --color-pin: #3c5638; /* accent : CTA, liens actifs, sélections */
   --color-soleil: #c08a45; /* miel : étoiles, index, labels chauds — JAMAIS de texte courant */
   --color-filet: #d9cba8; /* bordures, séparateurs */
-  --color-abysse: #3a362c; /* granit : footer uniquement */
+  --color-abysse: #37322a; /* granit : footer uniquement */
   /* Tokens de service (notés PROGRESS) */
-  --color-creme: #f5eedc; /* texte clair sur vidéo / accents pin / granit */
+  --color-creme: #f3ecdb; /* texte clair sur vidéo / accents pin / granit */
   --color-blanc: #faf3e2; /* blanc chaud : cartes avis, jours dispo, récap */
   --color-pierre: #dfd1b0; /* jours occupés, aplats en attente */
 

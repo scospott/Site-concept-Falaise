@@ -18,7 +18,7 @@ const palette = [
   { name: "Pin", token: "pin", hex: "#3C5638", usage: "Accent : CTA, liens actifs, sélections" },
   { name: "Soleil", token: "soleil", hex: "#C08A45", usage: "Miel : étoiles, index, labels chauds" },
   { name: "Filet", token: "filet", hex: "#D9CBA8", usage: "Bordures, séparateurs" },
-  { name: "Abysse", token: "abysse", hex: "#3A362C", usage: "Granit : footer" },
+  { name: "Abysse", token: "abysse", hex: "#37322A", usage: "Granit : footer" },
 ];
 
 const swatchBg: Record<string, string> = {

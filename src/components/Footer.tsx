@@ -16,21 +16,21 @@ function Fissures() {
       <path
         d="M0 96L240 102L318 118L560 112L648 128L920 122L1010 108L1260 114L1440 106"
         fill="none"
-        stroke="#46412F"
+        stroke="#443E31"
         strokeWidth="1"
         vectorEffect="non-scaling-stroke"
       />
       <path
         d="M180 400L210 330L206 262L248 208L244 156"
         fill="none"
-        stroke="#46412F"
+        stroke="#443E31"
         strokeWidth="1"
         vectorEffect="non-scaling-stroke"
       />
       <path
         d="M1120 400L1096 322L1112 270L1088 214"
         fill="none"
-        stroke="#46412F"
+        stroke="#443E31"
         strokeWidth="1"
         vectorEffect="non-scaling-stroke"
       />
@@ -47,6 +47,16 @@ export default function Footer() {
       {/* Transition d'entrée : la strate de granit se détache sur la pierre */}
       <RockStrata className="mb-[-1px] block h-16 w-full md:h-24" />
       <div className="relative bg-abysse text-creme">
+        {/* Facette diagonale du bloc de granit — casse l'aplat côté droit */}
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          className="pointer-events-none absolute inset-0 h-full w-full"
+          viewBox="0 0 1440 400"
+          preserveAspectRatio="none"
+        >
+          <polygon points="980,0 1440,0 1440,400 1180,400" fill="#3D372D" />
+        </svg>
         <Fissures />
         <div className="relative mx-auto grid max-w-6xl gap-10 px-6 py-14 md:grid-cols-3 md:px-10">
           <div>
@@ -94,7 +104,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="relative border-t border-[#4A4536]">
-          <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 py-6 text-[13px] text-creme/60 md:flex-row md:px-10">
+          <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 px-6 py-6 text-[13px] text-creme/50 md:flex-row md:px-10">
             <p>© 2026 {t("rights")}</p>
             <a
               href="https://scottlab.app"

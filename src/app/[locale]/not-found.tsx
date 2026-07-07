@@ -21,8 +21,10 @@ export default function NotFound() {
         </div>
       </div>
       <RockStrata
-        back="#E0D2AF"
-        front="#D9CBA8"
+        far="#E6D9B6"
+        mid="#DFD1B0"
+        near="#D9CBA8"
+        rim={false}
         className="absolute bottom-0 left-0 h-20 w-full md:h-28"
       />
     </main>
