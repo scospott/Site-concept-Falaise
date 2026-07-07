@@ -36,11 +36,11 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
                 ils s'évanouissent avec le texte dès le début du scrub */}
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-[#0b120e]/50 to-transparent"
+              className="pointer-events-none absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-[#14160F]/50 to-transparent"
             />
             <div
               aria-hidden
-              className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_62%_55%_at_50%_46%,rgba(11,18,14,0.55)_0%,rgba(11,18,14,0.25)_45%,transparent_72%)]"
+              className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_62%_55%_at_50%_46%,rgba(20,22,15,0.55)_0%,rgba(20,22,15,0.25)_45%,transparent_72%)]"
             />
             <div className="relative flex flex-col items-center">
               <div data-hero-fade>

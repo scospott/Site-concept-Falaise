@@ -17,7 +17,7 @@ export const espaces: Espace[] = [
       fr: "Un salon cathédrale face au large. Double hauteur, cheminée suspendue, et l’horizon pour quatrième mur.",
       en: "A cathedral living room facing the open sea. Double height, a suspended fireplace, the horizon as a fourth wall.",
     },
-    couleur: "#1E3A33",
+    couleur: "#1E3A31",
     image: "/espaces/verriere.jpg",
   },
   {
@@ -27,7 +27,7 @@ export const espaces: Espace[] = [
       fr: "Sous les pins, dans la vapeur. L’océan en fond sonore, le soir qui descend.",
       en: "Under the pines, in the steam. The ocean as a soundtrack, the evening settling in.",
     },
-    couleur: "#182A20",
+    couleur: "#2E4429",
     image: "/espaces/bain-nordique.jpg",
   },
   {
@@ -37,7 +37,7 @@ export const espaces: Espace[] = [
       fr: "S’endormir au-dessus de la marée, la lumière du soir sur le lin.",
       en: "Falling asleep above the tide, the evening light on the linen.",
     },
-    couleur: "#22302A",
+    couleur: "#3A362C",
     image: "/espaces/suite-falaise.jpg",
   },
   {
@@ -47,7 +47,7 @@ export const espaces: Espace[] = [
       fr: "Pierre, chêne clair et laiton. Une table d’hôte pour dix, tournée vers la lisière.",
       en: "Stone, pale oak and brass. A table for ten, turned toward the treeline.",
     },
-    couleur: "#8C7355",
+    couleur: "#8A6B3F",
     image: "/espaces/cuisine.jpg",
   },
   {
@@ -57,7 +57,7 @@ export const espaces: Espace[] = [
       fr: "Quarante-deux marches taillées dans la roche, jusqu'à une crique que la carte ne mentionne pas.",
       en: "Forty-two steps carved into the rock, down to a cove the map does not mention.",
     },
-    couleur: "#16241D",
+    couleur: "#2C3024",
     image: "/espaces/sentier.jpg",
   },
   {
@@ -67,7 +67,7 @@ export const espaces: Espace[] = [
       fr: "Un bassin à débordement posé au bord du vide. L’eau de la piscine et celle de l’océan ne font plus qu’une.",
       en: "An infinity pool set on the edge of the void. Where the water of the pool and the ocean become one.",
     },
-    couleur: "#1E3A33",
+    couleur: "#1E3A31",
     image: "/espaces/piscine.jpg",
   },
 ];

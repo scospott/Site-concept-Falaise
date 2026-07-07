@@ -12,13 +12,13 @@ export const metadata: Metadata = {
 };
 
 const palette = [
-  { name: "Calcaire", token: "calcaire", hex: "#F7F3EA", usage: "Fond global chaud" },
-  { name: "Sable", token: "sable", hex: "#EFE7D7", usage: "Surfaces, cartes, calendrier" },
-  { name: "Encre", token: "encre", hex: "#26332B", usage: "Texte principal" },
-  { name: "Pin", token: "pin", hex: "#3E5C42", usage: "Accent : CTA, liens actifs, sélections" },
-  { name: "Soleil", token: "soleil", hex: "#C9903F", usage: "Accent chaud rare : étoiles, index" },
-  { name: "Filet", token: "filet", hex: "#DCD3BE", usage: "Bordures, séparateurs" },
-  { name: "Abysse", token: "abysse", hex: "#1B2A21", usage: "Blocs profonds : footer" },
+  { name: "Calcaire", token: "calcaire", hex: "#EFE6D2", usage: "Pierre au soleil, fond global" },
+  { name: "Sable", token: "sable", hex: "#E6D7B8", usage: "Surfaces, sections alternées, calendrier" },
+  { name: "Encre", token: "encre", hex: "#2C3024", usage: "Texte, vert-brun des pins sombres" },
+  { name: "Pin", token: "pin", hex: "#3C5638", usage: "Accent : CTA, liens actifs, sélections" },
+  { name: "Soleil", token: "soleil", hex: "#C08A45", usage: "Miel : étoiles, index, labels chauds" },
+  { name: "Filet", token: "filet", hex: "#D9CBA8", usage: "Bordures, séparateurs" },
+  { name: "Abysse", token: "abysse", hex: "#3A362C", usage: "Granit : footer" },
 ];
 
 const swatchBg: Record<string, string> = {
@@ -168,7 +168,7 @@ export default async function StyleguidePage({
         </Bloc>
 
         <Bloc title="ForestLine">
-          <div className="overflow-hidden rounded-[10px] border border-filet bg-[#1a2a22]">
+          <div className="overflow-hidden rounded-[10px] border border-filet bg-abysse">
             <ForestLine className="block h-28 w-full text-creme" />
           </div>
         </Bloc>

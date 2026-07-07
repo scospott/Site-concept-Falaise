@@ -25,7 +25,7 @@ function isKeyword(word: string, keywords: string[]): boolean {
 
 /**
  * Section « La villa » — le manifeste qui se pose : chaque mot passe de
- * pierre claire #CBC3AE à encre (mots-clés → pin) sur une timeline scrubbed liée
+ * pierre claire #C6B58C à encre (mots-clés → pin) sur une timeline scrubbed liée
  * à la traversée de la section. Split manuel en spans (texte intact au SSR,
  * gestion sûre des mots-clés accentués).
  */
@@ -46,7 +46,7 @@ export default function Manifeste() {
         // L'encre se pose sur la pierre à mesure qu'on scrolle
         gsap.to(section.querySelectorAll<HTMLElement>(".manifeste-word"), {
           color: (_i, el) =>
-            (el as HTMLElement).dataset.accent ? "#3E5C42" : "#26332B",
+            (el as HTMLElement).dataset.accent ? "#3C5638" : "#2C3024",
           ease: "none",
           stagger: 0.35,
           duration: 3,

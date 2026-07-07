@@ -1,18 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  /* DA « Solaire » — méditerranéen doré, étalonné sur les images de bible/ */
-  --color-calcaire: #f7f3ea; /* fond global chaud */
-  --color-sable: #efe7d7; /* surfaces, cartes, calendrier */
-  --color-encre: #26332b; /* texte principal, vert très sombre chaud */
-  --color-pin: #3e5c42; /* accent principal : CTA, liens actifs, sélections */
-  --color-soleil: #c9903f; /* accent chaud rare : étoiles, index, hovers précieux */
-  --color-filet: #dcd3be; /* bordures, séparateurs */
-  --color-abysse: #1b2a21; /* blocs profonds : footer uniquement */
+  /* palette Littoral — pigments extraits des photos */
+  --color-calcaire: #efe6d2; /* pierre au soleil, fond global */
+  --color-sable: #e6d7b8; /* surfaces, sections alternées, calendrier */
+  --color-encre: #2c3024; /* texte, vert-brun des pins sombres */
+  --color-pin: #3c5638; /* accent : CTA, liens actifs, sélections */
+  --color-soleil: #c08a45; /* miel : étoiles, index, labels chauds — JAMAIS de texte courant */
+  --color-filet: #d9cba8; /* bordures, séparateurs */
+  --color-abysse: #3a362c; /* granit : footer uniquement */
   /* Tokens de service (notés PROGRESS) */
-  --color-creme: #f7f3ea; /* texte clair sur vidéo / accents pin / abysse */
-  --color-blanc: #fcfaf4; /* blanc chaud : cartes avis, jours dispo, récap */
-  --color-pierre: #e3dac5; /* jours occupés, aplats en attente */
+  --color-creme: #f5eedc; /* texte clair sur vidéo / accents pin / granit */
+  --color-blanc: #faf3e2; /* blanc chaud : cartes avis, jours dispo, récap */
+  --color-pierre: #dfd1b0; /* jours occupés, aplats en attente */
 
   --ease-luxe: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -379,7 +379,7 @@
 /* Manifeste — état de départ pierre claire, posé en encre par GSAP au
    scroll. reduced-motion : texte posé d'emblée, aucune animation. */
 .manifeste-word {
-  color: #cbc3ae;
+  color: #c6b58c;
 }
 
 @media (prefers-reduced-motion: reduce) {

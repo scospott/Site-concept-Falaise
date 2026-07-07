@@ -10,7 +10,7 @@ export default function NotFound() {
     <main className="relative flex min-h-svh flex-col items-center justify-center overflow-hidden px-6 text-center">
       <div
         aria-hidden
-        className="absolute inset-0 bg-[linear-gradient(to_bottom,#f7f3ea_0%,#f3ecdd_55%,#efe7d7_86%,#f7f3ea_100%)]"
+        className="absolute inset-0 bg-[linear-gradient(to_bottom,#efe6d2_0%,#ebdfc5_55%,#e6d7b8_86%,#efe6d2_100%)]"
       />
       <div className="relative z-10 flex max-w-xl flex-col items-center">
         <Eyebrow>404</Eyebrow>

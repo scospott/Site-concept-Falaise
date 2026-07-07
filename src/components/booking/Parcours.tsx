@@ -214,13 +214,13 @@ function Confirmation({
           cy="32"
           r="29"
           fill="none"
-          stroke="#3E5C42"
+          stroke="#3C5638"
           strokeWidth="1.5"
         />
         <path
           d="M20 33.5L28.5 42 44 24"
           fill="none"
-          stroke="#3E5C42"
+          stroke="#3C5638"
           strokeWidth="2.5"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -230,7 +230,7 @@ function Confirmation({
       <p className="mt-3 text-sm tracking-wide text-pin">
         {t("reference", { ref: reference })}
       </p>
-      <div className="mt-10 rounded-[10px] border border-filet bg-blanc p-6 text-left">
+      <div className="mt-10 rounded-[10px] border border-[#E2D4B4] bg-blanc p-6 text-left">
         <RecapContenu
           start={start}
           end={end}
@@ -540,8 +540,8 @@ export default function Parcours() {
         <aside
           className={`sticky top-28 hidden rounded-[10px] border bg-blanc p-6 transition-all duration-500 lg:block ${
             step === 2
-              ? "border-pin/50 shadow-[0_0_50px_rgba(62,92,66,0.12)]"
-              : "border-filet"
+              ? "border-pin/50 shadow-[0_0_50px_rgba(60,86,56,0.12)]"
+              : "border-[#E2D4B4]"
           }`}
         >
           <p className="eyebrow mb-6">{t("summary.title")}</p>

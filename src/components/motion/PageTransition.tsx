@@ -8,7 +8,7 @@ import { effects } from "@/lib/effects";
 /**
  * Transition de page. App Router assumé : on n'anime que l'ENTRÉE de la
  * nouvelle page (pas de délai de sortie).
- * Effet 5 (enablePageMist) : deux nappes calcaire (#F7F3EA puis #EFE7D7
+ * Effet 5 (enablePageMist) : deux nappes pierre (#EFE6D2 puis #E6D7B8
  * ~70 %) qui
  * balaient l'écran avec 60 ms de décalage et se retirent, contenu entrant
  * en fade + translateY(16px), 0.6 s total. Flag coupé → simple voile
