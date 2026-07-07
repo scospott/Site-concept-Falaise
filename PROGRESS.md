@@ -782,7 +782,91 @@ versionné, vraie clé dans `.env.local` uniquement.
 
 ---
 
+## CHANTIER LA FALAISE — renommage + footer v2 + hero réservation ✅ (2026-07-07)
+
+**4 commits (`falaise 1..4`), tsc + build verts, toujours aucun remote.**
+
+### 1. Renommage « Tideline » → « La Falaise »
+- Nom propre non traduit, partout : nav, footer, metadata (title,
+  template « %s — La Falaise », siteName, og alt), JSON-LD, knowledge
+  (Maël se présente comme l'hôte de La Falaise), FAL-2026, styleguide,
+  README réécrit (c'était encore le template create-next-app).
+- Tagline officielle « Là où la mer rencontre la forêt » / « Where the
+  sea meets the forest » : baseline footer + metadata title.
+- H1 hero FR dédié « Là où la mer *rencontre* la forêt » (les locales
+  divergent désormais — l'EN garde « Where the sea *meets* the
+  forest ») ; vérifié 1440/360, le clamp absorbe la ligne, mécanique
+  titre-condensation intouchée.
+- Lexical RELU (pas de sed aveugle) : lisière→falaise, tideline/
+  treeline→cliff ; descriptions metadata reformulées (« au sommet de la
+  falaise »/« clifftop », « crique privée »/« private cove ») pour
+  éviter « falaise…falaise privée ». Manifeste inchangé (il ne
+  contenait ni lisière ni tideline — « une ligne »).
+- Domaine plausible passé à https://la-falaise.scottlab.app
+  (metadataBase, sitemap, robots, JSON-LD) — à ajuster au déploiement.
+- og.jpg régénéré : fond bible/k0-cour + « LA FALAISE » + tagline
+  Bodoni italique, rendu par Chromium (plus de dépendance fontconfig —
+  l'ancien script d'assets nocturne a été SUPPRIMÉ). favicon +
+  apple-icon : monogramme « F » Bodoni #F3ECDB sur granit #37322A.
+- Greps finaux (src, messages, public, README) : zéro Tideline/lisière/
+  tideline/treeline. PROGRESS/audits gardent leurs mentions historiques.
+
+### 2. Footer-falaise v2
+- RockStrata : TROIS plans (#6E6349 lointain « pris dans la lumière »,
+  #4C4534 moyen, #37322A proche fusionnant avec le fond), décrochés
+  verticaux francs. Rim light du couchant sur les arêtes moyen/proche :
+  gradient #D9A85E→#E9BC6C, opacité 0 (gauche) → 0.8 (droite), traits
+  1.6-1.8px vectorEffect non-scaling. API : far/mid/near/rim (la 404
+  passe 3 tons sable, rim off).
+- Tokens : abysse #37322A, creme #F3ECDB (glissements ~1 % assumés
+  partout où creme sert). Facette diagonale #3D372D côté droit du bloc,
+  fissures #443E31, légal creme/50.
+- Océan v2 (fragment seul, Canvas/uniforms/frameloop inchangés) :
+  houle en PERSPECTIVE (rangées 14/(1.06−y) — fines près de l'horizon,
+  larges en bas, dérive lente), cône du soleil ancré à x=0.78
+  s'élargissant vers le bas (glints #E9BC6C, éclats #F5D9A2 au cœur,
+  scintillement à phase individuelle, densité 0.06 hors cône), 2 patchs
+  organiques #22423A/#1A342C. Les sinusoïdes parallèles ont disparu.
+- Couche statique SVG au-dessus du canvas : ligne d'écume crème
+  irrégulière au contact roche/eau + 2 écueils anguleux (#2B2620,
+  flanc droit éclairé #4A4031, écume de base, reflet sombre) à gauche
+  et centre-gauche — hors du cône. (1er jet « bouées » corrigé après
+  capture : masses élargies et irrégularisées.)
+- reduced-motion : le canvas se monte et se FIGE sur une frame propre.
+  PIÈGE R3F découvert : avec frameloop="never", invalidate() est ignoré
+  ET aucune frame initiale n'est rendue — il faut state.advance(0)
+  (constaté en capture : écueils flottant sur du granit, sans eau).
+
+### 3. Hero réservation
+- 121 frames webp (12 Mo) déposées par Scott PENDANT le run dans
+  public/frames/hero-reservation/ (embarquées au commit falaise 1) :
+  vérifiées sans trou 0001→0121, frameCount 121, scrubVh 200.
+- Fallback reservation.jpg ≈ frame 0001 (diff pixel 1,86/255) — aucun
+  flash poster→canvas. Traversée vérifiée : océan → bassin → façade.
+
+### 4. QA (audits/falaise/, 12 captures regardées)
+- Heros FR/EN 0/50/100 (nouveaux titres, fade-out au scrub intact),
+  hero réservation 0/50/100 (frames réelles), footer desktop+390
+  (strates, rim light, écueils, cône), page FR 390 pleine page.
+- reduced-motion contrôlé en plus (frame figée — voir piège advance).
+- À 390 les écueils se compriment (preserveAspectRatio none) : plus
+  abrupts, assumé — raccord avec « falaise ».
+- Artefact fullPage pin-spacer inchangé (connu, réfuté).
+- ⚠ La clé API est réapparue dans .env.example pendant CE run aussi
+  (3e fois — buffer IDE). Re-neutralisée avant chaque commit, vérifiée
+  par garde-fou à chaque `git add`. FERME L'ONGLET .env.example.
+
+---
+
 ## AU RÉVEIL (mis à jour au fil des chantiers)
+- **La Falaise — à valider à l'œil** : le rim light du couchant (assez
+  subliminal ?), le cône du soleil en mouvement réel, les écueils à
+  390px (compression assumée), et le titre FR au scrub sur machine
+  réelle. Rejouer le QA Maël : il doit se présenter comme l'hôte de
+  **La Falaise** (knowledge mis à jour, jamais re-testé avec la clé).
+- **Domaine** : tout pointe sur https://la-falaise.scottlab.app —
+  ajuster si le déploiement retient un autre nom (le REPO s'appelle
+  toujours tideline/, non renommé par choix).
 - **Lisibilité — à valider à l'œil** : le corps 17px et les nouveaux
   contrastes /75 sur écran réel ; la grille d'avis (respire-t-elle assez
   sans bordures ?) ; le calendrier adouci (les occupés se lisent-ils
