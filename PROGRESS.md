@@ -1,5 +1,14 @@
 # TIDELINE — Journal de bord du run maître
 
+> 🔑 **2026-07-07 — SECRET TROUVÉ ET NETTOYÉ** : une vraie clé
+> `sk-ant-api03-…` traînait dans `.env.example` (fichier NON tracké,
+> ignoré par `.env*` — vérifié : la clé n'apparaît dans AUCUN commit de
+> l'historique). Clé déplacée vers `.env.local` (gitignoré, chmod 600 —
+> Maël est donc actif), template vidé, `!.env.example` ajouté au
+> .gitignore pour que le template soit versionné. Aucune rotation de clé
+> indispensable puisque jamais publiée, mais elle reste sur ce disque :
+> à toi de juger.
+
 > ⚠ **2026-07-07 — chantier « Littoral » terminé** (palette photos,
 > footer-rocher, typo XXL — section dédiée plus bas). **Push impossible :
 > toujours aucun remote configuré**, les 4 commits `littoral N` sont locaux.
