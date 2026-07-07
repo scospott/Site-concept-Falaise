@@ -3,8 +3,11 @@
 import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import {
+  PRICING,
+  addDays,
   formatPrice,
   fromISO,
+  getSeason,
   quote,
   type Quote,
 } from "@/lib/pricing";
@@ -30,17 +33,17 @@ function Champ({
 }) {
   return (
     <div>
-      <label htmlFor={id} className="mb-2 block text-sm text-encre/70">
+      <label htmlFor={id} className="mb-2 block text-[15px] text-encre/75">
         {label}
       </label>
       {children}
-      {error && <p className="mt-1.5 text-xs text-soleil">{error}</p>}
+      {error && <p className="mt-1.5 text-sm text-[#8A6B3F]">{error}</p>}
     </div>
   );
 }
 
 const inputClass = (hasError: boolean) =>
-  `w-full rounded-[10px] border bg-blanc px-4 py-3 text-sm text-encre placeholder:text-encre/35 transition-colors duration-300 focus:outline-none ${
+  `w-full rounded-[10px] border bg-blanc px-4 py-3 text-base text-encre placeholder:text-encre/40 transition-colors duration-300 focus:outline-none ${
     hasError ? "border-soleil" : "border-filet focus:border-pin/60"
   }`;
 
@@ -64,12 +67,12 @@ function Compteur({
   increaseLabel: string;
 }) {
   const btn =
-    "flex h-11 w-11 items-center justify-center rounded-full border border-encre/35 text-lg text-encre transition-colors duration-300 hover:border-pin hover:text-pin disabled:cursor-not-allowed disabled:opacity-30";
+    "flex h-11 w-11 items-center justify-center rounded-full border border-filet text-lg text-encre transition-colors duration-300 hover:border-pin hover:text-pin disabled:cursor-not-allowed disabled:opacity-30";
   return (
     <div className="flex items-center justify-between border-b border-filet py-5">
       <div>
-        <p className="text-encre">{label}</p>
-        <p className="text-xs text-encre/50">{hint}</p>
+        <p className="text-[16px] text-encre">{label}</p>
+        <p className="mt-0.5 text-sm text-encre/75">{hint}</p>
       </div>
       <div className="flex items-center gap-4">
         <button
@@ -81,7 +84,7 @@ function Compteur({
         >
           −
         </button>
-        <span className="w-8 text-center font-display text-2xl text-encre">
+        <span className="w-9 text-center text-[18px] font-medium text-encre tabular-nums">
           {value}
         </span>
         <button
@@ -93,6 +96,51 @@ function Compteur({
         >
           +
         </button>
+      </div>
+    </div>
+  );
+}
+
+/** Lignes de détail du devis + total — filets fins entre lignes. */
+function DetailLignes({ devis, locale }: { devis: Quote; locale: string }) {
+  const t = useTranslations("booking.summary");
+  return (
+    <div className="text-[15px]">
+      <div className="divide-y divide-filet/70">
+        <div className="flex justify-between gap-4 py-3">
+          <span className="text-encre/75">
+            {t("nightsLine", {
+              n: devis.nights,
+              price: formatPrice(devis.nightly, locale),
+            })}
+          </span>
+          <span className="text-encre">
+            {formatPrice(devis.accommodation, locale)}
+          </span>
+        </div>
+        <div className="flex justify-between gap-4 py-3">
+          <span className="text-encre/75">{t("cleaning")}</span>
+          <span className="text-encre">
+            {formatPrice(devis.cleaning, locale)}
+          </span>
+        </div>
+        <div className="flex justify-between gap-4 py-3">
+          <span className="text-encre/75">
+            {t("touristTax")}
+            <span className="mt-0.5 block text-[13px] text-encre/60">
+              {t("touristTaxHint")}
+            </span>
+          </span>
+          <span className="text-encre">
+            {formatPrice(devis.touristTax, locale)}
+          </span>
+        </div>
+      </div>
+      <div className="flex items-baseline justify-between gap-4 border-t border-filet pt-4">
+        <span className="text-encre/75">{t("total")}</span>
+        <span className="text-[20px] font-medium text-encre">
+          {formatPrice(devis.total, locale)}
+        </span>
       </div>
     </div>
   );
@@ -125,60 +173,160 @@ function RecapContenu({
   );
 
   if (!start || !end || !devis) {
-    return <p className="text-sm text-encre/50">{t("empty")}</p>;
+    return <p className="text-[15px] text-encre/75">{t("empty")}</p>;
   }
   return (
-    <div className="space-y-4 text-sm">
-      <div className="flex justify-between gap-4">
-        <span className="text-encre/60">{t("arrival")}</span>
-        <span className="text-right text-encre">
-          {dateFmt.format(fromISO(start))}
-        </span>
-      </div>
-      <div className="flex justify-between gap-4">
-        <span className="text-encre/60">{t("departure")}</span>
-        <span className="text-right text-encre">
-          {dateFmt.format(fromISO(end))}
-        </span>
-      </div>
-      <div className="flex justify-between gap-4 border-b border-filet pb-4">
-        <span className="text-encre/60">
-          {t("travellers", { adults, children })}
-        </span>
-      </div>
-      <div className="flex justify-between gap-4">
-        <span className="text-encre/60">
-          {t("nightsLine", {
-            n: devis.nights,
-            price: formatPrice(devis.nightly, locale),
-          })}
-        </span>
-        <span className="text-encre">
-          {formatPrice(devis.accommodation, locale)}
-        </span>
-      </div>
-      <div className="flex justify-between gap-4">
-        <span className="text-encre/60">{t("cleaning")}</span>
-        <span className="text-encre">{formatPrice(devis.cleaning, locale)}</span>
-      </div>
-      <div className="flex justify-between gap-4 border-b border-filet pb-4">
-        <span className="text-encre/60">
-          {t("touristTax")}
-          <span className="mt-0.5 block text-[11px] text-encre/40">
-            {t("touristTaxHint")}
+    <div className="text-[15px]">
+      <div className="space-y-3 border-b border-filet pb-4">
+        <div className="flex justify-between gap-4">
+          <span className="text-encre/75">{t("arrival")}</span>
+          <span className="text-right text-encre">
+            {dateFmt.format(fromISO(start))}
           </span>
-        </span>
-        <span className="text-encre">
-          {formatPrice(devis.touristTax, locale)}
-        </span>
+        </div>
+        <div className="flex justify-between gap-4">
+          <span className="text-encre/75">{t("departure")}</span>
+          <span className="text-right text-encre">
+            {dateFmt.format(fromISO(end))}
+          </span>
+        </div>
+        <div className="flex justify-between gap-4">
+          <span className="text-encre/75">
+            {t("travellers", { adults, children })}
+          </span>
+        </div>
       </div>
-      <div className="flex items-baseline justify-between gap-4 pt-1">
-        <span className="text-encre/60">{t("total")}</span>
-        <span className="font-display text-[32px] leading-none text-encre">
-          {formatPrice(devis.total, locale)}
-        </span>
+      <div className="mt-1">
+        <DetailLignes devis={devis} locale={locale} />
       </div>
     </div>
+  );
+}
+
+/**
+ * Carte récap style plateforme — vit dès l'étape 1, se remplit
+ * progressivement. Les lignes Arrivée/Départ et Voyageurs renvoient à
+ * l'étape correspondante.
+ */
+function CarteRecap({
+  nightly,
+  start,
+  end,
+  adults,
+  children,
+  devis,
+  locale,
+  step,
+  canContinue,
+  sending,
+  onGoToStep,
+  onContinue,
+}: {
+  nightly: number;
+  start: string | null;
+  end: string | null;
+  adults: number;
+  children: number;
+  devis: Quote | null;
+  locale: string;
+  step: number;
+  canContinue: boolean;
+  sending: boolean;
+  onGoToStep: (i: number) => void;
+  onContinue: () => void;
+}) {
+  const t = useTranslations("booking");
+  const dateFmt = useMemo(
+    () =>
+      new Intl.DateTimeFormat(locale === "fr" ? "fr-FR" : "en-GB", {
+        day: "numeric",
+        month: "short",
+        year: "numeric",
+      }),
+    [locale],
+  );
+
+  const fieldLabel = "block text-sm tracking-[0.06em] text-encre/60 uppercase";
+  const fieldValue = "mt-0.5 block text-[15px] text-encre";
+
+  return (
+    <aside
+      className={`sticky top-28 hidden rounded-2xl border bg-blanc p-7 transition-all duration-500 lg:block ${
+        step === 2
+          ? "border-pin/50 shadow-[0_0_50px_rgba(60,86,56,0.12)]"
+          : "border-[#E2D4B4]"
+      }`}
+    >
+      {/* Tarif de la saison sélectionnée */}
+      <p className="flex items-baseline">
+        <span className="font-display text-[28px] leading-none text-encre">
+          {formatPrice(nightly, locale)}
+        </span>
+        <span className="text-[15px] text-encre/75">
+          {t("summary.perNight")}
+        </span>
+      </p>
+
+      {/* Champs cliquables — renvoient à l'étape correspondante */}
+      <div className="mt-5 overflow-hidden rounded-[10px] border border-[#E2D4B4]">
+        <button
+          type="button"
+          onClick={() => onGoToStep(0)}
+          className="grid w-full grid-cols-2 divide-x divide-[#E2D4B4] text-left transition-colors duration-300 hover:bg-calcaire/60"
+        >
+          <span className="px-4 py-3">
+            <span className={fieldLabel}>{t("summary.arrival")}</span>
+            <span className={fieldValue}>
+              {start ? dateFmt.format(fromISO(start)) : "—"}
+            </span>
+          </span>
+          <span className="px-4 py-3">
+            <span className={fieldLabel}>{t("summary.departure")}</span>
+            <span className={fieldValue}>
+              {end ? dateFmt.format(fromISO(end)) : "—"}
+            </span>
+          </span>
+        </button>
+        <button
+          type="button"
+          onClick={() => onGoToStep(1)}
+          className="block w-full border-t border-[#E2D4B4] px-4 py-3 text-left transition-colors duration-300 hover:bg-calcaire/60"
+        >
+          <span className={fieldLabel}>{t("steps.guests")}</span>
+          <span className={fieldValue}>
+            {t("summary.travellers", { adults, children })}
+          </span>
+        </button>
+      </div>
+
+      {/* Détail du devis */}
+      <div className="mt-6">
+        {devis ? (
+          <DetailLignes devis={devis} locale={locale} />
+        ) : (
+          <p className="text-[15px] leading-relaxed text-encre/75">
+            {t("summary.empty")}
+          </p>
+        )}
+      </div>
+
+      <Button
+        onClick={onContinue}
+        disabled={!canContinue || sending}
+        className={`mt-6 w-full ${
+          !canContinue ? "cursor-not-allowed opacity-40" : sending ? "cursor-wait opacity-70" : ""
+        }`}
+      >
+        {step < 3
+          ? t("nav.next")
+          : sending
+            ? t("nav.sending")
+            : t("nav.submit")}
+      </Button>
+      <p className="mt-3 text-center text-[13px] text-encre/60">
+        {t("summary.demoNote")}
+      </p>
+    </aside>
   );
 }
 
@@ -227,10 +375,10 @@ function Confirmation({
         />
       </svg>
       <h2 className="display-l mt-8 text-encre">{t("title")}</h2>
-      <p className="mt-3 text-sm tracking-wide text-pin">
+      <p className="mt-3 text-[15px] tracking-wide text-pin">
         {t("reference", { ref: reference })}
       </p>
-      <div className="mt-10 rounded-[10px] border border-[#E2D4B4] bg-blanc p-6 text-left">
+      <div className="mt-10 rounded-2xl border border-[#E2D4B4] bg-blanc p-7 text-left">
         <RecapContenu
           start={start}
           end={end}
@@ -240,8 +388,8 @@ function Confirmation({
           locale={locale}
         />
       </div>
-      <p className="mt-6 text-sm text-encre/70">{t("reply")}</p>
-      <p className="mx-auto mt-8 max-w-md rounded-[10px] border border-filet px-5 py-4 text-xs leading-relaxed text-encre/50">
+      <p className="mt-6 text-[15px] text-encre/75">{t("reply")}</p>
+      <p className="mx-auto mt-8 max-w-md rounded-[10px] border border-filet px-5 py-4 text-[13px] leading-relaxed text-encre/60">
         {t("demo")}
       </p>
       <div className="mt-10">
@@ -283,6 +431,14 @@ export default function Parcours() {
 
   const devis = start && end ? quote(start, end, adults) : null;
 
+  // Tarif affiché en tête de carte : saison des dates choisies, sinon
+  // saison de la première nuit réservable (demain).
+  const nightly = devis
+    ? devis.nightly
+    : PRICING[
+        getSeason(start ? fromISO(start) : addDays(new Date(), 1))
+      ].nightly;
+
   const canContinue =
     step === 0 ? Boolean(start && end) : step === 1 ? adults >= 1 : true;
 
@@ -309,6 +465,14 @@ export default function Parcours() {
         `TDL-2026-${String(Date.now() % 10000).padStart(4, "0")}`,
       );
     }, 1200);
+  };
+
+  const advance = () => {
+    if (step < 3) {
+      if (canContinue) setStep(step + 1);
+    } else {
+      submit();
+    }
   };
 
   const reset = () => {
@@ -348,8 +512,8 @@ export default function Parcours() {
   }
 
   return (
-    <div className="mx-auto max-w-6xl px-6 pb-40 md:px-10 lg:pb-32">
-      {/* Barre de progression — 4 segments */}
+    <div className="mx-auto max-w-6xl px-6 pb-44 md:px-10 lg:pb-32">
+      {/* Barre de progression — 4 segments, étapes faites cochées */}
       <nav aria-label={t("stepLabel", { current: step + 1, total: 4 })}>
         <ol className="grid grid-cols-4 gap-2">
           {STEPS.map((key, i) => (
@@ -361,27 +525,47 @@ export default function Parcours() {
                 className={`w-full text-left ${i < step ? "cursor-pointer" : ""}`}
               >
                 <span
-                  className={`block h-[3px] rounded-full transition-colors duration-500 ${
-                    i <= step ? "bg-pin" : "bg-filet"
+                  className={`block rounded-full transition-all duration-500 ${
+                    i <= step ? "h-[3px] bg-pin" : "h-[2px] bg-filet"
                   }`}
                 />
                 <span
-                  className={`mt-2 hidden text-[11px] tracking-[0.15em] uppercase md:block ${
-                    i === step ? "text-pin" : "text-encre/40"
+                  className={`mt-2.5 hidden items-center gap-1.5 text-[15px] md:flex ${
+                    i === step
+                      ? "font-medium text-pin"
+                      : i < step
+                        ? "text-encre/75"
+                        : "text-encre/50"
                   }`}
                 >
+                  {i < step && (
+                    <svg
+                      viewBox="0 0 16 16"
+                      className="h-3.5 w-3.5 text-pin"
+                      aria-hidden
+                    >
+                      <path
+                        d="M3 8.5L6.5 12 13 4.5"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.8"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  )}
                   {t(`steps.${key}`)}
                 </span>
               </button>
             </li>
           ))}
         </ol>
-        <p className="mt-3 text-[11px] tracking-[0.15em] text-encre/50 uppercase md:hidden">
+        <p className="mt-3 text-sm text-encre/75 md:hidden">
           {t(`steps.${STEPS[step]}`)} — {t("stepLabel", { current: step + 1, total: 4 })}
         </p>
       </nav>
 
-      <div className="mt-10 grid items-start gap-10 lg:grid-cols-[1fr_360px]">
+      <div className="mt-10 grid items-start gap-12 lg:grid-cols-[1fr_380px]">
         {/* Colonne principale — contenu de l'étape (remonté à chaque step) */}
         <div key={step} className="step-enter">
           {step === 0 && (
@@ -417,14 +601,14 @@ export default function Parcours() {
                 decreaseLabel={t("guests.decrease")}
                 increaseLabel={t("guests.increase")}
               />
-              <p className="mt-5 text-xs text-encre/50">
+              <p className="mt-5 text-sm text-encre/75">
                 {t("guests.capacity")} · {t("guests.crib")}
               </p>
             </div>
           )}
 
           {step === 2 && (
-            <div className="rounded-[10px] border border-filet bg-blanc p-6 md:p-8 lg:border-transparent lg:bg-transparent lg:p-0">
+            <div className="rounded-2xl border border-[#E2D4B4] bg-blanc p-6 md:p-8 lg:border-transparent lg:bg-transparent lg:p-0">
               <h2 className="display-l mb-8 text-encre">
                 {t("summary.title")}
               </h2>
@@ -507,77 +691,43 @@ export default function Parcours() {
             </form>
           )}
 
-          {/* Navigation */}
-          <div className="mt-12 flex items-center justify-between gap-4">
-            {step > 0 ? (
+          {/* Navigation de bas d'étape : retour seul — le « Continuer »
+              vit dans la carte récap (desktop) et la barre basse (mobile) */}
+          {step > 0 && (
+            <div className="mt-12">
               <Button variant="ghost" onClick={() => setStep(step - 1)}>
                 {t("nav.back")}
               </Button>
-            ) : (
-              <span />
-            )}
-            {step < 3 ? (
-              <Button
-                onClick={() => canContinue && setStep(step + 1)}
-                disabled={!canContinue}
-                className={!canContinue ? "cursor-not-allowed opacity-40" : ""}
-              >
-                {t("nav.next")}
-              </Button>
-            ) : (
-              <Button
-                onClick={submit}
-                disabled={sending}
-                className={sending ? "cursor-wait opacity-70" : ""}
-              >
-                {sending ? t("nav.sending") : t("nav.submit")}
-              </Button>
-            )}
-          </div>
+            </div>
+          )}
         </div>
 
-        {/* Récap sticky desktop — visible dès l'étape 1, pleine lumière à l'étape 3 */}
-        <aside
-          className={`sticky top-28 hidden rounded-[10px] border bg-blanc p-6 transition-all duration-500 lg:block ${
-            step === 2
-              ? "border-pin/50 shadow-[0_0_50px_rgba(60,86,56,0.12)]"
-              : "border-[#E2D4B4]"
-          }`}
-        >
-          <p className="eyebrow mb-6">{t("summary.title")}</p>
-          <RecapContenu
-            start={start}
-            end={end}
-            adults={adults}
-            children={children}
-            devis={devis}
-            locale={locale}
-          />
-        </aside>
+        {/* Carte récap sticky desktop — style plateforme */}
+        <CarteRecap
+          nightly={nightly}
+          start={start}
+          end={end}
+          adults={adults}
+          children={children}
+          devis={devis}
+          locale={locale}
+          step={step}
+          canContinue={canContinue}
+          sending={sending}
+          onGoToStep={(i) => i < step && setStep(i)}
+          onContinue={advance}
+        />
       </div>
 
-      {/* Récap mobile — carte repliable en bas d'écran */}
-      <div className="fixed inset-x-0 bottom-0 z-30 border-t border-filet bg-sable lg:hidden">
-        <button
-          type="button"
-          onClick={() => setSheetOpen((o) => !o)}
-          aria-expanded={sheetOpen}
-          className="flex w-full items-center justify-between px-6 py-4 pr-24"
-        >
-          <span className="text-xs tracking-[0.15em] text-encre/60 uppercase">
-            {sheetOpen ? t("summary.hide") : t("summary.show")}
-          </span>
-          <span className="font-display text-xl text-encre">
-            {devis ? formatPrice(devis.total, locale) : "—"}
-          </span>
-        </button>
+      {/* Barre récap mobile — total + Continuer visibles, détail au tap */}
+      <div className="fixed inset-x-0 bottom-0 z-30 border-t border-[#E2D4B4] bg-blanc lg:hidden">
         <div
           className={`grid transition-all duration-500 ease-luxe ${
             sheetOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
           }`}
         >
           <div className="overflow-hidden">
-            <div className="border-t border-filet px-6 py-5">
+            <div className="border-b border-filet px-6 py-5">
               <RecapContenu
                 start={start}
                 end={end}
@@ -588,6 +738,38 @@ export default function Parcours() {
               />
             </div>
           </div>
+        </div>
+        <div className="flex items-center justify-between gap-4 px-5 py-3">
+          <button
+            type="button"
+            onClick={() => setSheetOpen((o) => !o)}
+            aria-expanded={sheetOpen}
+            className="text-left"
+          >
+            <span className="block text-[20px] font-medium text-encre">
+              {devis ? formatPrice(devis.total, locale) : "—"}
+            </span>
+            <span className="block text-sm text-encre/75 underline decoration-encre/40 underline-offset-2">
+              {sheetOpen ? t("summary.hide") : t("summary.show")}
+            </span>
+          </button>
+          <Button
+            onClick={advance}
+            disabled={!canContinue || sending}
+            className={
+              !canContinue
+                ? "cursor-not-allowed opacity-40"
+                : sending
+                  ? "cursor-wait opacity-70"
+                  : ""
+            }
+          >
+            {step < 3
+              ? t("nav.next")
+              : sending
+                ? t("nav.sending")
+                : t("nav.submit")}
+          </Button>
         </div>
       </div>
     </div>

@@ -56,7 +56,7 @@ export default function ChatWidget() {
         aria-expanded={open}
         aria-label={open ? t("widgetClose") : t("widgetOpen")}
         className={`fixed right-5 z-[45] flex h-14 w-14 items-center justify-center rounded-full bg-pin text-creme shadow-[0_10px_30px_rgba(0,0,0,0.35)] transition-all duration-300 ease-luxe hover:-translate-y-0.5 md:right-6 ${
-          aboveRecapBar ? "bottom-[76px] lg:bottom-6" : "bottom-5 md:bottom-6"
+          aboveRecapBar ? "bottom-[92px] lg:bottom-6" : "bottom-5 md:bottom-6"
         }`}
       >
         {open ? (

@@ -134,7 +134,9 @@
       "total": "Total",
       "empty": "Select your dates to see the breakdown.",
       "show": "Show summary",
-      "hide": "Hide summary"
+      "hide": "Hide summary",
+      "perNight": " / night",
+      "demoNote": "Demo — no real booking."
     },
     "form": {
       "name": "Full name",

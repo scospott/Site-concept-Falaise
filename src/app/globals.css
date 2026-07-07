@@ -251,15 +251,15 @@
 
 /* Parcours de réservation */
 
-/* Jour occupé : galet barré d'une fine diagonale */
+/* Jour occupé : opacité réduite, barré fin et discret */
 .cal-booked {
-  background-color: var(--color-pierre);
+  background-color: color-mix(in srgb, var(--color-pierre) 55%, transparent);
   background-image: linear-gradient(
     to top right,
-    transparent 47.5%,
-    color-mix(in srgb, var(--color-encre) 30%, transparent) 47.5%,
-    color-mix(in srgb, var(--color-encre) 30%, transparent) 52.5%,
-    transparent 52.5%
+    transparent 48.8%,
+    color-mix(in srgb, var(--color-encre) 18%, transparent) 48.8%,
+    color-mix(in srgb, var(--color-encre) 18%, transparent) 51.2%,
+    transparent 51.2%
   );
 }
 

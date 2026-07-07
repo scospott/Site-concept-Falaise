@@ -134,7 +134,9 @@
       "total": "Total",
       "empty": "Sélectionnez vos dates pour voir le détail.",
       "show": "Voir le récapitulatif",
-      "hide": "Masquer le récapitulatif"
+      "hide": "Masquer le récapitulatif",
+      "perNight": " / nuit",
+      "demoNote": "Démo — aucune réservation réelle."
     },
     "form": {
       "name": "Nom complet",
