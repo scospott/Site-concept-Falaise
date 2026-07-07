@@ -19,6 +19,7 @@ function Visuel({
   label,
   className,
   spotlight = false,
+  eager = false,
 }: {
   couleur: string;
   image?: string;
@@ -27,6 +28,8 @@ function Visuel({
   className?: string;
   /** Effet 2 : copie claire révélée par la lanterne (panneau desktop) */
   spotlight?: boolean;
+  /** Image LCP signalée par Next (verrière) — `priority` est déprécié en 16 */
+  eager?: boolean;
 }) {
   if (image) {
     const img = (extra: string) => (
@@ -35,6 +38,8 @@ function Visuel({
         alt={nom}
         fill
         sizes="(min-width: 1024px) 45vw, 100vw"
+        loading={eager ? "eager" : undefined}
+        fetchPriority={eager ? "high" : undefined}
         className={`object-cover ${extra} ${className ?? ""}`}
       />
     );
@@ -187,6 +192,7 @@ export default function Espaces() {
                   nom={espace.nom[locale]}
                   label={t("visualLabel")}
                   spotlight
+                  eager={i === 0}
                 />
               </div>
             ))}
@@ -209,6 +215,7 @@ export default function Espaces() {
                 image={espace.image}
                 nom={espace.nom[locale]}
                 label={t("visualLabel")}
+                eager={i === 0}
               />
             </div>
             <p className="mt-5 flex items-baseline gap-3 font-display text-3xl text-encre">

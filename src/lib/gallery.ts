@@ -1,6 +1,7 @@
-// Galerie « La dérive » — 10 visuels identifiés et branchés
-// (public/gallery/). 07-pins et 10-mer n'ont pas encore de visuel correct :
-// ils gardent leur aplat placeholder (voir PROGRESS « Photos manquantes »).
+// Galerie « La dérive » — vraies photos uniquement (public/gallery/).
+// Les slots sans visuel (ex-07-pins, ex-10-mer) ont été retirés : si une
+// photo arrive, ajouter l'item avec son champ image (le placeholder
+// couleur ne sert que de fallback de chargement).
 
 export type GalleryFormat = "portrait" | "paysage" | "carre";
 
@@ -59,13 +60,6 @@ export const gallery: GalleryItem[] = [
     image: "/gallery/06-table.jpg",
   },
   {
-    id: "pins-dores",
-    legende: { fr: "Les pins dorés", en: "Golden pines" },
-    format: "portrait",
-    couleur: "#E2D4B4",
-    // Visuel manquant — placeholder conservé
-  },
-  {
     id: "crique",
     legende: { fr: "La crique", en: "The cove" },
     format: "paysage",
@@ -78,12 +72,5 @@ export const gallery: GalleryItem[] = [
     format: "paysage",
     couleur: "#2C3024",
     image: "/gallery/09-villa-mer.jpg",
-  },
-  {
-    id: "mer-scintillante",
-    legende: { fr: "La mer scintillante", en: "The glittering sea" },
-    format: "paysage",
-    couleur: "#DFD1B0",
-    // Visuel manquant — placeholder conservé
   },
 ];
